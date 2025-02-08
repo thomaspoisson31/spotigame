@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify Authentication</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: #282828;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #1DB954;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-button {
+            background-color: #1DB954;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .login-button:hover {
+            background-color: #1ed760;
+        }
+
+        .description {
+            margin: 1.5rem 0;
+            color: #b3b3b3;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Musical</h1>
+    <div class="description">
+        <p>Connectez-vous avec votre compte Spotify Premium pour commencer à jouer.</p>
+        <p>Découvrez et devinez des chansons de différentes époques!</p>
+    </div>
+        <div id="login">
+            <button id="login-button" class="login-button">Se connecter avec Spotify</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-button').addEventListener('click', () => {
+            // Configuration
+            const clientId = 'eee6491d83cc44ce889bd4f1a6dfb684';
+            const redirectUri = 'http://localhost:8888/callback.html';
+            const scopes = [
+                'streaming',
+                'user-read-email',
+                'user-read-private',
+                'user-read-playback-state',
+                'user-modify-playback-state'
+            ];
+
+            // Génération d'un état aléatoire pour la sécurité
+            const state = Math.random().toString(36).substring(7);
+
+            // Construction de l'URL d'authentification
+            const authUrl = new URL('https://accounts.spotify.com/authorize');
+            const params = new URLSearchParams({
+                response_type: 'token',
+                client_id: clientId,
+                scope: scopes.join(' '),
+                redirect_uri: redirectUri,
+                state: state,
+                show_dialog: 'true'
+            });
+
+            // Nettoyage du localStorage avant la nouvelle authentification
+            localStorage.removeItem('spotify_token');
+            localStorage.removeItem('just_authenticated');
+            localStorage.removeItem('token_timestamp');
+            localStorage.removeItem('token_expires_in');
+
+            // Redirection vers l'authentification Spotify
+            window.location.href = `${authUrl}?${params.toString()}`;
+        });
+    </script>
+</body>
+</html>

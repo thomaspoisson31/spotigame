@@ -1,0 +1,605 @@
+{
+  "playlist_name": "Prog rock, Hard rock, Metal",
+  "songs": [
+    {
+      "title": "Billie Jean",
+      "artist": "Chris Cornell",
+      "year": 2007,
+      "uri": "spotify:track:3t4p9vIhemAhCMr6hfL2pa"
+    },
+    {
+      "title": "Rocket Queen",
+      "artist": "Guns N' Roses",
+      "year": 1987,
+      "uri": "spotify:track:0xaNdYwK8ZF3cHSjraQGC0"
+    },
+    {
+      "title": "The Frayed Ends of Sanity",
+      "artist": "Metallica",
+      "year": 1988,
+      "uri": "spotify:track:4p4VJmajEO6rh8yVibTRCS"
+    },
+    {
+      "title": "Vital Signs",
+      "artist": "Rush",
+      "year": 1981,
+      "uri": "spotify:track:1k0GxoZYv3Yx5mNeXMOZN2"
+    },
+    {
+      "title": "Metal On Metal",
+      "artist": "Anvil",
+      "year": 1982,
+      "uri": "spotify:track:56uiDIiXz2sRoQ0AXq84aI"
+    },
+    {
+      "title": "Élan",
+      "artist": "Nightwish",
+      "year": 2015,
+      "uri": "spotify:track:5oAvb7LpUBwQfBtQ6hmS4Q"
+    },
+    {
+      "title": "Jawbreaker",
+      "artist": "Judas Priest",
+      "year": 1984,
+      "uri": "spotify:track:3T1k6b4zMzA2bW8klvKCcX"
+    },
+    {
+      "title": "Guilty All the Same (feat. Rakim)",
+      "artist": "Linkin Park",
+      "year": 2014,
+      "uri": "spotify:track:6L5QMBrydoaapTDMQ0Anui"
+    },
+    {
+      "title": "Natural Born Killer",
+      "artist": "Avenged Sevenfold",
+      "year": 2010,
+      "uri": "spotify:track:5o8OdhjVZSF2wCj7M8UpMN"
+    },
+    {
+      "title": "Who Do You Love - Pt. 1",
+      "artist": "Quicksilver Messenger Service",
+      "year": 1969,
+      "uri": "spotify:track:14hykKy6TC9y6chiptCtje"
+    },
+    {
+      "title": "Believe in Love (2015 - Remaster)",
+      "artist": "Scorpions",
+      "year": 1988,
+      "uri": "spotify:track:7dJgMpT6LzQTlLMEuoapq2"
+    },
+    {
+      "title": "Tonight, Tonight - Remastered 2012",
+      "artist": "The Smashing Pumpkins",
+      "year": 1995,
+      "uri": "spotify:track:4iCGSi1RonREsPtfEKYj5b"
+    },
+    {
+      "title": "Take Me To The Top",
+      "artist": "Mötley Crüe",
+      "year": 1981,
+      "uri": "spotify:track:5wXYuaDpzueI27xvHhM9nl"
+    },
+    {
+      "title": "Strong Reflection",
+      "artist": "Mars Red Sky",
+      "year": 2011,
+      "uri": "spotify:track:3ITVfnOWqufdNq3rD0lFsh"
+    },
+    {
+      "title": "Changes - 2009 Remaster",
+      "artist": "Black Sabbath",
+      "year": 1972,
+      "uri": "spotify:track:2wNEcJHnFxoKZIrxjxF5jL"
+    },
+    {
+      "title": "Cry for the Moon (The Embrace That Smothers , Pt. 4)",
+      "artist": "Epica",
+      "year": 2003,
+      "uri": "spotify:track:66iX4HzM7YnmxmUZOSCG2F"
+    },
+    {
+      "title": "In Too Deep",
+      "artist": "Sum 41",
+      "year": 2001,
+      "uri": "spotify:track:1HNE2PX70ztbEl6MLxrpNL"
+    },
+    {
+      "title": "The Gift of Guilt",
+      "artist": "Gojira",
+      "year": 2012,
+      "uri": "spotify:track:1mjC68qU0Q9HlCIZHZAEko"
+    },
+    {
+      "title": "Bark at the Moon",
+      "artist": "Ozzy Osbourne",
+      "year": 1983,
+      "uri": "spotify:track:2E7W1X4maFFcjHrVrFA7Vs"
+    },
+    {
+      "title": "Rock Of Ages",
+      "artist": "Def Leppard",
+      "year": 1983,
+      "uri": "spotify:track:2AmEv442DGwSxMGZ9XEvBA"
+    },
+    {
+      "title": "New Girl Now",
+      "artist": "Honeymoon Suite",
+      "year": 1984,
+      "uri": "spotify:track:1grnSNpTAe14gjtqfArZan"
+    },
+    {
+      "title": "Last Child",
+      "artist": "Aerosmith",
+      "year": 1976,
+      "uri": "spotify:track:3Kx6oHPQxtA5aJzcZeuE7r"
+    },
+    {
+      "title": "Fairies Wear Boots - 2009 Remaster",
+      "artist": "Black Sabbath",
+      "year": 1970,
+      "uri": "spotify:track:0p9dEwFFw14hWTvS9v5NLU"
+    },
+    {
+      "title": "The Prisoner - 2015 Remaster",
+      "artist": "Iron Maiden",
+      "year": 1982,
+      "uri": "spotify:track:60JWUDrpUTuu6gxTvknjg5"
+    },
+    {
+      "title": "Still Loving You (2015 - Remaster)",
+      "artist": "Scorpions",
+      "year": 1984,
+      "uri": "spotify:track:5ctrWrTwgy5xLZA4OWgY5O"
+    },
+    {
+      "title": "Grinder",
+      "artist": "Judas Priest",
+      "year": 1980,
+      "uri": "spotify:track:54IuIxOITRtbK8cU7fHIQf"
+    },
+    {
+      "title": "I'm Broken",
+      "artist": "Pantera",
+      "year": 1994,
+      "uri": "spotify:track:2M5WTwqnkyz7bW6P1CiD6q"
+    },
+    {
+      "title": "Blow Your Trumpets Gabriel",
+      "artist": "Behemoth",
+      "year": 2014,
+      "uri": "spotify:track:07zQA8UkyxpmnRhPjHOVOB"
+    },
+    {
+      "title": "Hitch a Ride",
+      "artist": "Boston",
+      "year": 1976,
+      "uri": "spotify:track:0870QNicMawQH2cnzBVZ3P"
+    },
+    {
+      "title": "The Green Manalishi (With the Two Pronged Crown)",
+      "artist": "Judas Priest",
+      "year": 1979,
+      "uri": "spotify:track:6U63nKrxHvM76KOa6kpyfq"
+    },
+    {
+      "title": "House of The Rising Sun",
+      "artist": "Five Finger Death Punch",
+      "year": 2013,
+      "uri": "spotify:track:4ZmX8elKMkH0MfniNi0Adu"
+    },
+    {
+      "title": "To Forgive - Remastered 2012",
+      "artist": "The Smashing Pumpkins",
+      "year": 1995,
+      "uri": "spotify:track:428dyogxbsqj9U5leQ9why"
+    },
+    {
+      "title": "Herzeleid",
+      "artist": "Rammstein",
+      "year": 1995,
+      "uri": "spotify:track:1Ix5KgMrv9kFPZN6g75CeS"
+    },
+    {
+      "title": "Little Wing",
+      "artist": "Jimi Hendrix",
+      "year": 1967,
+      "uri": "spotify:track:1Eolhana7nKHYpcYpdVcT5"
+    },
+    {
+      "title": "Voice of the Soul",
+      "artist": "Death",
+      "year": 1998,
+      "uri": "spotify:track:69Yia3qCLw6N9U80WhLwLn"
+    },
+    {
+      "title": "When The Smoke Is Going Down - Live",
+      "artist": "Scorpions",
+      "year": 1995,
+      "uri": "spotify:track:0C9eI0xwHF5n1W5fDpve6i"
+    },
+    {
+      "title": "Face Fisted",
+      "artist": "Metalocalypse: Dethklok",
+      "year": 2007,
+      "uri": "spotify:track:5tvdxJ8JpA9u4lKsLcUYKL"
+    },
+    {
+      "title": "Rattlesnake Shake",
+      "artist": "Skid Row",
+      "year": 1989,
+      "uri": "spotify:track:1CAXAmai3ZV4IQLZ03tsOJ"
+    },
+    {
+      "title": "I'm Eighteen",
+      "artist": "Alice Cooper",
+      "year": 1971,
+      "uri": "spotify:track:3YU9X8ryOR20beT7wOlDIJ"
+    },
+    {
+      "title": "C'Mon wit da Git Down",
+      "artist": "Artifacts",
+      "year": 1994,
+      "uri": "spotify:track:3MnwLa9KRUiv2gNFtWPvib"
+    },
+    {
+      "title": "The Diary of Jane - Single Version",
+      "artist": "Breaking Benjamin",
+      "year": 2006,
+      "uri": "spotify:track:5pvJ59i7JxylN8VB24xdMs"
+    },
+    {
+      "title": "Photograph",
+      "artist": "Def Leppard",
+      "year": 1983,
+      "uri": "spotify:track:18URo35acNKRTHfEdjTcGn"
+    },
+    {
+      "title": "Rocky Mountain Way",
+      "artist": "Joe Walsh",
+      "year": 1973,
+      "uri": "spotify:track:2XHjFJVXYlEzoDvN82h8s5"
+    },
+    {
+      "title": "Eyeless",
+      "artist": "Slipknot",
+      "year": 2009,
+      "uri": "spotify:track:7MEHTWzEi3z7P2jEWAcdHZ"
+    },
+    {
+      "title": "We Drink Your Blood",
+      "artist": "Powerwolf",
+      "year": 2011,
+      "uri": "spotify:track:3pWvRhml43vlUrGYlIzLM6"
+    },
+    {
+      "title": "Then Came the Last Days of May",
+      "artist": "Blue Öyster Cult",
+      "year": 1972,
+      "uri": "spotify:track:60TYdVs6TWIsAJ1MPRdv59"
+    },
+    {
+      "title": "Die Young",
+      "artist": "Black Sabbath",
+      "year": 1980,
+      "uri": "spotify:track:5DcCUdxmc2qlTFglfxLStT"
+    },
+    {
+      "title": "Tainted Love",
+      "artist": "Marilyn Manson",
+      "year": 2003,
+      "uri": "spotify:track:0ZeKQudydO2uQJpfr6gNC8"
+    },
+    {
+      "title": "Dreams I'll Never See",
+      "artist": "Molly Hatchet",
+      "year": 1978,
+      "uri": "spotify:track:7pmQ1repUoMbViMlPrZyuD"
+    },
+    {
+      "title": "Thoughtless",
+      "artist": "Korn",
+      "year": 2002,
+      "uri": "spotify:track:6HlFxHQ5nn6HYGxOOYIrLm"
+    },
+    {
+      "title": "Man Overboard",
+      "artist": "blink-182",
+      "year": 2000,
+      "uri": "spotify:track:1PRknVhZ6BsVX61MPrrVsV"
+    },
+    {
+      "title": "Diane",
+      "artist": "Therapy?",
+      "year": 1995,
+      "uri": "spotify:track:7xcdm6MybPgVeYgGewJzdE"
+    },
+    {
+      "title": "Another Brick in the Wall, Pt. 1, 2, 3 - Pink Floyd Cover",
+      "artist": "Korn",
+      "year": 2004,
+      "uri": "spotify:track:39SHjPPvNVW2H9rSsGGOPD"
+    },
+    {
+      "title": "Get Down To It",
+      "artist": "Humble Pie",
+      "year": 1973,
+      "uri": "spotify:track:0Byswn2MzjKrOiY62JBMZo"
+    },
+    {
+      "title": "Reise, Reise",
+      "artist": "Rammstein",
+      "year": 2004,
+      "uri": "spotify:track:6bvTzuFABmFnAAmVZ3nlMh"
+    },
+    {
+      "title": "Das alte Leid",
+      "artist": "Rammstein",
+      "year": 1995,
+      "uri": "spotify:track:4gUq1k2i3zn6dd7PbfbxED"
+    },
+    {
+      "title": "Sick of It",
+      "artist": "Skillet",
+      "year": 2013,
+      "uri": "spotify:track:4EYpOdL69yWuIRc49AyeZa"
+    },
+    {
+      "title": "Seize the Day",
+      "artist": "Avenged Sevenfold",
+      "year": 2005,
+      "uri": "spotify:track:7HKRWMTErKh56EIBeFcmdf"
+    },
+    {
+      "title": "No One Knows",
+      "artist": "Queens of the Stone Age",
+      "year": 2002,
+      "uri": "spotify:track:6y20BV5L33R8YXM0YuI38N"
+    },
+    {
+      "title": "Watermelon In Easter Hay",
+      "artist": "Frank Zappa",
+      "year": 1979,
+      "uri": "spotify:track:0Q2dRzhPWFOex89dOjbq5Y"
+    },
+    {
+      "title": "Still Waiting",
+      "artist": "Sum 41",
+      "year": 2002,
+      "uri": "spotify:track:0jqK7sGTLsHPkQrrcrGuKD"
+    },
+    {
+      "title": "Hey",
+      "artist": "Red Hot Chili Peppers",
+      "year": 2006,
+      "uri": "spotify:track:0xAjq4KAQdJvUyCM7fFZ9K"
+    },
+    {
+      "title": "Shoot You in the Back",
+      "artist": "Motörhead",
+      "year": 1980,
+      "uri": "spotify:track:4JNkbfZvtzhySiNSPwiUgm"
+    },
+    {
+      "title": "Belladonna - 2007 Remaster",
+      "artist": "UFO",
+      "year": 1976,
+      "uri": "spotify:track:6BGUYLgCoj6ZVkgvkpL8er"
+    },
+    {
+      "title": "The Ghost of Tom Joad",
+      "artist": "Rage Against The Machine",
+      "year": 2000,
+      "uri": "spotify:track:3CCf4QWbFngXoIO1cLTj1L"
+    },
+    {
+      "title": "Pay The Man",
+      "artist": "The Offspring",
+      "year": 1998,
+      "uri": "spotify:track:0ipYA3BGeyTSTT9GgQs7oC"
+    },
+    {
+      "title": "Photograph - 2020 Remaster",
+      "artist": "Nickelback",
+      "year": 2005,
+      "uri": "spotify:track:3bYrSlgvWacP1LZV44pfzp"
+    },
+    {
+      "title": "Alestorm",
+      "artist": "Alestorm",
+      "year": 2017,
+      "uri": "spotify:track:6Br1VbTp9OptQn0uTQcil0"
+    },
+    {
+      "title": "Metal Militia - Remastered",
+      "artist": "Metallica",
+      "year": 1983,
+      "uri": "spotify:track:2TBRfDnfwsOIaGxkkXFBN2"
+    },
+    {
+      "title": "I Sat by the Ocean",
+      "artist": "Queens of the Stone Age",
+      "year": 2013,
+      "uri": "spotify:track:1D3YGmST01Ba0WRiT7THPG"
+    },
+    {
+      "title": "Come Undone",
+      "artist": "My Darkest Days",
+      "year": 2010,
+      "uri": "spotify:track:4qR4J8QRTeN0W8Rp5nVdzi"
+    },
+    {
+      "title": "Catch The Rainbow",
+      "artist": "Rainbow",
+      "year": 1975,
+      "uri": "spotify:track:7FtRUrOEDUHTvenvp1BqZo"
+    },
+    {
+      "title": "Master Of Puppets",
+      "artist": "Metallica",
+      "year": 1986,
+      "uri": "spotify:track:2MuWTIM3b0YEAskbeeFE1i"
+    },
+    {
+      "title": "Love Bites",
+      "artist": "Judas Priest",
+      "year": 1984,
+      "uri": "spotify:track:36IWziKKiPQ65IU4cBQ5l2"
+    },
+    {
+      "title": "To Live is to Die",
+      "artist": "Metallica",
+      "year": 1988,
+      "uri": "spotify:track:0MNwV4sXm2AljohIXBRgpj"
+    },
+    {
+      "title": "Black Night - 1995 Remaster",
+      "artist": "Deep Purple",
+      "year": 1970,
+      "uri": "spotify:track:2c1ccPqUnFYD8W7LY65bKG"
+    },
+    {
+      "title": "Under The Same Sun",
+      "artist": "Scorpions",
+      "year": 1993,
+      "uri": "spotify:track:0NHBt8bp6tloebOWV3U3fN"
+    },
+    {
+      "title": "Führe mich",
+      "artist": "Rammstein",
+      "year": 2009,
+      "uri": "spotify:track:5jAz81P8Aq1wIIcCkIDq57"
+    },
+    {
+      "title": "Spanish Castle Magic",
+      "artist": "Jimi Hendrix",
+      "year": 1967,
+      "uri": "spotify:track:2KFE98Iw0X23sf4vJYcbLH"
+    },
+    {
+      "title": "Кукла колдуна",
+      "artist": "Korol i Shut",
+      "year": 1999,
+      "uri": "spotify:track:10tFOs5trIbxcBPbLe5nF4"
+    },
+    {
+      "title": "You're All I Need",
+      "artist": "Mötley Crüe",
+      "year": 1987,
+      "uri": "spotify:track:4h8OuhFkXgg0875EuCDuge"
+    },
+    {
+      "title": "Christian Woman",
+      "artist": "Type O Negative",
+      "year": 1994,
+      "uri": "spotify:track:3634aKisKlGdUfD9V3MOY5"
+    },
+    {
+      "title": "Stranglehold",
+      "artist": "Ted Nugent",
+      "year": 1975,
+      "uri": "spotify:track:2f0P7iELCvAlV8j6Z3rGDE"
+    },
+    {
+      "title": "Left Behind",
+      "artist": "Slipknot",
+      "year": 2001,
+      "uri": "spotify:track:4l3Vmsw0KO8HJqFtnbqaqu"
+    },
+    {
+      "title": "Alexander the Great (356-323 B.C.) - 2015 Remaster",
+      "artist": "Iron Maiden",
+      "year": 1986,
+      "uri": "spotify:track:2mpdTbHtsUTbunJ62itq2E"
+    },
+    {
+      "title": "Like a Stone",
+      "artist": "Audioslave",
+      "year": 2002,
+      "uri": "spotify:track:3YuaBvuZqcwN3CEAyyoaei"
+    },
+    {
+      "title": "Hole in the Sky (2009 Remaster)",
+      "artist": "Black Sabbath",
+      "year": 1975,
+      "uri": "spotify:track:37Y1feezGuGVCe0kTBbKjg"
+    },
+    {
+      "title": "The Temple Of The King",
+      "artist": "Rainbow",
+      "year": 1975,
+      "uri": "spotify:track:0gaMmmhGi5buPXpquSAfxg"
+    },
+    {
+      "title": "Tom Sawyer",
+      "artist": "Rush",
+      "year": 1981,
+      "uri": "spotify:track:3QZ7uX97s82HFYSmQUAN1D"
+    },
+    {
+      "title": "Heaven Nor Hell",
+      "artist": "Volbeat",
+      "year": 2010,
+      "uri": "spotify:track:5Hgx4ssabqTTD1fmGFTmi2"
+    },
+    {
+      "title": "Lord of this World (2009 Remaster)",
+      "artist": "Black Sabbath",
+      "year": 1971,
+      "uri": "spotify:track:4KuWbO1sfQeSiOd9wcZCbZ"
+    },
+    {
+      "title": "Ghost of the Navigator - 2015 Remaster",
+      "artist": "Iron Maiden",
+      "year": 2000,
+      "uri": "spotify:track:6KLUI6LnYdg5PIb5VKWSzu"
+    },
+    {
+      "title": "Even Flow",
+      "artist": "Pearl Jam",
+      "year": 1991,
+      "uri": "spotify:track:6QewNVIDKdSl8Y3ycuHIei"
+    },
+    {
+      "title": "My Generation",
+      "artist": "Limp Bizkit",
+      "year": 2000,
+      "uri": "spotify:track:6holGuk1jKHTdWyWBOZi8l"
+    },
+    {
+      "title": "Throw Away Your Television",
+      "artist": "Red Hot Chili Peppers",
+      "year": 2002,
+      "uri": "spotify:track:3XLJoMMM0oRHD4gHq6jV9Z"
+    },
+    {
+      "title": "The Phantom Of The Opera",
+      "artist": "Nightwish",
+      "year": 2002,
+      "uri": "spotify:track:6VOxRb9IAJQDDyHBlyEdPF"
+    },
+    {
+      "title": "In the Air Tonight",
+      "artist": "Nonpoint",
+      "year": 2004,
+      "uri": "spotify:track:2GV039LpIeFtgTKKIZPrf0"
+    },
+    {
+      "title": "Wrathchild - 2015 Remaster",
+      "artist": "Iron Maiden",
+      "year": 1981,
+      "uri": "spotify:track:1SpuDZ7y1W4vaCzHeLvsf7"
+    },
+    {
+      "title": "With Arms Wide Open",
+      "artist": "Creed",
+      "year": 1999,
+      "uri": "spotify:track:0eKyHwckh9vQb8ncZ2DXCs"
+    },
+    {
+      "title": "Wild World",
+      "artist": "Mr. Big",
+      "year": 1996,
+      "uri": "spotify:track:4LxrmBgBLQc2oU60r6cBPW"
+    }
+  ]
+}

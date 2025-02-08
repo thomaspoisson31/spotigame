@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify Callback</title>
+</head>
+<body>
+    <div id="status"></div>
+    <script>
+        window.onload = () => {
+            const hash = window.location.hash
+                .substring(1)
+                .split('&')
+                .reduce((initial, item) => {
+                    if (item) {
+                        const parts = item.split('=');
+                        initial[parts[0]] = decodeURIComponent(parts[1]);
+                    }
+                    return initial;
+                }, {});
+
+            if (hash.access_token) {
+                // Stockage du token
+                localStorage.setItem('spotify_token', hash.access_token);
+                // Ajout du flag d'authentification récente
+                localStorage.setItem('just_authenticated', 'true');
+                
+                // Redirection vers player.html
+                window.location.href = 'player.html';
+            } else {
+                document.getElementById('status').innerHTML = 
+                    'Erreur: Aucun token reçu. <a href="auth.html">Réessayer</a>';
+            }
+        };
+    </script>
+</body>
+</html>
