@@ -55,8 +55,25 @@ body {
 }
 
 .hidden-info.revealed {
-    transform: rotateY(180deg);
-    background-color: inherit;
+    transform: rotateY(360deg); /* Modifié de 180deg à 360deg pour faire un tour complet */
+    transition: transform 1s; /* Augmenté la durée pour une animation plus fluide */
+}
+
+/* Optionnel : Ajouter un effet de "pulse" une fois révélé */
+.hidden-info.revealed {
+    animation: revealPulse 0.5s ease-in-out forwards;
+}
+
+@keyframes revealPulse {
+    0% {
+        transform: rotateY(360deg) scale(1);
+    }
+    50% {
+        transform: rotateY(360deg) scale(1.05);
+    }
+    100% {
+        transform: rotateY(360deg) scale(1);
+    }
 }
 
 .song-info {
