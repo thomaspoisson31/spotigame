@@ -46,17 +46,28 @@
         </div>
 
         <div class="song-info">
+
             <div class="reveal-container">
-                <div class="hidden-info" id="titleInfo" onclick="revealInfo('title')">
-                    Cliquez pour révéler le titre
+                <div class="hidden-info" onclick="reveal(this)">
+                    <div class="card">
+                        <div class="front">Cliquez pour révéler le titre</div>
+                        <div class="back">Titre de la chanson</div>
+                    </div>
                 </div>
-                <div class="hidden-info" id="artistInfo" onclick="revealInfo('artist')">
-                    Cliquez pour révéler l'artiste
+                <div class="hidden-info" onclick="reveal(this)">
+                    <div class="card">
+                        <div class="front">Cliquez pour révéler l'artiste</div>
+                        <div class="back">Nom de l'artiste</div>
+                    </div>
                 </div>
-                <div class="hidden-info" id="yearInfo" onclick="revealInfo('year')">
-                    Cliquez pour révéler l'année
+                <div class="hidden-info" onclick="reveal(this)">
+                    <div class="card">
+                        <div class="front">Cliquez pour révéler l'année</div>
+                        <div class="back">1982</div>
+                    </div>
                 </div>
             </div>
+        
         </div>
     </div>
 

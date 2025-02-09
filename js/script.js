@@ -19,6 +19,8 @@
             });
         }
 
+
+
         // Fonction pour charger les playlists
         async function loadPlaylists() {
             try {
@@ -294,6 +296,12 @@
             albumImage.style.filter = 'blur(20px)';
             imageRevealed = false;
             albumArt.style.display = 'none';
+        }
+
+
+        function reveal(element) {
+            const card = element.querySelector('.card');
+            card.classList.toggle('revealed');
         }
 
         function toggleImage() {
