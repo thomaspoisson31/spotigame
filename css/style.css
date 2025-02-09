@@ -1,12 +1,21 @@
     <style>
+
         body {
             font-family: 'Roboto', sans-serif;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #FAFAFA;
-            color: #212529;
+            background-color: #000000;
+            color: #ffffff;
         }
+
+
+        .header {
+            display: flex;              /* Utilise flexbox */
+            justify-content: center;    /* Centre le contenu à l'horizontale */
+            margin-bottom: 20px;
+        }
+
 
         .container {
             padding: 30px;
