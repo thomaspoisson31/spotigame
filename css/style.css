@@ -248,7 +248,7 @@ body {
 }
 
 .hidden-info.revealed {
-    transform: rotateY(240deg);
+    transform: rotateY(350deg);
     background-color: inherit;
 }
 
