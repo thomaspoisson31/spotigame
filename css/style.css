@@ -50,12 +50,12 @@ body {
 }
 
 .hidden-info:hover {
-    transform: rotateY(10deg);
+    transform: rotateY(20deg);
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .hidden-info.revealed {
-    transform: rotateY(360deg); /* Modifié de 180deg à 360deg pour faire un tour complet */
+    transform: rotateY(359deg); /* Modifié de 180deg à 360deg pour faire un tour complet */
     transition: transform 1s; /* Augmenté la durée pour une animation plus fluide */
 }
 
@@ -66,13 +66,13 @@ body {
 
 @keyframes revealPulse {
     0% {
-        transform: rotateY(360deg) scale(1);
+        transform: rotateY(359deg) scale(1);
     }
     50% {
-        transform: rotateY(360deg) scale(1.05);
+        transform: rotateY(359deg) scale(1.05);
     }
     100% {
-        transform: rotateY(360deg) scale(1);
+        transform: rotateY(359deg) scale(1);
     }
 }
 
