@@ -18,6 +18,7 @@
 
 
         .container {
+            font-family: 'Roboto', sans-serif; /* Roboto prioritaire */
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
@@ -25,6 +26,7 @@
         }
 
         .song-info {
+            font-family: 'Roboto', sans-serif; /* Roboto prioritaire */
             margin: 20px 0;
             padding: 15px;
             background-color: #f8f9fa;
@@ -32,6 +34,7 @@
         }
 
         .hidden-info {
+            font-family: 'Roboto', sans-serif; /* Roboto prioritaire */
             background-color: #e9ecef;
             padding: 10px;
             margin: 5px 0;
