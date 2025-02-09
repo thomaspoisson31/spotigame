@@ -1,40 +1,1223 @@
 {
-  "playlist_name": "Hits en France",
+  "playlist_name": "Hit parade France",
   "songs": [
-  {
-    "title": "Itsi bitsi petit bikini",
-    "artist": "Dalida",
-    "year": 1960
-  },
-  {
-    "title": "Non, je ne regrette rien",
-    "artist": "Edith Piaf",
-    "year": 1961
-  },
-  {
-    "title": "Viens danser le twist",
-    "artist": "Johnny Hallyday",
-    "year": 1961
-  },
-  {
-    "title": "Brigitte Bardot",
-    "artist": "Dario Moreno",
-    "year": 1961
-  },
-  {
-    "title": "Siffler sur la colline",
-    "artist": "Joe Dassin",
-    "year": 1968
-  },
-  {
-    "title": "Que je t'aime",
-    "artist": "Johnny Hallyday",
-    "year": 1969
-  },
-  {
-    "title": "L'Amérique",
-    "artist": "Joe Dassin",
-    "year": 1970
+    {
+      "artist": "Peter et Sloane",
+      "title": "Besoin de rien, envie de toi",
+      "year": 1984,
+      "uri": "spotify:track:5mYH6I8vlyCoYMtSuqf55V"
+    },
+    {
+      "artist": "Stevie Wonder",
+      "title": "I Just Called to Say I Love You",
+      "year": 1984,
+      "uri": "spotify:track:6RNDeRnWsRMjPdNVgupZCs"
+    },
+    {
+      "artist": "Ray Parker, Jr.",
+      "title": "Ghostbusters",
+      "year": 1984,
+      "uri": "spotify:track:3m0y8qLoznUYi73SUBP8GI"
+    },
+    {
+      "artist": "Jermaine Jackson & Pia Zadora",
+      "title": "When the Rain Begins to Fall",
+      "year": 1985,
+      "uri": "spotify:track:030RDC2ayPOUM32F9IH7eE"
+    },
+    {
+      "artist": "Al Corley",
+      "title": "Square Rooms",
+      "year": 1985,
+      "uri": "spotify:track:61HGj25ENxWMuSYibZfqyM"
+    },
+    {
+      "artist": "Jeanne Mas",
+      "title": "Johnny, Johnny",
+      "year": 1985,
+      "uri": "spotify:track:1QdFzktmKiB9IK96EAQfl8"
+    },
+    {
+      "artist": "USA for Africa",
+      "title": "We Are the World",
+      "year": 1985,
+      "uri": "spotify:track:3Z2tPWiNiIpg8UMMoowHIk"
+    },
+    {
+      "artist": "Chanteurs sans frontières",
+      "title": "Éthiopie",
+      "year": 1985,
+      "uri": null
+    },
+    {
+      "artist": "Opus",
+      "title": "Live Is Life",
+      "year": 1985,
+      "uri": "spotify:track:47VjQ1rk9h8Fvo23If2hGL"
+    },
+    {
+      "artist": "Baltimora",
+      "title": "Tarzan Boy",
+      "year": 1985,
+      "uri": "spotify:track:273uCXd7NPrInaiNqtkOrA"
+    },
+    {
+      "artist": "Century",
+      "title": "Lover Why",
+      "year": 1985,
+      "uri": "spotify:track:6tyiTnaP55UHHDQrhIgOs6"
+    },
+    {
+      "artist": "Jean-Jacques Goldman & Michael Jones",
+      "title": "Je te donne",
+      "year": 1985,
+      "uri": "spotify:track:55mXuPsEm6aboDIM68RM74"
+    },
+    {
+      "artist": "Jean-Luc Lahaye",
+      "title": "Papa chanteur",
+      "year": 1986,
+      "uri": "spotify:track:1cjVbKrpsiJjcZKRclQPAA"
+    },
+    {
+      "artist": "Daniel Balavoine",
+      "title": "L'Aziza",
+      "year": 1986,
+      "uri": "spotify:track:1uFWyT4KLFXisiVkiBPCTb"
+    },
+    {
+      "artist": "Gold",
+      "title": "Capitaine abandonné",
+      "year": 1986,
+      "uri": "spotify:track:38LHrcQIVbJJtS8H3xfCKn"
+    },
+    {
+      "artist": "Stéphanie",
+      "title": "Ouragan",
+      "year": 1986,
+      "uri": "spotify:track:4DyI5W9u1mM3vmXtqWq2wC"
+    },
+    {
+      "artist": "Jeanne Mas",
+      "title": "En rouge et noir",
+      "year": 1986,
+      "uri": "spotify:track:23YtNuZf92xMntIAUgQBV3"
+    },
+    {
+      "artist": "Images",
+      "title": "Les Démons de minuit",
+      "year": 1986,
+      "uri": "spotify:track:2ne2QYNb5DjByvKPOtzQaM"
+    },
+    {
+      "artist": "MC Miker G & Deejay Sven",
+      "title": "Holiday Rap",
+      "year": 1986,
+      "uri": "spotify:track:2jXzMg2Z4tap6vqEjeW7Ky"
+    },
+    {
+      "artist": "Julie Pietri",
+      "title": "Ève lève-toi",
+      "year": 1986,
+      "uri": "spotify:track:3MPmRgJHfD7CADCibQfNgG"
+    },
+    {
+      "artist": "Europe",
+      "title": "The Final Countdown",
+      "year": 1986,
+      "uri": "spotify:track:3MrRksHupTVEQ7YbA0FsZK"
+    },
+    {
+      "artist": "Elsa",
+      "title": "T'en va pas",
+      "year": 1987,
+      "uri": "spotify:track:6JCIbXPH5LIawW4NRLvYE8"
+    },
+    {
+      "artist": "Francis Lalanne",
+      "title": "On se retrouvera",
+      "year": 1987,
+      "uri": "spotify:track:632Azz0IZUk9PkjXJ8onzx"
+    },
+    {
+      "artist": "Licence IV",
+      "title": "Viens boire un p'tit coup à la maison",
+      "year": 1987,
+      "uri": "spotify:track:0pcjVux4iv82r5CI1KhdHi"
+    },
+    {
+      "artist": "Madonna",
+      "title": "La isla bonita",
+      "year": 1987,
+      "uri": "spotify:track:6r8k1vznHrzlEKYxL4dZEe"
+    },
+    {
+      "artist": "Vanessa Paradis",
+      "title": "Joe le taxi",
+      "year": 1987,
+      "uri": "spotify:track:7nZCg1jgmXIjSBRifWkmaJ"
+    },
+    {
+      "artist": "Los Lobos",
+      "title": "La bamba",
+      "year": 1987,
+      "uri": "spotify:track:0uMMLry3hzWGn3q3loqMkm"
+    },
+    {
+      "artist": "Guesch Patti",
+      "title": "Étienne",
+      "year": 1988,
+      "uri": "spotify:track:5nzzuKxdfAl6PjGmSyMUl9"
+    },
+    {
+      "artist": "Sabrina",
+      "title": "Boys (Summertime Love)",
+      "year": 1988,
+      "uri": "spotify:track:1uI848raFaNWwe9HjHpjQ5"
+    },
+    {
+      "artist": "Glenn Medeiros",
+      "title": "Nothing's Gonna Change My Love for You",
+      "year": 1988,
+      "uri": "spotify:track:1exLL81vN8mD55M9HMOt1t"
+    },
+    {
+      "artist": "Florent Pagny",
+      "title": "N'importe quoi",
+      "year": 1988,
+      "uri": "spotify:track:3GNJih2SdNQl8XzbJ9Jp1V"
+    },
+    {
+      "artist": "Sandy",
+      "title": "J'ai faim de toi",
+      "year": 1988,
+      "uri": "spotify:track:1Zw1PK5TqH1tWGwtxwakKu"
+    },
+    {
+      "artist": "Début de soirée",
+      "title": "Nuit de folie",
+      "year": 1988,
+      "uri": "spotify:track:1vBXixLz7cVLLTdR4Xe8aL"
+    },
+    {
+      "artist": "Glenn Medeiros & Elsa",
+      "title": "Un roman d'amitié (Friend you give me a reason)",
+      "year": 1988,
+      "uri": null
+    },
+    {
+      "artist": "Paco",
+      "title": "Amor de mis amores",
+      "year": 1988,
+      "uri": "spotify:track:6xkaVtvegRyMcxsW0gcWQW"
+    },
+    {
+      "artist": "Mylène Farmer",
+      "title": "Pourvu qu'elles soient douces",
+      "year": 1988,
+      "uri": "spotify:track:2gNyCHDGyHrw3lCpT9LqlY"
+    },
+    {
+      "artist": "David Hallyday",
+      "title": "High",
+      "year": 1988,
+      "uri": "spotify:track:4AoQUkQ72mol3mvhsKu5Ve"
+    },
+    {
+      "artist": "Charles Aznavour et divers chanteurs",
+      "title": "Pour toi Arménie",
+      "year": 1988,
+      "uri": null
+    },
+    {
+      "artist": "Boney M",
+      "title": "Megamix",
+      "year": 1989,
+      "uri": "spotify:track:04c7miOQqGx8o9yMhOOx1f"
+    },
+    {
+      "artist": "Avalanche",
+      "title": "Johnny, Johnny Come Home",
+      "year": 1989,
+      "uri": "spotify:track:7m9PhzIfeoNjAWzxGAtZcN"
+    },
+    {
+      "artist": "Kaoma",
+      "title": "Lambada",
+      "year": 1989,
+      "uri": "spotify:track:6xepovPqjvrkEw9Y5AMmTm"
+    },
+    {
+      "artist": "Philippe Lafontaine",
+      "title": "Cœur de loup",
+      "year": 1989,
+      "uri": "spotify:track:3lwX10MDUwGfSzuwIfQAln"
+    },
+    {
+      "artist": "Jive Bunny and the Mastermixers",
+      "title": "Swing The Mood",
+      "year": 1989,
+      "uri": "spotify:track:3Aimpqxpvmz7jhJlNnEd5c"
+    },
+    {
+      "artist": "Roch Voisine",
+      "title": "Hélène",
+      "year": 1989,
+      "uri": "spotify:track:1CgOx7wQjNc3J4PDWpMKV2"
+    },
+    {
+      "artist": "François Feldman",
+      "title": "Les Valses de Vienne",
+      "year": 1990,
+      "uri": "spotify:track:6J8iEzFAr5Y3rlUWwCgvA0"
+    },
+    {
+      "artist": "Les Vagabonds",
+      "title": "Le Temps des yéyés",
+      "year": 1990,
+      "uri": "spotify:track:4JxsvleCq2TAImVtOfmzfx"
+    },
+    {
+      "artist": "The Christians",
+      "title": "Words",
+      "year": 1990,
+      "uri": "spotify:track:01oPilVDZSabQRz8UkUfaT"
+    },
+    {
+      "artist": "Elton John",
+      "title": "Sacrifice",
+      "year": 1990,
+      "uri": "spotify:track:0e3yhVeNaTfKIWQRw9U9sY"
+    },
+    {
+      "artist": "Lafay",
+      "title": "Bo le lavabo (WC Kiss)",
+      "year": 1990,
+      "uri": null
+    },
+    {
+      "artist": "Zouk Machine",
+      "title": "Maldon (La musique dans la peau)",
+      "year": 1990,
+      "uri": "spotify:track:6YoBe1FqFL5w10bQbemW16"
+    },
+    {
+      "artist": "Charles D. Lewis",
+      "title": "Soca Dance",
+      "year": 1990,
+      "uri": "spotify:track:0ES9HRkGgepec2Gw9Qnzcb"
+    },
+    {
+      "artist": "Félix Gray & Didier Barbelivien",
+      "title": "À toutes les filles...",
+      "year": 1990,
+      "uri": "spotify:track:4eWva6SnmYTvdXpBG3B0Fy"
+    },
+    {
+      "artist": "UB40",
+      "title": "Kingston Town",
+      "year": 1990,
+      "uri": "spotify:track:1YnVYHXoak0syv4xBRHQRb"
+    },
+    {
+      "artist": "Mecano",
+      "title": "Une femme avec une femme",
+      "year": 1990,
+      "uri": "spotify:track:00QpYwks1elNQW4xn38UPK"
+    },
+    {
+      "artist": "François Feldman",
+      "title": "Petit Frank",
+      "year": 1990,
+      "uri": null
+    },
+    {
+      "artist": "Félix Gray & Didier Barbelivien",
+      "title": "Il faut laisser le temps au temps",
+      "year": 1991,
+      "uri": "spotify:track:1yaWtEw6ZTemciEyztaJDN"
+    },
+    {
+      "artist": "Enigma",
+      "title": "Sadeness (Part I)",
+      "year": 1991,
+      "uri": "spotify:track:3MVm36ouM56jbP5rORxbVy"
+    },
+    {
+      "artist": "Scorpions",
+      "title": "Wind of Change",
+      "year": 1991,
+      "uri": "spotify:track:3ovjw5HZZv43SxTwApooCM"
+    },
+    {
+      "artist": "Mylène Farmer",
+      "title": "Désenchantée",
+      "year": 1991,
+      "uri": "spotify:track:15XYdD283tK9iyJzL738bn"
+    },
+    {
+      "artist": "Les Inconnus",
+      "title": "Auteuil, Neuilly, Passy (Rap B.C.B.G.)",
+      "year": 1991,
+      "uri": null
+    },
+    {
+      "artist": "Lafay",
+      "title": "La Zoubida",
+      "year": 1991,
+      "uri": null
+    },
+    {
+      "artist": "Bryan Adams",
+      "title": "(Everything I Do) I Do It for You",
+      "year": 1991,
+      "uri": "spotify:track:1Eb90nmqTrxylKFhcUzW8P"
+    },
+    {
+      "artist": "Patrick Bruel",
+      "title": "Qui a le droit... (Live)",
+      "year": 1992,
+      "uri": "spotify:track:5gCa2LstbM3A7wtQqgMiBk"
+    },
+    {
+      "artist": "Jean-Philippe Audin & Diego Modena",
+      "title": "Song of Ocarina",
+      "year": 1992,
+      "uri": "spotify:track:6iYqujDkOHtMLPdw0sVp0h"
+    },
+    {
+      "artist": "George Michael & Elton John",
+      "title": "Don't Let the Sun Go Down on Me",
+      "year": 1992,
+      "uri": "spotify:track:7xGOvQukPKKQVLiJOPSmt0"
+    },
+    {
+      "artist": "Ten Sharp",
+      "title": "You",
+      "year": 1992,
+      "uri": "spotify:track:6lbme14HiDWYmGiw1I2Dv6"
+    },
+    {
+      "artist": "François Feldman",
+      "title": "Joy",
+      "year": 1992,
+      "uri": "spotify:track:3biaa4fkDvsQmj79YcFjKG"
+    },
+    {
+      "artist": "Nirvana",
+      "title": "Smells Like Teen Spirit",
+      "year": 1992,
+      "uri": "spotify:track:4CeeEOM32jQcH3eN9Q2dGj"
+    },
+    {
+      "artist": "Pow Wow",
+      "title": "Le Chat",
+      "year": 1992,
+      "uri": "spotify:track:7BSEnYIlIsZdY0BZbNr0yn"
+    },
+    {
+      "artist": "Snap!",
+      "title": "Rhythm Is a Dancer",
+      "year": 1992,
+      "uri": "spotify:track:5mFQCdbvuzVATC7tP7XsPp"
+    },
+    {
+      "artist": "Jordy",
+      "title": "Dur dur d'être bébé !",
+      "year": 1992,
+      "uri": "spotify:track:72kapv3rME4uCcRkIe9AQ6"
+    },
+    {
+      "artist": "Whitney Houston",
+      "title": "I Will Always Love You",
+      "year": 1993,
+      "uri": "spotify:track:4eHbdreAnSOrDDsFfc4Fpm"
+    },
+    {
+      "artist": "Jordy",
+      "title": "Alison (C'est ma copine à moi)",
+      "year": 1993,
+      "uri": null
+    },
+    {
+      "artist": "2 Unlimited",
+      "title": "No Limit",
+      "year": 1993,
+      "uri": "spotify:track:7voHUmPNDuYZ1SW1mwRu26"
+    },
+    {
+      "artist": "Dire Straits",
+      "title": "Encores (EP)",
+      "year": 1993,
+      "uri": null
+    },
+    {
+      "artist": "Haddaway",
+      "title": "What Is Love",
+      "year": 1993,
+      "uri": "spotify:track:0OTO8ZF2YqFQVw9hnZylTd"
+    },
+    {
+      "artist": "Les G.O. Cul-Ture",
+      "title": "Darla dirladada",
+      "year": 1993,
+      "uri": null
+    },
+    {
+      "artist": "Regg'Lyss",
+      "title": "Mets de l'huile",
+      "year": 1993,
+      "uri": "spotify:track:2KyI4XmNicr3QKFxB3JQhi"
+    },
+    {
+      "artist": "Freddie Mercury",
+      "title": "Living on My Own (No More Brothers remix)",
+      "year": 1993,
+      "uri": null
+    },
+    {
+      "artist": "Bryan Adams",
+      "title": "Please Forgive Me",
+      "year": 1994,
+      "uri": "spotify:track:6PpkGvvtmLahruv3sttVzw"
+    },
+    {
+      "artist": "Ace of Base",
+      "title": "Happy Nation",
+      "year": 1994,
+      "uri": "spotify:track:7yCF65vpc7sUwPjftI0iFb"
+    },
+    {
+      "artist": "Alain Souchon",
+      "title": "Foule sentimentale",
+      "year": 1994,
+      "uri": "spotify:track:2W4ZxAHZAXOf6r65pCskGR"
+    },
+    {
+      "artist": "IAM",
+      "title": "Je danse le mia",
+      "year": 1994,
+      "uri": "spotify:track:6P8YkdLMTBA7z5nhKXgyi3"
+    },
+    {
+      "artist": "Bruce Springsteen",
+      "title": "Streets of Philadelphia",
+      "year": 1994,
+      "uri": "spotify:track:3fbnbn6A5O5RNb08tlUEgd"
+    },
+    {
+      "artist": "East 17",
+      "title": "It's Alright",
+      "year": 1994,
+      "uri": "spotify:track:0hiUOCWNdPefjaEAjcJ8Cq"
+    },
+    {
+      "artist": "Jimmy Cliff",
+      "title": "I Can See Clearly Now",
+      "year": 1994,
+      "uri": "spotify:track:7aJZxI6TVdIvQSuWxQ4rqp"
+    },
+    {
+      "artist": "Reel 2 Real feat. The Mad Stuntman",
+      "title": "I Like to Move It",
+      "year": 1994,
+      "uri": "spotify:track:4l2ljvyXOCVNbD5ff7NpM7"
+    },
+    {
+      "artist": "Youssou N'Dour & Neneh Cherry",
+      "title": "7 seconds",
+      "year": 1994,
+      "uri": "spotify:track:4sv1iemiMkkZVTUbV16C8L"
+    },
+    {
+      "artist": "Elton John",
+      "title": "Can You Feel the Love Tonight",
+      "year": 1994,
+      "uri": "spotify:track:6s1KHEalfzcHpOK56RV2rt"
+    },
+    {
+      "artist": "20 Fingers feat. Gillette",
+      "title": "Short Dick Man",
+      "year": 1995,
+      "uri": null
+    },
+    {
+      "artist": "The Cranberries",
+      "title": "Zombie",
+      "year": 1995,
+      "uri": "spotify:track:7EZC6E7UjZe63f1jRmkWxt"
+    },
+    {
+      "artist": "Céline Dion",
+      "title": "Pour que tu m'aimes encore",
+      "year": 1995,
+      "uri": "spotify:track:6qlpXtA29VcxCNgLWR5IWx"
+    },
+    {
+      "artist": "Scatman John",
+      "title": "Scatman (Ski Ba Bop Ba Dop Bop)",
+      "year": 1995,
+      "uri": "spotify:track:623rRTKwGmgjH6sjE9uWLh"
+    },
+    {
+      "artist": "Sacred Spirit",
+      "title": "Yeha noha (Wishes of Happiness and Prosperity)",
+      "year": 1995,
+      "uri": "spotify:track:6pfdfnkhql0kR3x5cRZhQI"
+    },
+    {
+      "artist": "Scatman John",
+      "title": "Scatman's World",
+      "year": 1995,
+      "uri": "spotify:track:623rRTKwGmgjH6sjE9uWLh"
+    },
+    {
+      "artist": "Mylène Farmer",
+      "title": "XXL",
+      "year": 1995,
+      "uri": "spotify:track:6k6LOLHzLj3D4zd1xmzLs4"
+    },
+    {
+      "artist": "Michael Jackson",
+      "title": "You Are Not Alone",
+      "year": 1995,
+      "uri": "spotify:track:3AoeaZs8dFemFJr3JdzOL0"
+    },
+    {
+      "artist": "Céline Dion",
+      "title": "Je sais pas",
+      "year": 1995,
+      "uri": "spotify:track:19ncRYEjjcGiRQgvqXOExO"
+    },
+    {
+      "artist": "Coolio feat. L.V.",
+      "title": "Gangsta's Paradise",
+      "year": 1995,
+      "uri": "spotify:track:1pgPH8vxnGW3lueCl55QxP"
+    },
+    {
+      "artist": "Ophélie Winter",
+      "title": "Dieu m'a donné la foi",
+      "year": 1996,
+      "uri": "spotify:track:4QlC4HmIyo2nO0l0bRrgdm"
+    },
+    {
+      "artist": "Babylon Zoo",
+      "title": "Spaceman",
+      "year": 1996,
+      "uri": "spotify:track:0uQcP7QVoLvaFsORsdrgNh"
+    },
+    {
+      "artist": "Boris",
+      "title": "Soirée disco",
+      "year": 1996,
+      "uri": "spotify:track:0JcNVnY8njNEI0L5s5quQZ"
+    },
+    {
+      "artist": "Robert Miles",
+      "title": "Children",
+      "year": 1996,
+      "uri": "spotify:track:2lCrZBgfL1lrp7eOcIqReF"
+    },
+    {
+      "artist": "Mark Snow",
+      "title": "The X-Files",
+      "year": 1996,
+      "uri": "spotify:track:0MCH52ixMLS2H6vJtISfZx"
+    },
+    {
+      "artist": "Los Del Mar",
+      "title": "Macarena (Bayside Boys remix)",
+      "year": 1996,
+      "uri": null
+    },
+    {
+      "artist": "Carrapicho",
+      "title": "Tic, tic tac",
+      "year": 1996,
+      "uri": "spotify:track:33FrM0i2g7uosARZ4aCFk1"
+    },
+    {
+      "artist": "Fugees",
+      "title": "Killing Me Softly",
+      "year": 1996,
+      "uri": "spotify:track:0Q0IVlqMV64kNLlwjPj0Hl"
+    },
+    {
+      "artist": "Spice Girls",
+      "title": "Wannabe",
+      "year": 1996,
+      "uri": "spotify:track:1Je1IMUlBXcx1Fz0WE7oPT"
+    },
+    {
+      "artist": "Khaled",
+      "title": "Aïcha",
+      "year": 1996,
+      "uri": "spotify:track:0cYX51Hneb8qIOx0tHm7ng"
+    },
+    {
+      "artist": "Gala",
+      "title": "Freed from Desire",
+      "year": 1996,
+      "uri": "spotify:track:3u5N55tHf7hXATSQrjBh2q"
+    },
+    {
+      "artist": "Madonna",
+      "title": "Don't Cry for Me Argentina",
+      "year": 1997,
+      "uri": "spotify:track:0bLRXQaWzmSXRXPmP6JnEF"
+    },
+    {
+      "artist": "Gala",
+      "title": "Let a Boy Cry",
+      "year": 1997,
+      "uri": "spotify:track:7ybprTSdhXFzGWdtUEyfjG"
+    },
+    {
+      "artist": "Andrea Bocelli",
+      "title": "Con te partirò",
+      "year": 1997,
+      "uri": "spotify:track:7zrpoAJte9o12TzawqgdD0"
+    },
+    {
+      "artist": "Ricky Martin",
+      "title": "María",
+      "year": 1997,
+      "uri": "spotify:track:4bNqBlJkoueiFla9YsyNg9"
+    },
+    {
+      "artist": "Wes",
+      "title": "Alane",
+      "year": 1997,
+      "uri": "spotify:track:2wkoeulxiywQoKtniBbTHJ"
+    },
+    {
+      "artist": "Will Smith",
+      "title": "Men in Black",
+      "year": 1997,
+      "uri": "spotify:track:2FK7fxjzQEXD7Z32HSF0Hl"
+    },
+    {
+      "artist": "Elton John",
+      "title": "Candle in the Wind 1997",
+      "year": 1997,
+      "uri": "spotify:track:3DUcaEvPO72PijivCjtZcU"
+    },
+    {
+      "artist": "Florent Pagny",
+      "title": "Savoir aimer",
+      "year": 1997,
+      "uri": "spotify:track:0x8GIrcAO8msuslNoTKIXM"
+    },
+    {
+      "artist": "Aqua",
+      "title": "Barbie Girl",
+      "year": 1997,
+      "uri": "spotify:track:5ZrDlcxIDZyjOzHdYW1ydr"
+    },
+    {
+      "artist": "Andrea Bocelli & Hélène Ségara",
+      "title": "Vivo per lei (Je vis pour elle)",
+      "year": 1997,
+      "uri": null
+    },
+    {
+      "artist": "Céline Dion",
+      "title": "My Heart Will Go On",
+      "year": 1998,
+      "uri": "spotify:track:33LC84JgLvK2KuW43MfaNq"
+    },
+    {
+      "artist": "Ricky Martin",
+      "title": "La copa de la vida",
+      "year": 1998,
+      "uri": "spotify:track:0KnZ3Fgnqjmz4Sl2OA5zwa"
+    },
+    {
+      "artist": "Manau",
+      "title": "La Tribu de Dana",
+      "year": 1998,
+      "uri": "spotify:track:64gCM9yZv2jpNflclKUnXu"
+    },
+    {
+      "artist": "Daniel Lavoie & Patrick Fiori & Garou",
+      "title": "Belle",
+      "year": 1998,
+      "uri": "spotify:track:0a8sR4JpMM4mcFNItKOjRg"
+    },
+    {
+      "artist": "Manau",
+      "title": "Mais qui est la belette ?",
+      "year": 1999,
+      "uri": "spotify:track:0h8RQIG9IdeCHXUoaTpZvo"
+    },
+    {
+      "artist": "Cher",
+      "title": "Believe",
+      "year": 1999,
+      "uri": "spotify:track:2goLsvvODILDzeeiT4dAoR"
+    },
+    {
+      "artist": "Larusso",
+      "title": "Tu m'oublieras",
+      "year": 1999,
+      "uri": "spotify:track:616O2jmafiModH0RgonGqf"
+    },
+    {
+      "artist": "Britney Spears",
+      "title": "...Baby One More Time",
+      "year": 1999,
+      "uri": "spotify:track:3MjUtNVVq3C8Fn0MP3zhXa"
+    },
+    {
+      "artist": "Moos",
+      "title": "Au nom de la rose",
+      "year": 1999,
+      "uri": "spotify:track:0NVZyMTuIbzuENpsmQH3pR"
+    },
+    {
+      "artist": "David Hallyday",
+      "title": "Tu ne m'as pas laissé le temps",
+      "year": 1999,
+      "uri": "spotify:track:6Brbc2UE0tfnC07tErI0qo"
+    },
+    {
+      "artist": "Zebda",
+      "title": "Tomber la chemise",
+      "year": 1999,
+      "uri": "spotify:track:7JGmpugbdiVWskY1S3EmTY"
+    },
+    {
+      "artist": "Eiffel 65",
+      "title": "Blue (Da Ba Dee)",
+      "year": 1999,
+      "uri": "spotify:track:4GewRLEiI4BDTQsoH8BRVV"
+    },
+    {
+      "artist": "Lou Bega",
+      "title": "Mambo No. 5 (A little bit of...)",
+      "year": 1999,
+      "uri": "spotify:track:6x4tKaOzfNJpEJHySoiJcs"
+    },
+    {
+      "artist": "Eiffel 65",
+      "title": "Move Your Body",
+      "year": 2000,
+      "uri": "spotify:track:6wPqK0huNYjdSQ5wqRCLvO"
+    },
+    {
+      "artist": "Hélène Ségara",
+      "title": "Il y a trop de gens qui t'aiment",
+      "year": 2000,
+      "uri": "spotify:track:1fxXW27caC5yWWt1vFTqnF"
+    },
+    {
+      "artist": "Tom Jones & Mousse T.",
+      "title": "Sex Bomb",
+      "year": 2000,
+      "uri": "spotify:track:0lIEIoU1coWF1ZrZ7jikV1"
+    },
+    {
+      "artist": "Yannick",
+      "title": "Ces soirées-là",
+      "year": 2000,
+      "uri": null
+    },
+    {
+      "artist": "Santana feat. The Product G&B",
+      "title": "Maria Maria",
+      "year": 2000,
+      "uri": "spotify:track:3XKIUb7HzIF1Vu9usunMzc"
+    },
+    {
+      "artist": "Philippe d'Avilla & Nelson Sargedas & Grégori Baquet",
+      "title": "Les Rois du monde",
+      "year": 2000,
+      "uri": null
+    },
+    {
+      "artist": "Daft Punk",
+      "title": "One More Time",
+      "year": 2000,
+      "uri": "spotify:track:0DiWol3AO6WpXZgp0goxAV"
+    },
+    {
+      "artist": "Alizée",
+      "title": "L'Alizé",
+      "year": 2000,
+      "uri": "spotify:track:0XByxKoyS3zQsG0TzljYN3"
+    },
+    {
+      "artist": "Garou",
+      "title": "Seul",
+      "year": 2001,
+      "uri": "spotify:track:7MRyru6giOwdtFYL5KQEVq"
+    },
+    {
+      "artist": "Shaggy feat. Ricardo 'Rikrok' Ducent",
+      "title": "It Wasn't Me",
+      "year": 2001,
+      "uri": null
+    },
+    {
+      "artist": "MC Solaar",
+      "title": "Hasta la vista",
+      "year": 2001,
+      "uri": "spotify:track:4J6SkLsDpuN7R52TokaDQk"
+    },
+    {
+      "artist": "Les Loffteurs",
+      "title": "Up and down",
+      "year": 2001,
+      "uri": null
+    },
+    {
+      "artist": "Geri Halliwell",
+      "title": "It's raining men",
+      "year": 2001,
+      "uri": "spotify:track:7q3qX7Ees3FZtRFJXWgPZs"
+    },
+    {
+      "artist": "Mary J. Blige",
+      "title": "Family Affair",
+      "year": 2001,
+      "uri": "spotify:track:3aw9iWUQ3VrPQltgwvN9Xu"
+    },
+    {
+      "artist": "Michael Jackson",
+      "title": "You Rock My World",
+      "year": 2001,
+      "uri": "spotify:track:1Lhwn4PqeGpM4LTVUowW76"
+    },
+    {
+      "artist": "Garou & Céline Dion",
+      "title": "Sous le vent",
+      "year": 2001,
+      "uri": "spotify:track:6VZB0ttlqGjpGMAcaomXh9"
+    },
+    {
+      "artist": "Kylie Minogue",
+      "title": "Can't Get You Out of My Head",
+      "year": 2001,
+      "uri": "spotify:track:3E7ZwUMJFqpsDOJzEkBrQ7"
+    },
+    {
+      "artist": "L5",
+      "title": "Toutes les femmes de ta vie",
+      "year": 2001,
+      "uri": "spotify:track:3PkVPI5Qj87BCyNBUQ2pJB"
+    },
+    {
+      "artist": "Star Academy 1",
+      "title": "La Musique",
+      "year": 2001,
+      "uri": null
+    },
+    {
+      "artist": "Star Academy 1",
+      "title": "Gimme! Gimme! Gimme! (A Man After Midnight)",
+      "year": 2002,
+      "uri": null
+    },
+    {
+      "artist": "Marc Lavoine & Cristina Marocco",
+      "title": "J'ai tout oublié",
+      "year": 2002,
+      "uri": "spotify:track:1UWygCYbDfxAGdNrHuEnKE"
+    },
+    {
+      "artist": "Rohff feat. Kayliah",
+      "title": "Qui est l'exemple ?",
+      "year": 2002,
+      "uri": null
+    },
+    {
+      "artist": "Shakira",
+      "title": "Whenever, Wherever",
+      "year": 2002,
+      "uri": "spotify:track:2lnzGkdtDj5mtlcOW2yRtG"
+    },
+    {
+      "artist": "Johnny Hallyday",
+      "title": "Tous ensemble",
+      "year": 2002,
+      "uri": "spotify:track:3wLjZUz0ES8iQRY1k6voMY"
+    },
+    {
+      "artist": "Bratislava Boys",
+      "title": "Stach stach",
+      "year": 2002,
+      "uri": null
+    },
+    {
+      "artist": "Marilène Duval & Phil Barney",
+      "title": "Un enfant de toi",
+      "year": 2002,
+      "uri": null
+    },
+    {
+      "artist": "Félicien",
+      "title": "Cum-cum mania",
+      "year": 2002,
+      "uri": "spotify:track:3KFU6zHMfOHkm6AqpdlVLB"
+    },
+    {
+      "artist": "Indochine",
+      "title": "J'ai demandé à la lune",
+      "year": 2002,
+      "uri": "spotify:track:2QSAj76Ba6aMFX9RlXdUdO"
+    },
+    {
+      "artist": "MC Solaar",
+      "title": "Inch'Allah",
+      "year": 2002,
+      "uri": "spotify:track:5uweXfHFF2syFiQw6THudi"
+    },
+    {
+      "artist": "The Ketchup",
+      "title": "The Ketchup Song (Aserejé)",
+      "year": 2002,
+      "uri": "spotify:track:7cMUy07oPBfP41C49agGSU"
+    },
+    {
+      "artist": "Johnny Hallyday",
+      "title": "Marie",
+      "year": 2002,
+      "uri": "spotify:track:0ITqkmf62Q0Izdyo3PkNeU"
+    },
+    {
+      "artist": "Whatfor",
+      "title": "Plus haut",
+      "year": 2002,
+      "uri": null
+    },
+    {
+      "artist": "Star Academy 2",
+      "title": "Paris Latino",
+      "year": 2002,
+      "uri": "spotify:track:5wWeTSjdse3G15H3NJIVMt"
+    },
+    {
+      "artist": "Alphonse Brown",
+      "title": "Le Frunkp",
+      "year": 2003,
+      "uri": null
+    },
+    {
+      "artist": "Nolwenn Leroy",
+      "title": "Cassé",
+      "year": 2003,
+      "uri": "spotify:track:1YqHug87ndn6HN6D00Smuw"
+    },
+    {
+      "artist": "Chimène Badi",
+      "title": "Entre nous",
+      "year": 2003,
+      "uri": "spotify:track:6j3MV6TuybbmOKwId3DEEG"
+    },
+    {
+      "artist": "Florent Pagny",
+      "title": "Ma liberté de penser",
+      "year": 2003,
+      "uri": "spotify:track:6zxJh3RIzm6Qk7HauhCg9j"
+    },
+    {
+      "artist": "Lorie",
+      "title": "Sur un air latino",
+      "year": 2003,
+      "uri": "spotify:track:5MucAMbT0n6eOk27NrjWGM"
+    },
+    {
+      "artist": "Pascal Obispo",
+      "title": "Fan",
+      "year": 2003,
+      "uri": "spotify:track:2nzxJMkdF3B1KiEDyP1ECQ"
+    },
+    {
+      "artist": "DJ BoBo",
+      "title": "Chihuahua",
+      "year": 2003,
+      "uri": "spotify:track:4XxARXvYh14HGGt6EMNmUm"
+    },
+    {
+      "artist": "Jocelyne Labylle & Cheela feat. Jacob Desvarieux & Passi",
+      "title": "Laisse parler les gens",
+      "year": 2003,
+      "uri": "spotify:track:3L3XmqvdOZiCoqpfASyoYh"
+    },
+    {
+      "artist": "Lorna",
+      "title": "Papi chulo (te traigo el mmm...)",
+      "year": 2003,
+      "uri": "spotify:track:6PRv5QDR843SgVpk4IqEit"
+    },
+    {
+      "artist": "Tragédie",
+      "title": "Hey oh",
+      "year": 2003,
+      "uri": "spotify:track:15RB3lFt2Mhc16m5fTTYkh"
+    },
+    {
+      "artist": "Linkup",
+      "title": "Mon étoile",
+      "year": 2003,
+      "uri": "spotify:track:1A3jtKS9NSvfOSOXSd9esh"
+    },
+    {
+      "artist": "Star Academy 3",
+      "title": "L'Orange / Wot",
+      "year": 2003,
+      "uri": null
+    },
+    {
+      "artist": "Tragédie",
+      "title": "Sexy pour moi",
+      "year": 2004,
+      "uri": "spotify:track:5H0ZfIuXw3qEXn2E1EasWX"
+    },
+    {
+      "artist": "Kareen Antonn & Bonnie Tyler",
+      "title": "Si demain... (Turn Around)",
+      "year": 2004,
+      "uri": null
+    },
+    {
+      "artist": "The Black Eyed Peas",
+      "title": "Shut Up",
+      "year": 2004,
+      "uri": "spotify:track:0KxU9wjCedUxSGdjuFdBDu"
+    },
+    {
+      "artist": "J-Five feat. Charlie Chaplin",
+      "title": "Modern Times",
+      "year": 2004,
+      "uri": null
+    },
+    {
+      "artist": "Usher feat. Lil Jon & Ludacris",
+      "title": "Yeah!",
+      "year": 2004,
+      "uri": "spotify:track:5rb9QrpfcKFHM1EUbSIurX"
+    },
+    {
+      "artist": "O-Zone",
+      "title": "Dragostea din tei",
+      "year": 2004,
+      "uri": "spotify:track:52Zr0sinhWTCRrQhRRY4EP"
+    },
+    {
+      "artist": "K-Maro",
+      "title": "Femme Like U (Donne moi ton corps)",
+      "year": 2004,
+      "uri": null
+    },
+    {
+      "artist": "Aventura",
+      "title": "Obsesión",
+      "year": 2004,
+      "uri": "spotify:track:65H6t1WQBim6q93yM8fEwn"
+    },
+    {
+      "artist": "Star Academy 4",
+      "title": "Laissez-moi danser",
+      "year": 2004,
+      "uri": "spotify:track:0xj4AItqSN1u7YHGOfTm9s"
+    },
+    {
+      "artist": "Starsailor",
+      "title": "Four to the Floor (Thin White Duke remix)",
+      "year": 2004,
+      "uri": "spotify:track:0vJpR35kl4RvKLzSoHUkSj"
+    },
+    {
+      "artist": "Garou & Michel Sardou",
+      "title": "La Rivière de notre enfance",
+      "year": 2004,
+      "uri": "spotify:track:6gKh6PgWfD5huu2BghikoX"
+    },
+    {
+      "artist": "Star Academy 4",
+      "title": "Adieu monsieur le professeur",
+      "year": 2005,
+      "uri": "spotify:track:4zlpZvAWqQegOq3PKiEQTX"
+    },
+    {
+      "artist": "Eric Prydz",
+      "title": "Call on Me",
+      "year": 2005,
+      "uri": "spotify:track:1xNcBAoUw8Hz6LqK2jt4Ff"
+    },
+    {
+      "artist": "Amel Bent",
+      "title": "Ma philosophie",
+      "year": 2005,
+      "uri": "spotify:track:1HOtCYTuOCISpTn9cW6fcz"
+    },
+    {
+      "artist": "Ilona Mitrecey",
+      "title": "Un monde parfait",
+      "year": 2005,
+      "uri": "spotify:track:5yAJ48kDBWoggEg9GQhHlt"
+    },
+    {
+      "artist": "Crazy Frog",
+      "title": "Axel F",
+      "year": 2005,
+      "uri": "spotify:track:0Bo5fjMtTfCD8vHGebivqc"
+    },
+    {
+      "artist": "Crazy Frog",
+      "title": "Popcorn",
+      "year": 2005,
+      "uri": "spotify:track:0jQ4Nb9ylfUheLP9EOpOFk"
+    },
+    {
+      "artist": "Madonna",
+      "title": "Hung Up",
+      "year": 2005,
+      "uri": "spotify:track:3850dYVgOFIXJh5U4BFEWH"
+    },
+    {
+      "artist": "Star Academy 5",
+      "title": "Santiano",
+      "year": 2005,
+      "uri": "spotify:track:0evviL9c1R4eaWC4fEpi4V"
+    },
+    {
+      "artist": "Johnny Hallyday",
+      "title": "Mon plus beau Noël",
+      "year": 2005,
+      "uri": "spotify:track:4d6uILjPSs6bR6CSYqWGIf"
+    },
+    {
+      "artist": "Juanes",
+      "title": "La camisa negra",
+      "year": 2006,
+      "uri": "spotify:track:2EM9zpAc7PVeoAydmbfVIL"
+    },
+    {
+      "artist": "Amine",
+      "title": "J'voulais",
+      "year": 2006,
+      "uri": "spotify:track:68HMIuze6fSh0TLGx51o5x"
+    },
+    {
+      "artist": "Nolwenn Leroy",
+      "title": "Nolwenn Ohwo !",
+      "year": 2006,
+      "uri": "spotify:track:68lFIc15ERgDaM1SVTMWTc"
+    },
+    {
+      "artist": "Zucchero & Maná",
+      "title": "Baila morena",
+      "year": 2006,
+      "uri": "spotify:track:0M2YkvoDWKgEvLaCmdH3Gv"
+    },
+    {
+      "artist": "Pigloo",
+      "title": "Papa Pingouin",
+      "year": 2006,
+      "uri": "spotify:track:1qt5AVI6Hfh4NVHExzf4R2"
     }
   ]
 }
