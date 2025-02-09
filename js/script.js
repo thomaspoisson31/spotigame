@@ -12,12 +12,19 @@
                 artist: "Cliquez pour révéler l'artiste",
                 year: "Cliquez pour révéler l'année"
             };
+            
             Object.entries(infoElements).forEach(([type, text]) => {
                 const element = document.getElementById(`${type}Info`);
-                element.textContent = text;
-                element.classList.remove('revealed');
+                const card = element.querySelector('.card');
+                const frontElement = element.querySelector('.front');
+                const backElement = element.querySelector('.back');
+                
+                frontElement.textContent = text;
+                backElement.textContent = '';
+                card.classList.remove('revealed');
             });
         }
+
 
 
 
