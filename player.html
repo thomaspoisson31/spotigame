@@ -44,30 +44,21 @@
                  onclick="toggleImage()">
         </div>
 
-        <div class="song-info">
-
-            <div class="reveal-container">
-                <div class="hidden-info" id="titleInfo" onclick="revealInfo('title', this)">
-                    <div class="card">
-                        <div class="front">Cliquez pour révéler le titre</div>
-                        <div class="back" id="titleContent"></div>
+        <div id="song-info" class="song-info">
+            <div class="hidden-info" id="songCard" onclick="revealInfo(this)">
+                <div class="card">
+                    <div class="front">
+                        Cliquez pour révéler les informations
                     </div>
-                </div>
-                <div class="hidden-info" id="artistInfo" onclick="revealInfo('artist', this)">
-                    <div class="card">
-                        <div class="front">Cliquez pour révéler l'artiste</div>
-                        <div class="back" id="artistContent"></div>
-                    </div>
-                </div>
-                <div class="hidden-info" id="yearInfo" onclick="revealInfo('year', this)">
-                    <div class="card">
-                        <div class="front">Cliquez pour révéler l'année</div>
-                        <div class="back" id="yearContent"></div>
+                    <div class="back">
+                        <div class="song-title"></div>
+                        <div class="song-artist"></div>
+                        <div class="song-year"></div>
                     </div>
                 </div>
             </div>
-        
         </div>
+        
     </div>
 
     <script src="https://sdk.scdn.co/spotify-player.js"></script>

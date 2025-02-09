@@ -22,11 +22,9 @@ body {
 
 /* Styles pour les zones de révélation */
 .song-info {
-    font-family: 'Roboto', sans-serif;
-    margin: 20px 0;
-    padding: 15px;
-    background-color: transparent;
-    border-radius: 5px;
+    display: none; /* La carte sera initialement cachée */
+    margin: 20px auto;
+    max-width: 300px; /* Même largeur que l'image */
 }
 
 .reveal-container {
@@ -37,11 +35,27 @@ body {
 }
 
 .hidden-info {
-    flex: 1;
+    width: 100%;
     position: relative;
-    min-height: 120px;
+    min-height: 150px;
     perspective: 1000px;
     cursor: pointer;
+}
+
+
+.song-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.song-artist {
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.song-year {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .card {
@@ -75,11 +89,14 @@ body {
     z-index: 2;
 }
 
+
 .back {
-    background-color: #1DB954;
-    color: white;
-    transform: rotateY(180deg);
-    z-index: 1;
+    background-color: #9C27B0; /* Couleur violette comme sur l'image */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .card.revealed {

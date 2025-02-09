@@ -7,22 +7,13 @@
 
         // Fonction pour réinitialiser l'affichage des informations
         function resetSongInfo() {
-            const infoElements = {
-                title: "Cliquez pour révéler le titre",
-                artist: "Cliquez pour révéler l'artiste",
-                year: "Cliquez pour révéler l'année"
-            };
+            const songInfo = document.getElementById('song-info');
+            songInfo.style.display = 'none'; // Cache la carte
             
-            Object.entries(infoElements).forEach(([type, text]) => {
-                const element = document.getElementById(`${type}Info`);
-                const card = element.querySelector('.card');
-                const frontElement = element.querySelector('.front');
-                const backElement = element.querySelector('.back');
-                
-                frontElement.textContent = text;
-                backElement.textContent = '';
+            const card = document.querySelector('#songCard .card');
+            if (card) {
                 card.classList.remove('revealed');
-            });
+            }
         }
 
 
@@ -205,20 +196,24 @@
         }
 
         // Fonction pour révéler une information
-        function revealInfo(type, element) {
+        function revealInfo(element) {
             if (!currentSong) return;
             
             const card = element.querySelector('.card');
             const backContent = element.querySelector('.back');
             
             if (!card.classList.contains('revealed')) {
-                // Mettre à jour le contenu avant de révéler la carte
-                backContent.textContent = currentSong[type];
+                // Mise à jour du contenu
+                element.querySelector('.song-title').textContent = currentSong.title;
+                element.querySelector('.song-artist').textContent = currentSong.artist;
+                element.querySelector('.song-year').textContent = `(${currentSong.year})`;
+                
                 card.classList.add('revealed');
             } else {
                 card.classList.remove('revealed');
             }
         }
+
 
 
         // Initialisation du player Spotify
@@ -319,9 +314,12 @@
 
         function toggleImage() {
             const albumImage = document.getElementById('album-image');
+            const songInfo = document.getElementById('song-info');
+            
             if (!imageRevealed) {
                 albumImage.style.filter = 'none';
                 imageRevealed = true;
+                songInfo.style.display = 'block'; // Affiche la carte d'information
             }
         }
 
