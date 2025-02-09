@@ -2,7 +2,9 @@
     "playlist_files": [
         "songs.json",
         "songs_funk_soul_rap.json",
+        "french_hits.json",
 	"rock_metal_playlist.json"
+
     ],
     "version": "1.0",
     "last_updated": "2024-02-07"

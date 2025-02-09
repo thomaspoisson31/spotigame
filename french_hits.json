@@ -1,0 +1,40 @@
+{
+  "playlist_name": "Hits en France",
+  "songs": 
+  {
+    "title": "Itsi bitsi petit bikini",
+    "artist": "Dalida",
+    "year": 1960
+  },
+  {
+    "title": "Non, je ne regrette rien",
+    "artist": "Edith Piaf",
+    "year": 1961
+  },
+  {
+    "title": "Viens danser le twist",
+    "artist": "Johnny Hallyday",
+    "year": 1961
+  },
+  {
+    "title": "Brigitte Bardot",
+    "artist": "Dario Moreno",
+    "year": 1961
+  },
+  {
+    "title": "Siffler sur la colline",
+    "artist": "Joe Dassin",
+    "year": 1968
+  },
+  {
+    "title": "Que je t'aime",
+    "artist": "Johnny Hallyday",
+    "year": 1969
+  },
+  {
+    "title": "L'Amérique",
+    "artist": "Joe Dassin",
+    "year": 1970
+    }
+  ]
+}
