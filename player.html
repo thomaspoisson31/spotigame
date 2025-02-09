@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<body>
     <div class="header">
         <img src="images/logo.png" alt="Logo SpotiGame">
     </div>
@@ -24,11 +25,9 @@
         </div>
     </div>
 
-
     <div class="container">
-
         <div id="playlist-buttons" class="playlist-buttons"></div>
-
+        
         <div id="player-container">
             <div class="controls">
                 <button id="togglePlay">▶️</button>
@@ -40,26 +39,23 @@
 
         <div id="album-art" style="text-align: center; margin: 20px 0; display: none;">
             <img id="album-image" 
-                 style="max-width: 300px; 
-                        width: 100%; 
-                        height: auto; 
-                        border-radius: 8px; 
-                        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-                        cursor: pointer;" 
+                 style="max-width: 300px; width: 100%; height: auto; border-radius: 8px; 
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.1); cursor: pointer;" 
                  alt="Album artwork"
                  onclick="toggleImage()">
         </div>
 
-
         <div class="song-info">
-            <div class="hidden-info" id="titleInfo" onclick="revealInfo('title')">
-                Cliquez pour révéler le titre
-            </div>
-            <div class="hidden-info" id="artistInfo" onclick="revealInfo('artist')">
-                Cliquez pour révéler l'artiste
-            </div>
-            <div class="hidden-info" id="yearInfo" onclick="revealInfo('year')">
-                Cliquez pour révéler l'année
+            <div class="reveal-container">
+                <div class="hidden-info" id="titleInfo" onclick="revealInfo('title')">
+                    Cliquez pour révéler le titre
+                </div>
+                <div class="hidden-info" id="artistInfo" onclick="revealInfo('artist')">
+                    Cliquez pour révéler l'artiste
+                </div>
+                <div class="hidden-info" id="yearInfo" onclick="revealInfo('year')">
+                    Cliquez pour révéler l'année
+                </div>
             </div>
         </div>
     </div>
