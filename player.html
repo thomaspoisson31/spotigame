@@ -216,6 +216,20 @@
         };
 
 
+        // Sélectionnez tous les boutons de playlist
+        const playlistButtons = document.querySelectorAll('.playlist-button');
+
+        // Ajoutez un écouteur d'événement pour gérer les clics
+        playlistButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Désactive toutes les autres playlists (retire classe "active")
+                playlistButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Active la playlist cliquée (ajoute classe "active")
+                button.classList.add('active');
+            });
+        });
+
 
 
             // Ajoutez cette fonction pour vérifier et rafraîchir le token

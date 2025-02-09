@@ -57,6 +57,7 @@
         }
 
 
+        /* Apparence normale d'une playlist */
         .playlist-button {
             background-color: #1DB954;
             color: white;
@@ -68,10 +69,19 @@
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
+        /* Apparence lors du hover */
         .playlist-button:hover {
             transform: scale(1.05);
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             background-color: #1ED760;
+        }
+
+        /* Apparence lorsqu'une playlist est activée */
+        .playlist-button.active {
+            background-color: #006400; /* Vert foncé pour indiquer l'état actif */
+            color: #ffffff;           /* Couleur du texte (ici blanc) */
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.6); /* Effet lumineux */
+            transform: scale(1.1);    /* Légère augmentation de taille */
         }
 
         button {
