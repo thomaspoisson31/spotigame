@@ -198,15 +198,21 @@
         }
 
         // Fonction pour révéler une information
-        function revealInfo(type) {
+        function revealInfo(type, element) {
             if (!currentSong) return;
             
-            const element = document.getElementById(`${type}Info`);
-            if (!element.classList.contains('revealed')) {
-                element.textContent = currentSong[type];
-                element.classList.add('revealed');
+            const card = element.querySelector('.card');
+            const backContent = element.querySelector('.back');
+            
+            if (!card.classList.contains('revealed')) {
+                // Mettre à jour le contenu avant de révéler la carte
+                backContent.textContent = currentSong[type];
+                card.classList.add('revealed');
+            } else {
+                card.classList.remove('revealed');
             }
         }
+
 
         // Initialisation du player Spotify
         function initializePlayer() {
