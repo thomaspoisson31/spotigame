@@ -37,6 +37,7 @@ body {
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 0.6s;
+    position: relative;
 }
 
 .back {
@@ -45,12 +46,14 @@ body {
     border-radius: 10px;
     padding: 20px;
     width: 100%;
-    box-sizing: border-box; /* Important pour inclure le padding dans la largeur */
+    box-sizing: border-box;
+    transform: rotateY(-180deg); /* Position initiale */
+    position: absolute;
+    backface-visibility: hidden; /* Important pour l'effet 3D */
 }
 
-
 .card.revealed {
-    transform: rotateY(0deg); /* Modifié car plus besoin de rotation 180° */
+    transform: rotateY(180deg); /* Rotation complète */
 }
 
 
@@ -204,13 +207,17 @@ button:hover {
 
 /* Style pour l'image de l'album */
 #album-art {
-    width: 300px; /* Largeur fixe pour la pochette */
-    margin: 0 auto;
+    width: 300px;
+    margin: 20px auto;
+    text-align: center; /* Centre l'image */
+    display: flex; /* Aide au centrage */
+    justify-content: center; /* Centre horizontalement */
 }
 
 #album-image {
-    width: 100%;
-    height: 100%;
+    width: 300px; /* Largeur fixe */
+    height: 300px; /* Hauteur fixe pour un carré parfait */
     border-radius: 10px;
     object-fit: cover;
+    display: block; /* Aide au centrage */
 }
