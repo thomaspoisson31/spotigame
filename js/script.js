@@ -204,23 +204,6 @@
             }
         }
 
-        // Fonction pour révéler une information
-        function revealInfo() {
-            if (!currentSong) return;
-            
-            const card = document.querySelector('#songCard .card');
-            
-            if (!card.classList.contains('revealed')) {
-                // Mise à jour du contenu
-                document.querySelector('.song-title').textContent = currentSong.title;
-                document.querySelector('.song-artist').textContent = currentSong.artist;
-                document.querySelector('.song-year').textContent = `(${currentSong.year})`;
-                
-                card.classList.add('revealed');
-            } else {
-                card.classList.remove('revealed');
-            }
-        }
 
         // Ajouter l'écouteur d'événement une fois le DOM chargé
         document.addEventListener('DOMContentLoaded', function() {
@@ -328,14 +311,25 @@
         function toggleImage() {
             const albumImage = document.getElementById('album-image');
             const songInfo = document.getElementById('song-info');
+            const card = document.querySelector('#songCard .card');
             
             if (!imageRevealed) {
+                // Révéler l'artwork
                 albumImage.style.filter = 'none';
                 imageRevealed = true;
-                songInfo.style.display = 'block'; // Affiche la carte d'information
+                
+                // Afficher et mettre à jour la carte d'information
+                songInfo.style.display = 'block';
+                
+                // Mettre à jour et révéler les informations
+                document.querySelector('.song-title').textContent = currentSong.title;
+                document.querySelector('.song-artist').textContent = currentSong.artist;
+                document.querySelector('.song-year').textContent = `(${currentSong.year})`;
+                
+                // Déclencher l'animation de rotation
+                card.classList.add('revealed');
             }
         }
-
         // Récupération de l'artwork
         async function fetchAlbumArtwork(trackUri) {
             try {
