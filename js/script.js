@@ -8,13 +8,22 @@
         // Fonction pour réinitialiser l'affichage des informations
         function resetSongInfo() {
             const songInfo = document.getElementById('song-info');
-            songInfo.style.display = 'none'; // Cache la carte
-            
             const card = document.querySelector('#songCard .card');
+            
             if (card) {
                 card.classList.remove('revealed');
             }
+            
+            // Réinitialiser le contenu
+            const titleElement = document.querySelector('.song-title');
+            const artistElement = document.querySelector('.song-artist');
+            const yearElement = document.querySelector('.song-year');
+            
+            if (titleElement) titleElement.textContent = '';
+            if (artistElement) artistElement.textContent = '';
+            if (yearElement) yearElement.textContent = ''; // Correction ici
         }
+
 
 
 
@@ -196,23 +205,33 @@
         }
 
         // Fonction pour révéler une information
-        function revealInfo(element) {
+        function revealInfo() {
             if (!currentSong) return;
             
-            const card = element.querySelector('.card');
-            const backContent = element.querySelector('.back');
+            const card = document.querySelector('#songCard .card');
             
             if (!card.classList.contains('revealed')) {
                 // Mise à jour du contenu
-                element.querySelector('.song-title').textContent = currentSong.title;
-                element.querySelector('.song-artist').textContent = currentSong.artist;
-                element.querySelector('.song-year').textContent = `(${currentSong.year})`;
+                document.querySelector('.song-title').textContent = currentSong.title;
+                document.querySelector('.song-artist').textContent = currentSong.artist;
+                document.querySelector('.song-year').textContent = `(${currentSong.year})`;
                 
                 card.classList.add('revealed');
             } else {
                 card.classList.remove('revealed');
             }
         }
+
+        // Ajouter l'écouteur d'événement une fois le DOM chargé
+        document.addEventListener('DOMContentLoaded', function() {
+            const songCard = document.getElementById('songCard');
+            if (songCard) {
+                songCard.addEventListener('click', revealInfo);
+            }
+        });
+
+
+
 
 
 
@@ -304,12 +323,6 @@
             albumImage.style.filter = 'blur(20px)';
             imageRevealed = false;
             albumArt.style.display = 'none';
-        }
-
-
-        function reveal(element) {
-            const card = element.querySelector('.card');
-            card.classList.toggle('revealed');
         }
 
         function toggleImage() {
