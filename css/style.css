@@ -52,6 +52,7 @@ body {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 10px;
+    max-width: 300px;
 }
 
 .front {
