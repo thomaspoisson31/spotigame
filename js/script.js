@@ -348,7 +348,7 @@
                     const albumImage = document.getElementById('album-image');
                     albumImage.src = data.album.images[0].url;
                     albumImage.style.filter = 'blur(20px)';
-                    albumArt.style.display = 'block';
+                    albumArt.style.display = 'flex';
                 }
             } catch (error) {
                 console.error('Erreur lors de la récupération de l\'artwork:', error);
