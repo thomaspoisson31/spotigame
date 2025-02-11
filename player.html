@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<head>
+    <!-- Vous avez une balise head dupliquée -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotigame</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
     <div class="header">
         <img src="images/logo.png" alt="Logo SpotiGame">
@@ -31,21 +30,16 @@
             <div class="controls">
                 <button id="togglePlay">▶️</button>
             </div>
-            // <div id="progress-bar">
-            //    <div id="progress"></div>
-            // </div>
         </div>
 
+        <!-- Ajout d'un espace entre alt et onclick -->
         <div id="album-art">
-            <img id="album-image" 
-                 alt="Album artwork"
-                 onclick="toggleImage()">
+            <img id="album-image" alt="Album artwork" onclick="toggleImage()">
         </div>
 
         <div id="song-info" class="song-info">
             <div class="hidden-info" id="songCard">
                 <div class="card">
-                    <!-- On supprime la div "front" -->
                     <div class="back">
                         <div class="song-details">
                             <div class="song-title"></div>
@@ -56,7 +50,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
