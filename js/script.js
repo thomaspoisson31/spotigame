@@ -319,7 +319,7 @@
                 imageRevealed = true;
                 
                 // Afficher et mettre à jour la carte d'information
-                songInfo.style.display = 'block';
+                songInfo.style.display = 'flex';
                 
                 // Mettre à jour et révéler les informations
                 document.querySelector('.song-title').textContent = currentSong.title;
