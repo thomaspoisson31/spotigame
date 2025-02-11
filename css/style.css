@@ -207,11 +207,9 @@ button:hover {
 
 /* Style pour l'image de l'album */
 #album-art {
-    width: 300px;
-    margin: 20px auto;
-    text-align: center; /* Centre l'image */
-    display: flex; /* Aide au centrage */
-    justify-content: center; /* Centre horizontalement */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #album-image {
