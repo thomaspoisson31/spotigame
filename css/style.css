@@ -93,9 +93,9 @@ body {
     background-color: #1DB954;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
 }
