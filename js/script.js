@@ -367,8 +367,8 @@
                     content.style.maxHeight = content.scrollHeight + "px";
                 }
             });
-        });
-
+        }); 
+        
         // Fonctions de gestion du token
         function invalidateToken() {
             localStorage.setItem('spotify_token', 'invalid_token');
