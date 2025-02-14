@@ -161,7 +161,7 @@ function initializePlayer() {
         if (state) {
             console.log('État du lecteur changé:', state);
         }
-    });
+    }); 
 
     player.connect();
 }
