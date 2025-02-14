@@ -24,7 +24,15 @@
     </div>
 
     <div class="container">
-        <div id="playlist-buttons" class="playlist-buttons"></div>
+        <!-- Remplacer la div playlist-buttons existante par : -->
+        <div class="playlist-navigation">
+            <button class="nav-button prev-button">&#9664;</button>
+            <div id="current-playlist" class="current-playlist">
+                <span class="playlist-name"></span>
+                <button class="volume-button">🔊</button>
+            </div>
+            <button class="nav-button next-button">&#9654;</button>
+        </div>
         
         <div id="player-container">
             <div class="controls">
