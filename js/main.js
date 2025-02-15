@@ -1,6 +1,8 @@
 import { player, deviceId, fetchAlbumArtwork, initializePlayer } from './spotifyApi.js';
 import { playlists, loadPlaylists } from './playlist.js';
 import { checkAndRefreshToken } from './auth.js';
+import { createPlaylistNavigation } from './playlist.js';
+
 
 let currentSong = null;
 let imageRevealed = false;
@@ -116,7 +118,7 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
     if (await checkAndRefreshToken()) {
         console.log('Token vérifié, initialisation du player...');
         initializePlayer();
-        await createPlaylistNavigation(); // Utiliser la nouvelle fonction
+        await createPlaylistNavigation(); // Utilisation de la fonction importée
         console.log('Initialisation terminée');
     }
 };
