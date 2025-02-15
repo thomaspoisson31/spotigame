@@ -116,20 +116,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.onSpotifyWebPlaybackSDKReady = async () => {
     console.log('SDK Spotify prêt');
-    try {
-        const isTokenValid = await checkAndRefreshToken();
-        if (!isTokenValid) {
-            console.log('Token invalide, redirection vers auth.html');
-            window.location.href = 'auth.html';
-            return;
-        }
+    const token = localStorage.getItem('spotify_token');
+    
+    if (!token) {
+        console.log('Aucun token trouvé');
+        window.location.href = 'auth.html';
+        return;
+    }
 
-        console.log('Token vérifié, initialisation du player...');
+    try {
         await initializePlayer();
         await createPlaylistNavigation();
-        console.log('Initialisation terminée');
     } catch (error) {
         console.error('Erreur lors de l\'initialisation:', error);
-        window.location.href = 'auth.html';
     }
 };
