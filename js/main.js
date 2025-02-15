@@ -113,12 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
 window.onSpotifyWebPlaybackSDKReady = async () => {
     console.log('SDK Spotify prêt');
-    if (await checkAndRefreshToken()) {
-        console.log('Token vérifié, initialisation du player...');
-        initializePlayer();
-        await createPlaylistNavigation(); // Utilisation de la fonction importée
-        console.log('Initialisation terminée');
+    try {
+        if (await checkAndRefreshToken()) {
+            console.log('Token vérifié, initialisation du player...');
+            initializePlayer();
+            await createPlaylistNavigation();
+            console.log('Initialisation terminée');
+        } else {
+            console.error('Token invalide ou expiré');
+            window.location.href = 'auth.html';
+        }
+    } catch (error) {
+        console.error('Erreur lors de l\'initialisation:', error);
+        window.location.href = 'auth.html';
     }
 };
