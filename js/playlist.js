@@ -43,12 +43,19 @@ export function updateCurrentPlaylist(index) {
 
 export async function createPlaylistNavigation() {
     try {
-        console.log('Début création de la navigation...');
-        playlists = await loadPlaylists();
+        const loadedPlaylists = await loadPlaylists();
+        if (!loadedPlaylists) {
+            console.error('Échec du chargement des playlists');
+            window.location.href = 'auth.html';
+            return;
+        }
+
+        playlists = loadedPlaylists;
         
-        const container = document.getElementById('playlist-buttons');
-        if (!container) {
-            console.error('Container playlist-buttons non trouvé dans le DOM');
+        // Récupérer le container
+        const container = document.getElementById('playlist-buttons'); // Ajout de cette ligne
+        if (!container) { // Ajout d'une vérification
+            console.error('Container playlist-buttons non trouvé');
             return;
         }
 
@@ -79,26 +86,45 @@ export async function createPlaylistNavigation() {
 
     } catch (error) {
         console.error('Erreur lors de la création de la navigation:', error);
+        window.location.href = 'auth.html';
     }
 }
+
+
 
 export async function loadPlaylists() {
     try {
         console.log('Début du chargement des playlists...');
+        const token = localStorage.getItem('spotify_token');
+        
+        if (!token) {
+            throw new Error('Token non trouvé');
+        }
+
+        // Vérifions d'abord que le token est valide
+        const tokenCheck = await fetch('https://api.spotify.com/v1/me', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!tokenCheck.ok) {
+            throw new Error('Token invalide');
+        }
+
         const configResponse = await fetch('playlist_config.json');
         if (!configResponse.ok) {
             throw new Error('Impossible de charger le fichier de configuration');
         }
+        
         const config = await configResponse.json();
         const files = config.playlist_files;
 
         const loadedPlaylists = await Promise.all(
             files.map(async (file) => {
                 try {
-                    console.log('Chargement du fichier:', file);
                     const fileResponse = await fetch(file);
                     if (!fileResponse.ok) {
-                        console.log(`Fichier ${file} non trouvé, ignoré`);
                         return null;
                     }
                     const data = await fileResponse.json();
@@ -107,19 +133,29 @@ export async function loadPlaylists() {
                         songs: data.songs
                     };
                 } catch (error) {
-                    console.log(`Erreur pour ${file}, ignoré:`, error);
+                    console.error(`Erreur pour ${file}:`, error);
                     return null;
                 }
             })
         );
 
-        // Filtrer les playlists null
         const validPlaylists = loadedPlaylists.filter(playlist => playlist !== null);
+        if (validPlaylists.length === 0) {
+            throw new Error('Aucune playlist valide chargée');
+        }
+
         console.log('Playlists valides chargées:', validPlaylists);
         return validPlaylists;
 
     } catch (error) {
         console.error('Erreur chargement playlists:', error);
-        return [];
+        // Si l'erreur est liée à l'authentification, on retourne null plutôt que de rediriger
+        return null;
     }
 }
+
+
+
+
+
+

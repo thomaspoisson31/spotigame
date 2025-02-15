@@ -1,27 +1,21 @@
 export async function checkAndRefreshToken() {
     console.log('Vérification du token...');
     
-    const justAuthenticated = localStorage.getItem('just_authenticated');
-    if (justAuthenticated === 'true') {
-        localStorage.removeItem('just_authenticated');
-        return true;
-    }
-    
     const token = localStorage.getItem('spotify_token');
     const timestamp = localStorage.getItem('token_timestamp');
     const expiresIn = localStorage.getItem('token_expires_in');
     
-    if (!token) {
-        console.log('Aucun token trouvé');
-        window.location.href = 'auth.html';
+    if (!token || !timestamp || !expiresIn) {
+        console.log('Informations de token manquantes');
         return false;
     }
 
     const now = Date.now();
     const tokenAge = now - parseInt(timestamp);
-    if (tokenAge >= parseInt(expiresIn) * 1000) {
-        console.log('Token expiré');
-        window.location.href = 'auth.html';
+    
+    // Si le token est expiré ou va expirer dans les 5 minutes
+    if (tokenAge >= (parseInt(expiresIn) * 1000 - 300000)) {
+        console.log('Token expiré ou proche de l\'expiration');
         return false;
     }
 
@@ -31,12 +25,12 @@ export async function checkAndRefreshToken() {
                 'Authorization': `Bearer ${token}`
             }
         });
+
         if (!response.ok) {
-            console.log('Token invalide');
-            window.location.href = 'auth.html';
+            console.log('Vérification du token échouée');
             return false;
         }
-        
+
         console.log('Token valide');
         return true;
     } catch (error) {
@@ -44,6 +38,7 @@ export async function checkAndRefreshToken() {
         return false;
     }
 }
+
 
 export function invalidateToken() {
     localStorage.setItem('spotify_token', 'invalid_token');
@@ -65,3 +60,5 @@ export function removeToken() {
     console.log('Token supprimé');
     checkAndRefreshToken();
 }
+
+
