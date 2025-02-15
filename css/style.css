@@ -83,9 +83,8 @@ body {
 /* Styles pour les boutons de playlist */
 .playlist-buttons {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
     justify-content: center;
+    align-items: center;
     margin: 20px 0;
 }
 
@@ -111,6 +110,61 @@ body {
     color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.6);
     transform: scale(1.1);
+}
+
+
+/* Styles pour la navigation entre les playlists */
+.playlist-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.nav-button {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    transition: opacity 0.3s;
+}
+
+.nav-button:hover {
+    opacity: 0.8;
+}
+
+.current-playlist {
+    background-color: #1DB954;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 150px;
+    justify-content: center;
+}
+
+.playlist-name {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.volume-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+.volume-button:hover {
+    opacity: 0.8;
 }
 
 /* Styles pour les boutons génériques */

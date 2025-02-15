@@ -115,8 +115,8 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
     console.log('SDK Spotify prêt');
     if (await checkAndRefreshToken()) {
         console.log('Token vérifié, initialisation du player...');
-        initializePlayer(localStorage.getItem('spotify_token'));
-        await createPlaylistButtons();
+        initializePlayer();
+        await createPlaylistNavigation(); // Utiliser la nouvelle fonction
         console.log('Initialisation terminée');
     }
 };
