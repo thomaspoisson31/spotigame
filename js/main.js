@@ -72,10 +72,16 @@ function initializePlayer(token) {
 export function updateCurrentSong(songInfo) {
     currentSong = songInfo;
     resetSongInfo();
+    
+    // Mise à jour immédiate des informations dans la carte
+    document.querySelector('.song-title').textContent = songInfo.title;
+    document.querySelector('.song-artist').textContent = songInfo.artist;
+    document.querySelector('.song-year').textContent = `(${songInfo.year})`;
 }
 
-// Fonction pour réinitialiser l'affichage des informations
+// Réinitialisation complète de l'affichage
 function resetSongInfo() {
+    const albumImage = document.getElementById('album-image');
     const songInfo = document.getElementById('song-info');
     const card = document.querySelector('#songCard .card');
     
@@ -83,6 +89,11 @@ function resetSongInfo() {
         imageRevealed = false;
         songInfo.style.display = 'none';
         card.classList.remove('revealed');
+        
+        // Réinitialiser le flou sur l'image
+        if (albumImage) {
+            albumImage.style.filter = 'blur(20px)';
+        }
     }
 }
 
@@ -92,16 +103,18 @@ export function toggleImage() {
     const songInfo = document.getElementById('song-info');
     const card = document.querySelector('#songCard .card');
     
-    if (!imageRevealed) {
+    if (!imageRevealed && currentSong) {
+        // Révéler l'image et les informations
         albumImage.style.filter = 'none';
         imageRevealed = true;
         songInfo.style.display = 'flex';
-        
-        document.querySelector('.song-title').textContent = currentSong.title;
-        document.querySelector('.song-artist').textContent = currentSong.artist;
-        document.querySelector('.song-year').textContent = `(${currentSong.year})`;
-        
         card.classList.add('revealed');
+    } else {
+        // Masquer les informations
+        albumImage.style.filter = 'blur(20px)';
+        imageRevealed = false;
+        songInfo.style.display = 'none';
+        card.classList.remove('revealed');
     }
 }
 
@@ -110,6 +123,15 @@ function initializeEventListeners() {
     const albumImage = document.getElementById('album-image');
     if (albumImage) {
         albumImage.addEventListener('click', toggleImage);
+    }
+
+    // Écouter les changements d'état du player pour détecter les changements de morceau
+    if (window.player) {
+        window.player.addListener('player_state_changed', state => {
+            if (state) {
+                resetSongInfo(); // Réinitialiser l'affichage à chaque changement de morceau
+            }
+        });
     }
 
     // Panel de debug
