@@ -50,21 +50,42 @@ function initializePlayer(token) {
     });
 
     // État du player
-    player.addListener('player_state_changed', state => {
-            if (state) {
-                console.log('État du player mis à jour:', state);
+    player.addListener('player_state_changed', async state => {
+        if (state) {
+            console.log('État du player mis à jour:', state);
+            
+            if (state.track_window && state.track_window.current_track) {
+                const track = state.track_window.current_track;
+                console.log('Piste courante:', track);
                 
-                if (state.track_window && state.track_window.current_track) {
-                    const track = state.track_window.current_track;
-                    console.log('Piste courante:', track);
+                try {
+                    // Récupérer les détails complets de la piste via l'API
+                    const trackId = track.uri.split(':')[2];
+                    const response = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('spotify_token')}`
+                        }
+                    });
                     
-                    // Extraire l'année depuis l'album
-                    let year = '';
-                    if (track.album && track.album.release_date) {
-                        // L'API Spotify peut retourner la date dans différents formats
-                        // On prend les 4 premiers caractères pour avoir l'année
-                        year = track.album.release_date.substring(0, 4);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
+                    
+                    const trackData = await response.json();
+                    
+                    // Récupérer les détails de l'album pour avoir la date de sortie
+                    const albumResponse = await fetch(trackData.album.href, {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('spotify_token')}`
+                        }
+                    });
+                    
+                    if (!albumResponse.ok) {
+                        throw new Error(`HTTP error! status: ${albumResponse.status}`);
+                    }
+                    
+                    const albumData = await albumResponse.json();
+                    const year = albumData.release_date ? albumData.release_date.substring(0, 4) : '';
                     
                     const songInfo = {
                         title: track.name,
@@ -74,9 +95,20 @@ function initializePlayer(token) {
                     
                     console.log('Informations extraites:', songInfo);
                     updateCurrentSong(songInfo);
+                    
+                } catch (error) {
+                    console.error('Erreur lors de la récupération des détails de la piste:', error);
+                    // En cas d'erreur, on affiche quand même les informations de base
+                    const songInfo = {
+                        title: track.name,
+                        artist: track.artists.map(artist => artist.name).join(', '),
+                        year: ''
+                    };
+                    updateCurrentSong(songInfo);
                 }
             }
-        });
+        }
+    });
 
     // Player prêt
     player.addListener('ready', ({ device_id }) => {
