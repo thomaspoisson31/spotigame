@@ -118,54 +118,50 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    padding: 10px;
-}
-
-.nav-button {
-    background: transparent;
-    color: white;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 10px;
-    transition: opacity 0.3s;
-}
-
-.nav-button:hover {
-    opacity: 0.8;
+    gap: 1rem;
+    margin: 1rem 0;
 }
 
 .current-playlist {
-    background-color: #1DB954;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 25px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    min-width: 150px;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    min-width: 200px;
     justify-content: center;
 }
 
+.nav-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.nav-button:hover {
+    transform: scale(1.2);
+}
+
 .playlist-name {
-    font-size: 16px;
-    font-weight: 500;
+    color: white;
+    font-size: 1.2rem;
+    margin: 0;
 }
 
 .volume-button {
     background: none;
     border: none;
     color: white;
+    font-size: 1.2rem;
     cursor: pointer;
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
+    padding: 0.5rem;
 }
 
-.volume-button:hover {
-    opacity: 0.8;
-}
 
 /* Styles pour les boutons génériques */
 button {
