@@ -80,6 +80,7 @@ export async function loadPlaylists() {
 }
 
 // Fonction d'initialisation de la navigation
+// Fonction d'initialisation de la navigation
 export function initializePlaylistNavigation() {
     const prevButton = document.querySelector('.prev-button');
     const nextButton = document.querySelector('.next-button');
@@ -93,7 +94,15 @@ export function initializePlaylistNavigation() {
     async function handleNavigation(newIndex) {
         try {
             if (window.player) {
+                // Arrêter la lecture en cours
                 await window.player.pause();
+                
+                // Réinitialiser l'état du player
+                window.player.getCurrentState().then(state => {
+                    if (state) {
+                        window.player.seek(0);
+                    }
+                });
                 
                 if (ELEMENTS.albumArt) {
                     ELEMENTS.albumArt.style.display = 'none';
@@ -129,10 +138,12 @@ export function initializePlaylistNavigation() {
         try {
             const state = await window.player.getCurrentState();
             
-            if (!state || !state.track_window?.current_track) {
+            if (!state || !state.track_window?.current_track || state.paused) {
+                // Si pas de lecture en cours ou en pause, lancer une nouvelle chanson
                 await playRandomSong();
                 ELEMENTS.volumeButton.textContent = VOLUME.ICONS.UNMUTED;
             } else {
+                // Sinon gérer le volume
                 try {
                     const volume = await window.player.getVolume();
                     const newVolume = volume === VOLUME.MUTED ? VOLUME.DEFAULT : VOLUME.MUTED;
@@ -145,6 +156,13 @@ export function initializePlaylistNavigation() {
             }
         } catch (error) {
             console.error('Erreur lors de la gestion du volume:', error);
+            // En cas d'erreur, tenter de lancer une nouvelle chanson
+            try {
+                await playRandomSong();
+                ELEMENTS.volumeButton.textContent = VOLUME.ICONS.UNMUTED;
+            } catch (playError) {
+                console.error('Erreur lors de la tentative de lecture:', playError);
+            }
         }
     });
 }
