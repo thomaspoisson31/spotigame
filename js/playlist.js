@@ -129,6 +129,7 @@ export function updateCurrentPlaylist(index) {
 }
 
 // Fonction pour jouer un morceau aléatoire
+// Fonction pour jouer un morceau aléatoire
 async function playRandomSong() {
     if (!playlists || playlists.length === 0) {
         console.error('Aucune playlist disponible');
@@ -161,8 +162,22 @@ async function playRandomSong() {
             return;
         }
 
+        // Récupérer les informations de la pochette
+        const trackId = selectedSong.uri.split(':')[2];
+        const trackResponse = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!trackResponse.ok) {
+            throw new Error(`Erreur récupération track: ${trackResponse.status}`);
+        }
+
+        const trackData = await trackResponse.json();
+
         // Lancer la lecture via l'API Spotify
-        const response = await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
+        const playResponse = await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
             method: 'PUT',
             body: JSON.stringify({ uris: [selectedSong.uri] }),
             headers: {
@@ -171,14 +186,19 @@ async function playRandomSong() {
             }
         });
 
-        if (!response.ok && response.status !== 204) {
-            throw new Error(`Erreur API Spotify: ${response.status}`);
+        if (!playResponse.ok && playResponse.status !== 204) {
+            throw new Error(`Erreur lecture: ${playResponse.status}`);
         }
 
-        // Afficher la pochette et les informations
-        const albumArt = document.getElementById('album-art');
-        if (albumArt) {
-            albumArt.style.display = 'block';
+        // Afficher la pochette si disponible
+        if (trackData.album && trackData.album.images && trackData.album.images.length > 0) {
+            const albumArt = document.getElementById('album-art');
+            const albumImage = document.getElementById('album-image');
+            if (albumArt && albumImage) {
+                albumImage.src = trackData.album.images[0].url;
+                albumImage.style.filter = 'blur(20px)';
+                albumArt.style.display = 'flex';
+            }
         }
 
         // Mettre à jour les informations du morceau
@@ -188,15 +208,6 @@ async function playRandomSong() {
                 artist: selectedSong.artist,
                 year: selectedSong.year
             });
-        }
-
-        // Mettre à jour l'artwork
-        if (selectedSong.album_artwork) {
-            const albumImage = document.getElementById('album-image');
-            if (albumImage) {
-                albumImage.src = selectedSong.album_artwork;
-                albumImage.style.filter = 'blur(20px)'; // Initial blur
-            }
         }
 
         console.log('Lecture démarrée:', selectedSong.title);
