@@ -57,7 +57,42 @@ body {
 }
 
 
-/* Styles pour le texte */
+/* Styles de base pour la carte d'information */
+.song-info {
+    display: none; /* Par défaut caché */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 200px;
+}
+
+/* Style pour la carte quand elle est révélée */
+.song-info.visible {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styles pour le conteneur des détails */
+.hidden-info {
+    width: 100%;
+}
+
+.card {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card.revealed {
+    opacity: 1;
+}
+
+/* Vos styles existants */
 .song-details {
     width: 100%;
     text-align: center;
@@ -67,18 +102,21 @@ body {
     font-weight: bold;
     font-size: 1.2em;
     margin-bottom: 10px;
-    word-wrap: break-word; /* Permet le retour à la ligne des longs titres */
+    word-wrap: break-word;
+    color: white;
 }
 
 .song-artist {
     font-style: italic;
     margin-bottom: 5px;
     word-wrap: break-word;
+    color: white;
 }
 
 .song-year {
     color: rgba(255, 255, 255, 0.8);
 }
+
 
 /* Styles pour les boutons de playlist */
 .playlist-buttons {
