@@ -73,13 +73,20 @@ export function updateCurrentSong(songInfo) {
     currentSong = songInfo;
     resetSongInfo();
     
-    // Mise à jour immédiate des informations dans la carte
-    document.querySelector('.song-title').textContent = songInfo.title;
-    document.querySelector('.song-artist').textContent = songInfo.artist;
-    document.querySelector('.song-year').textContent = `(${songInfo.year})`;
+    // S'assurer que tous les éléments existent avant de mettre à jour
+    const titleElement = document.querySelector('#songCard .song-title');
+    const artistElement = document.querySelector('#songCard .song-artist');
+    const yearElement = document.querySelector('#songCard .song-year');
+    
+    if (titleElement && artistElement && yearElement) {
+        titleElement.textContent = songInfo.title;
+        artistElement.textContent = songInfo.artist;
+        yearElement.textContent = `(${songInfo.year})`;
+    } else {
+        console.error('Éléments de la carte non trouvés');
+    }
 }
 
-// Réinitialisation complète de l'affichage
 function resetSongInfo() {
     const albumImage = document.getElementById('album-image');
     const songInfo = document.getElementById('song-info');
@@ -88,27 +95,43 @@ function resetSongInfo() {
     if (songInfo && card) {
         imageRevealed = false;
         songInfo.style.display = 'none';
-        card.classList.remove('revealed');
+        if (card.classList.contains('revealed')) {
+            card.classList.remove('revealed');
+        }
         
-        // Réinitialiser le flou sur l'image
         if (albumImage) {
             albumImage.style.filter = 'blur(20px)';
         }
     }
 }
 
-// Fonction pour révéler l'image et les informations
 export function toggleImage() {
     const albumImage = document.getElementById('album-image');
     const songInfo = document.getElementById('song-info');
     const card = document.querySelector('#songCard .card');
     
-    if (!imageRevealed && currentSong) {
+    if (!currentSong) {
+        console.error('Aucune information de chanson disponible');
+        return;
+    }
+
+    if (!imageRevealed) {
         // Révéler l'image et les informations
         albumImage.style.filter = 'none';
         imageRevealed = true;
         songInfo.style.display = 'flex';
         card.classList.add('revealed');
+        
+        // Vérifier que les éléments sont bien mis à jour
+        const titleElement = document.querySelector('#songCard .song-title');
+        const artistElement = document.querySelector('#songCard .song-artist');
+        const yearElement = document.querySelector('#songCard .song-year');
+        
+        if (titleElement && artistElement && yearElement) {
+            titleElement.textContent = currentSong.title;
+            artistElement.textContent = currentSong.artist;
+            yearElement.textContent = `(${currentSong.year})`;
+        }
     } else {
         // Masquer les informations
         albumImage.style.filter = 'blur(20px)';
@@ -117,6 +140,8 @@ export function toggleImage() {
         card.classList.remove('revealed');
     }
 }
+
+
 
 // Initialisation des écouteurs d'événements
 function initializeEventListeners() {
