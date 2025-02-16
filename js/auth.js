@@ -12,32 +12,32 @@ export async function checkAndRefreshToken() {
     console.log('=== Début vérification token ===');
     
     const token = localStorage.getItem('spotify_token');
-    const timestamp = localStorage.getItem('token_timestamp');
-    const expiresIn = localStorage.getItem('token_expires_in');
+    let timestamp = localStorage.getItem('token_timestamp');
+    let expiresIn = localStorage.getItem('token_expires_in');
     
+    // Si on a un token mais pas de timestamp/expires_in, on les initialise
+    if (token && (!timestamp || !expiresIn)) {
+        console.log('Initialisation des informations de token manquantes');
+        timestamp = Date.now().toString();
+        expiresIn = '3600'; // 1 heure par défaut
+        localStorage.setItem('token_timestamp', timestamp);
+        localStorage.setItem('token_expires_in', expiresIn);
+    }
+
     console.log({
         hasToken: !!token,
-        timestamp: timestamp,
+        timestamp: timestamp ? new Date(parseInt(timestamp)) : null,
         expiresIn: expiresIn,
         currentTime: Date.now()
     });
 
-    if (!token || !timestamp || !expiresIn) {
-        console.log('❌ Informations de token manquantes');
+    if (!token) {
+        console.log('❌ Token manquant');
         return false;
     }
 
-    const now = Date.now();
-    const tokenAge = now - parseInt(timestamp);
-    const expirationTime = parseInt(expiresIn) * 1000;
-
-    console.log({
-        tokenAge: tokenAge / 1000 + ' secondes',
-        expirationTime: expirationTime / 1000 + ' secondes',
-        remaining: (expirationTime - tokenAge) / 1000 + ' secondes'
-    });
-
     try {
+        // Vérification du token avec l'API Spotify
         const response = await fetch('https://api.spotify.com/v1/me', {
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -60,9 +60,11 @@ export async function checkAndRefreshToken() {
 export function handleAuthResponse() {
     console.log('=== Traitement réponse auth ===');
     
-    const urlParams = new URLSearchParams(window.location.hash.substr(1));
-    const token = urlParams.get('access_token');
-    const expiresIn = urlParams.get('expires_in');
+    const hash = window.location.hash.substring(1);
+    const params = new URLSearchParams(hash);
+    
+    const token = params.get('access_token');
+    const expiresIn = params.get('expires_in') || '3600';
 
     console.log({
         hasToken: !!token,
@@ -70,17 +72,33 @@ export function handleAuthResponse() {
     });
 
     if (token) {
+        // Sauvegarde du token et des informations associées
         localStorage.setItem('spotify_token', token);
         localStorage.setItem('token_timestamp', Date.now().toString());
         localStorage.setItem('token_expires_in', expiresIn);
         localStorage.setItem('just_authenticated', 'true');
         
-        console.log('✅ Token sauvegardé');
+        console.log('✅ Token et informations sauvegardés');
         window.location.href = 'index.html';
     } else {
         console.log('❌ Pas de token dans la réponse');
     }
 }
+
+// Fonction utilitaire pour vérifier si le token est expiré
+function isTokenExpired() {
+    const timestamp = localStorage.getItem('token_timestamp');
+    const expiresIn = localStorage.getItem('token_expires_in');
+    
+    if (!timestamp || !expiresIn) return true;
+    
+    const now = Date.now();
+    const tokenAge = now - parseInt(timestamp);
+    const expirationTime = parseInt(expiresIn) * 1000;
+    
+    return tokenAge >= expirationTime;
+}
+
 
 
 export function invalidateToken() {

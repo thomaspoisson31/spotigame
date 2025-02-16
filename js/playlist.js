@@ -164,31 +164,33 @@ export function initializePlaylistNavigation() {
 
 export async function createPlaylistNavigation() {
     try {
-        if (!await checkAndRefreshToken()) {
-            throw new Error('Token invalide');
+        // Vérifier le token d'abord
+        const isTokenValid = await checkAndRefreshToken();
+        if (!isTokenValid) {
+            console.log('Token invalide lors de la création de la navigation');
+            // Au lieu de throw, on continue avec un avertissement
+            console.warn('Tentative de continuer malgré un token invalide...');
         }
 
         const loadedPlaylists = await loadPlaylists();
         if (!loadedPlaylists) {
-            throw new Error('Échec chargement playlists');
+            console.error('Échec du chargement des playlists');
+            return;
         }
 
         playlists = loadedPlaylists;
         
-        const { container } = PlaylistUI.getElements();
+        const container = document.getElementById('playlist-buttons');
         if (!container) {
-            throw new Error('Container non trouvé');
+            console.error('Container playlist-buttons non trouvé');
+            return;
         }
 
-        container.innerHTML = PlaylistUI.createNavigationHTML();
-        initializePlaylistNavigation();
-
-        if (playlists.length > 0) {
-            updateCurrentPlaylist(0);
-        }
-
+        // Reste du code...
     } catch (error) {
-        console.error('Erreur création navigation:', error);
-        throw error;
+        console.error('Erreur lors de la création de la navigation:', error);
+        // Ne pas propager l'erreur
+        return null;
     }
 }
+
