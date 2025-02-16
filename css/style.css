@@ -20,105 +20,71 @@ body {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Styles pour la carte d'information */
-.song-info {
-    display: none;
-    margin: 20px auto;
-    width: 300px; /* Même largeur que la pochette */
-}
-
-.hidden-info {
-    width: 100%;
-    min-height: 120px; /* Hauteur minimale pour le contenu */
-}
-
-.card {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-    position: relative;
-}
-
-.back {
-    background-color: #9C27B0;
-    color: white;
-    border-radius: 10px;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    transform: rotateY(-180deg); /* Position initiale */
-    position: absolute;
-    backface-visibility: hidden; /* Important pour l'effet 3D */
-}
-
-.card.revealed {
-    transform: rotateY(180deg); /* Rotation complète */
-}
-
-
-/* Styles de base pour la carte d'information */
-.song-info {
-    display: none; /* Par défaut caché */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    min-width: 200px;
-}
-
-/* Style pour la carte quand elle est révélée */
-.song-info.visible {
+/* Album Art */
+#album-art {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
 }
 
-/* Styles pour le conteneur des détails */
+#album-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Song Info Card */
+.song-info {
+    display: none;
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+}
+
 .hidden-info {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .card {
     opacity: 0;
     transition: opacity 0.3s ease;
+    width: 100%;
 }
 
 .card.revealed {
     opacity: 1;
 }
 
-/* Vos styles existants */
 .song-details {
-    width: 100%;
     text-align: center;
 }
 
 .song-title {
-    font-weight: bold;
     font-size: 1.2em;
-    margin-bottom: 10px;
-    word-wrap: break-word;
-    color: white;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .song-artist {
-    font-style: italic;
+    font-size: 1.1em;
     margin-bottom: 5px;
-    word-wrap: break-word;
-    color: white;
 }
 
 .song-year {
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9em;
+    color: #888;
 }
 
-
-/* Styles pour les boutons de playlist */
+/* Playlist Buttons */
 .playlist-buttons {
     display: flex;
     justify-content: center;
@@ -150,8 +116,7 @@ body {
     transform: scale(1.1);
 }
 
-
-/* Styles pour la navigation entre les playlists */
+/* Playlist Navigation */
 .playlist-navigation {
     display: flex;
     align-items: center;
@@ -191,33 +156,7 @@ body {
     margin: 0;
 }
 
-.volume-button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
-
-/* Styles pour les boutons génériques */
-button {
-    background-color: #1DB954;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 10px;
-}
-
-button:hover {
-    background-color: #1ed760;
-}
-
-/* Styles pour le lecteur */
+/* Player Controls */
 #player-container {
     background-color: #282828;
     border-radius: 15px;
@@ -247,9 +186,8 @@ button:hover {
     border-radius: 2px;
 }
 
-/* Panel de debug */
+/* Debug Panel */
 .debug-panel {
-    display: none;
     margin-top: 20px;
     border-radius: 5px;
 }
@@ -278,7 +216,7 @@ button:hover {
     background-color: #f1f1f1;
     padding: 0 18px;
 }
- 
+
 .debug-content button {
     margin: 10px 5px;
     padding: 8px 16px;
@@ -291,19 +229,4 @@ button:hover {
 
 .debug-content button:hover {
     background-color: #c82333;
-}
-
-/* Style pour l'image de l'album */
-#album-art {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#album-image {
-    width: 300px; /* Largeur fixe */
-    height: 300px; /* Hauteur fixe pour un carré parfait */
-    border-radius: 10px;
-    object-fit: cover;
-    display: block; /* Aide au centrage */
 }
