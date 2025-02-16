@@ -152,24 +152,54 @@ async function playRandomSong() {
         const randomSongIndex = Math.floor(Math.random() * selectedPlaylist.songs.length);
         const selectedSong = selectedPlaylist.songs[randomSongIndex];
 
+        // Récupérer le deviceId et le token
+        const deviceId = window.deviceId;
+        const token = localStorage.getItem('spotify_token');
+
+        if (!deviceId || !token) {
+            console.error('DeviceId ou token manquant');
+            return;
+        }
+
+        // Lancer la lecture via l'API Spotify
+        const response = await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
+            method: 'PUT',
+            body: JSON.stringify({ uris: [selectedSong.uri] }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok && response.status !== 204) {
+            throw new Error(`Erreur API Spotify: ${response.status}`);
+        }
+
         // Afficher la pochette et les informations
         const albumArt = document.getElementById('album-art');
         if (albumArt) {
             albumArt.style.display = 'block';
         }
 
-        // Lancer la lecture
-        if (window.player) {
-            await window.player.play(selectedSong.uri);
-            // Mettre à jour les informations du morceau courant
-            if (typeof window.updateCurrentSong === 'function') {
-                window.updateCurrentSong({
-                    title: selectedSong.title,
-                    artist: selectedSong.artist,
-                    year: selectedSong.year
-                });
+        // Mettre à jour les informations du morceau
+        if (typeof window.updateCurrentSong === 'function') {
+            window.updateCurrentSong({
+                title: selectedSong.title,
+                artist: selectedSong.artist,
+                year: selectedSong.year
+            });
+        }
+
+        // Mettre à jour l'artwork
+        if (selectedSong.album_artwork) {
+            const albumImage = document.getElementById('album-image');
+            if (albumImage) {
+                albumImage.src = selectedSong.album_artwork;
+                albumImage.style.filter = 'blur(20px)'; // Initial blur
             }
         }
+
+        console.log('Lecture démarrée:', selectedSong.title);
 
     } catch (error) {
         console.error('Erreur lors de la lecture aléatoire:', error);
