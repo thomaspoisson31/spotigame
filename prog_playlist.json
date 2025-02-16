@@ -1,0 +1,905 @@
+{
+  "playlist_name": "Prog rock",
+  "songs": [
+    {
+      "title": "Echoes",
+      "artist": "Pink Floyd",
+      "year": 1971,
+      "uri": "spotify:track:7kriFJLY2KOhw5en9iI2jb"
+    },
+    {
+      "title": "Supper's Ready",
+      "artist": "Genesis",
+      "year": 1972,
+      "uri": "spotify:track:5zADxJhJEzuOstzcUtXlXv"
+    },
+    {
+      "title": "Close to the Edge",
+      "artist": "Yes",
+      "year": 1972,
+      "uri": "spotify:track:47dPsSo7cEDNkvIOSB4O2k"
+    },
+    {
+      "title": "Starless",
+      "artist": "King Crimson",
+      "year": 1974,
+      "uri": "spotify:track:3bbfY8yDDwzLvvx3tFwy8i"
+    },
+    {
+      "title": "Tarkus",
+      "artist": "Emerson, Lake & Palmer",
+      "year": 1971,
+      "uri": "spotify:track:7fLEJNwcW60W74XehVmR5p"
+    },
+    {
+      "title": "La Villa Strangiato",
+      "artist": "Rush",
+      "year": 1978,
+      "uri": "spotify:track:4CyElmiM9EF9aURGWlPZLi"
+    },
+    {
+      "title": "Thick as a Brick",
+      "artist": "Jethro Tull",
+      "year": 1972,
+      "uri": "spotify:track:0eufeeCADKlpxLA7HATWBW"
+    },
+    {
+      "title": "Octopus",
+      "artist": "Gentle Giant",
+      "year": 1972,
+      "uri": "spotify:track:4TMxZ26m165tGTS52GCbwt"
+    },
+    {
+      "title": "Lady Fantasy",
+      "artist": "Camel",
+      "year": 1974,
+      "uri": "spotify:track:35e4fhZkQuQo77kOro2QYF"
+    },
+    {
+      "title": "Lateralus",
+      "artist": "Tool",
+      "year": 2001,
+      "uri": "spotify:track:7tvuLLroI0n6uYBWuFig5d"
+    },
+    {
+      "title": "Peaches en Regalia",
+      "artist": "Frank Zappa",
+      "year": 1969,
+      "uri": "spotify:track:5uDu2qOoDou7cFXsipAo8l"
+    },
+    {
+      "title": "Grendel",
+      "artist": "Marillion",
+      "year": 1982,
+      "uri": "spotify:track:2H0N1TOOc2iTGUuU3I1GrF"
+    },
+    {
+      "title": "Anesthetize",
+      "artist": "Porcupine Tree",
+      "year": 2007,
+      "uri": "spotify:track:2VvUor8pk8HOR9cb5iC84z"
+    },
+    {
+      "title": "The Story in Your Eyes",
+      "artist": "The Moody Blues",
+      "year": 1971,
+      "uri": "spotify:track:3kcaix8VptngsWoYDTqEN2"
+    },
+    {
+      "title": "Out-Bloody-Rageous",
+      "artist": "Soft Machine",
+      "year": 1970,
+      "uri": "spotify:track:789INjkAnWPp2Jkbiy7vAN"
+    },
+    {
+      "title": "Phaedra",
+      "artist": "Tangerine Dream",
+      "year": 1974,
+      "uri": "spotify:track:6Qx7IRv8VmRTppmnks6fDm"
+    },
+    {
+      "title": "Fool's Overture",
+      "artist": "Supertramp",
+      "year": 1977,
+      "uri": "spotify:track:5pSSEkT0963muzzIjsVkrs"
+    },
+    {
+      "title": "Master of the Universe",
+      "artist": "Hawkwind",
+      "year": 1971,
+      "uri": "spotify:track:3q4hJtKfWjpJrEFtSFmqAf"
+    },
+    {
+      "title": "Conquistador",
+      "artist": "Procol Harum",
+      "year": 1967,
+      "uri": "spotify:track:03AOlwDC7TAXkXqRRECmAM"
+    },
+    {
+      "title": "Hocus Pocus",
+      "artist": "Focus",
+      "year": 1971,
+      "uri": "spotify:track:6iZtDWu3FTuxu7AprIqA3Y"
+    },
+    {
+      "title": "Welcome Home",
+      "artist": "Coheed and Cambria",
+      "year": 2005,
+      "uri": "spotify:track:42GP0xKtkolBnmqQRvSllO"
+    },
+    {
+      "title": "Shadow of the Hierophant",
+      "artist": "Steve Hackett",
+      "year": 1975,
+      "uri": "spotify:track:0lDHIDvwldrBLw0eOzo1Yh"
+    },
+    {
+      "title": "Suspiria",
+      "artist": "Goblin",
+      "year": 1977,
+      "uri": "spotify:track:0y1rTPYx9e1fFlP3W9KvpW"
+    },
+    {
+      "title": "Vivaldi",
+      "artist": "Curved Air",
+      "year": 1970,
+      "uri": "spotify:track:26oHuX40kl6CbJOE2fYzp2"
+    },
+    {
+      "title": "Joybringer",
+      "artist": "Manfred Mann's Earth Band",
+      "year": 1973,
+      "uri": "spotify:track:2rkqvEggHoPCwQA8MTpxv2"
+    },
+    {
+      "title": "Cockroach King",
+      "artist": "Haken",
+      "year": 2013,
+      "uri": "spotify:track:0J1CIpL8IuUf0OyijwkMFj"
+    },
+    {
+      "title": "The Sky Is Red",
+      "artist": "Leprous",
+      "year": 2019,
+      "uri": "spotify:track:7cqnK70AUCBypcveB7OCs1"
+    },
+    {
+      "title": "Solar Music",
+      "artist": "Grobschnitt",
+      "year": 1974,
+      "uri": "spotify:track:5EuecOXt3aFkIAIAuNHvp3"
+    },
+    {
+      "title": "The River",
+      "artist": "Strawbs",
+      "year": 1974,
+      "uri": "spotify:track:2FPZvHGQ08QLMoAvTrchJR"
+    },
+    {
+      "title": "Living in the Heart of the Beast",
+      "artist": "Henry Cow",
+      "year": 1975,
+      "uri": "spotify:track:2aAprJtfNwgaNBrQEjRDOE"
+    },
+    {
+      "title": "Luglio, agosto, settembre (nero)",
+      "artist": "Area",
+      "year": 1973,
+      "uri": "spotify:track:0TPr5hnZsUpJcibgC9U4OS"
+    },
+    {
+      "title": "Poseidon's Creation",
+      "artist": "Eloy",
+      "year": 1977,
+      "uri": "spotify:track:6jQNrWP4jOZuubkl9FB0NA"
+    },
+    {
+      "title": "Remember the Future",
+      "artist": "Nektar",
+      "year": 1973,
+      "uri": "spotify:track:3259UAmyh12GWpf8t9Nh7C"
+    },
+    {
+      "title": "Il giardino del mago",
+      "artist": "Banco del Mutuo Soccorso",
+      "year": 1972,
+      "uri": "spotify:track:7KMz12zDbOcmxoytnv5YEh"
+    },
+    {
+      "title": "Ashes Are Burning",
+      "artist": "Renaissance",
+      "year": 1973,
+      "uri": "spotify:track:2Aru12lSfPt3qGePyijaRu"
+    },
+    {
+      "title": "The Low Spark of High Heeled Boys",
+      "artist": "Traffic",
+      "year": 1971,
+      "uri": "spotify:track:1yW6y8RufwB4WEAQeip0tx"
+    },
+    {
+      "title": "Le Cimetière des Arlequins",
+      "artist": "Ange",
+      "year": 1973,
+      "uri": "spotify:track:3naUEUOTnyedgPZk94j9Bq"
+    },
+    {
+      "title": "Felona e Sorona",
+      "artist": "Le Orme",
+      "year": 1973,
+      "uri": "spotify:track:3fQswoYNfpPvubw9I9JxNn"
+    },
+    {
+      "title": "Here Come the Warm Jets",
+      "artist": "Brian Eno",
+      "year": 1974,
+      "uri": "spotify:track:5AiNr1E4t8n1T4NebVLKyK"
+    },
+    {
+      "title": "Station to Station",
+      "artist": "David Bowie",
+      "year": 1976,
+      "uri": "spotify:track:7cehkXeGO0t8HosgO42tHl"
+    },
+    {
+      "title": "The Institute of Mental Health, Burning",
+      "artist": "Peter Hammill",
+      "year": 1974,
+      "uri": "spotify:track:0T5aGNeZcxGyc2ZspktaNx"
+    },
+    {
+      "title": "Wuthering Heights",
+      "artist": "Kate Bush",
+      "year": 1978,
+      "uri": "spotify:track:5YSI1311X8t31PBjkBG4CZ"
+    },
+    {
+      "title": "Here Comes the Flood",
+      "artist": "Peter Gabriel",
+      "year": 1977,
+      "uri": "spotify:track:6l6b7epmL1Eg7ZlxYqMVed"
+    },
+    {
+      "title": "A Plague of Lighthouse Keepers",
+      "artist": "Van der Graaf Generator",
+      "year": 1971,
+      "uri": "spotify:track:5RYh6KA70fdHJtQElMWIna"
+    },
+    {
+      "title": "You Never Blow Yr Trip Forever",
+      "artist": "Gong",
+      "year": 1973,
+      "uri": "spotify:track:0OTAh7LyCvYj8JENZcFEZS"
+    },
+    {
+      "title": "Nine Feet Underground",
+      "artist": "Caravan",
+      "year": 1971,
+      "uri": "spotify:track:0ryYAMaDRH0CAapj2KwpDv"
+    },
+    {
+      "title": "De Futura",
+      "artist": "Magma",
+      "year": 1976,
+      "uri": "spotify:track:2SjGeBXioRPOuK9RfARQRi"
+    },
+    {
+      "title": "Halleluwah",
+      "artist": "Can",
+      "year": 1971,
+      "uri": "spotify:track:79rlfxOwsfNrpnFOptS90A"
+    },
+    {
+      "title": "It's a Rainy Day, Sunshine Girl",
+      "artist": "Faust",
+      "year": 1972,
+      "uri": "spotify:track:6UuSPghaAVyt7iHU0z3fdc"
+    },
+    {
+      "title": "Exposure",
+      "artist": "Robert Fripp",
+      "year": 1979,
+      "uri": "spotify:track:3gqDnBM5iWXBCtXf4BA7Kv"
+    },
+    {
+      "title": "Cygnus....Vismund Cygnus",
+      "artist": "The Mars Volta",
+      "year": 2005,
+      "uri": "spotify:track:2mmygsZnoEzJHXzEMgLd76"
+    },
+    {
+      "title": "Blackwater Park",
+      "artist": "Opeth",
+      "year": 2001,
+      "uri": "spotify:track:7IDQX9EUgMNQTgYcZSpO1d"
+    },
+    {
+      "title": "Metropolis Pt. 1: The Miracle and the Sleeper",
+      "artist": "Dream Theater",
+      "year": 1992,
+      "uri": "spotify:track:03QBXuSYfB8hvxvjjIkGJR"
+    },
+    {
+      "title": "Luminol",
+      "artist": "Steven Wilson",
+      "year": 2013,
+      "uri": "spotify:track:033qZdFc0NDMcC5qgwuUux"
+    },
+    {
+      "title": "Internal Landscapes",
+      "artist": "Anathema",
+      "year": 2012,
+      "uri": "spotify:track:1oo5pNYya1mGDpdENtnR6j"
+    },
+    {
+      "title": "Stardust We Are",
+      "artist": "The Flower Kings",
+      "year": 1997,
+      "uri": "spotify:track:5E9zkwGBZ8eGQqnNXe7cqD"
+    },
+    {
+      "title": "At the End of the Day",
+      "artist": "Spock's Beard",
+      "year": 1999,
+      "uri": "spotify:track:2xSXotZ4r0fw5zmQy2y15g"
+    },
+    {
+      "title": "The Whirlwind",
+      "artist": "Transatlantic",
+      "year": 2009,
+      "uri": "spotify:track:7ChnZpBmbTxgDjoEQVtN03"
+    },
+    {
+      "title": "Into the Electric Castle",
+      "artist": "Ayreon",
+      "year": 1998,
+      "uri": null
+    },
+    {
+      "title": "Beyond the Pale",
+      "artist": "Pain of Salvation",
+      "year": 2000,
+      "uri": "spotify:track:7vGOunSu0FJ9kR4zjvhaIr"
+    },
+    {
+      "title": "Second Life Syndrome",
+      "artist": "Riverside",
+      "year": 2005,
+      "uri": "spotify:track:2pemRVQh3eLi4GdIIXffgb"
+    },
+    {
+      "title": "Deadhead",
+      "artist": "Devin Townsend",
+      "year": 2003,
+      "uri": "spotify:track:3LHda8vKJRDhOL6wNtp9XI"
+    },
+    {
+      "title": "The Music That Died Alone",
+      "artist": "The Tangent",
+      "year": 2003,
+      "uri": "spotify:track:2CrBEx920A2mMSIpfAZE05"
+    },
+    {
+      "title": "Milliontown",
+      "artist": "Frost*",
+      "year": 2006,
+      "uri": "spotify:track:05yKPV7QfjUOzsdSfqd7rj"
+    },
+    {
+      "title": "Dream of Stone",
+      "artist": "Gazpacho",
+      "year": 2007,
+      "uri": "spotify:track:1WRhKj1vbK0ZiYJUlLh4FO"
+    },
+    {
+      "title": "Sleeping in Traffic",
+      "artist": "Beardfish",
+      "year": 2007,
+      "uri": "spotify:track:2D9PEiV4OIP0u8P4stinD2"
+    },
+    {
+      "title": "East Coast Racer",
+      "artist": "Big Big Train",
+      "year": 2013,
+      "uri": "spotify:track:0PWj8BEqfzvJw7VS8k2e6N"
+    },
+    {
+      "title": "The Masquerade Overture",
+      "artist": "Pendragon",
+      "year": 1996,
+      "uri": null
+    },
+    {
+      "title": "The Narrow Margin",
+      "artist": "IQ",
+      "year": 1993,
+      "uri": "spotify:track:0sWPMyRbmTD91nwvplzk6w"
+    },
+    {
+      "title": "The Visitor",
+      "artist": "Arena",
+      "year": 1998,
+      "uri": "spotify:track:1LZDfKS5iOZyk3E9xmZtcp"
+    },
+    {
+      "title": "The Ravages of Time",
+      "artist": "Threshold",
+      "year": 2001,
+      "uri": "spotify:track:2W7x02FbKw9U3UnxV94zUw"
+    },
+    {
+      "title": "Deadman",
+      "artist": "Karnivool",
+      "year": 2009,
+      "uri": "spotify:track:2Rwwb7NQ8RQPYmPmTYMFGy"
+    },
+    {
+      "title": "Part Zero",
+      "artist": "The Pineapple Thief",
+      "year": 2016,
+      "uri": "spotify:track:1hC84hjoO9itbTQTflpyYm"
+    },
+    {
+      "title": "Homesick",
+      "artist": "Airbag",
+      "year": 2009,
+      "uri": "spotify:track:35nMCjUQxdyNsIEeGm2VeA"
+    },
+    {
+      "title": "From Silence to Somewhere",
+      "artist": "Wobbler",
+      "year": 2017,
+      "uri": "spotify:track:66W0pPNlk7DPRYmmfl79xb"
+    },
+    {
+      "title": "The Death Defying Unicorn",
+      "artist": "Motorpsycho",
+      "year": 2012,
+      "uri": "spotify:track:7tC7KKz4hfCgVl8cNfh7iU"
+    },
+    {
+      "title": "Green and Cream",
+      "artist": "Guilt Machine",
+      "year": 2009,
+      "uri": "spotify:track:1SgF4G1ms2tpgDjC0obpHv"
+    },
+    {
+      "title": "The In-Between Kingdom",
+      "artist": "Lunatic Soul",
+      "year": 2014,
+      "uri": "spotify:track:4KN7nSMwY7H3bGi64UuqFU"
+    },
+    {
+      "title": "Jordrök",
+      "artist": "Änglagård",
+      "year": 1992,
+      "uri": "spotify:track:4BrfYaYakwLfw9AxfT24d4"
+    },
+    {
+      "title": "Gravity",
+      "artist": "Anekdoten",
+      "year": 2003,
+      "uri": "spotify:track:26nO6JjAAMzIOyurQ2Xz7a"
+    },
+    {
+      "title": "Mei",
+      "artist": "Echolyn",
+      "year": 2002,
+      "uri": "spotify:track:4hmVPsHO2NRXfkXQTPgYGr"
+    },
+    {
+      "title": "The Lake and the River",
+      "artist": "The Dear Hunter",
+      "year": 2007,
+      "uri": "spotify:track:059CXpVfKGd3G1Ml2ca95n"
+    },
+    {
+      "title": "Canto IV (Limbo)",
+      "artist": "Discipline",
+      "year": 1997,
+      "uri": "spotify:track:1mWjVbGyXmCBI7Hsydn0AU"
+    },
+    {
+      "title": "Snowtorch",
+      "artist": "Phideaux",
+      "year": 2011,
+      "uri": "spotify:track:7g9orjpDnXLzdVGi0UmbRq"
+    },
+    {
+      "title": "The Garden",
+      "artist": "Unitopia",
+      "year": 2008,
+      "uri": "spotify:track:3sRHK0xAbnMWvUn4irFuj6"
+    },
+    {
+      "title": "Unfurl",
+      "artist": "Katatonia",
+      "year": 2009,
+      "uri": "spotify:track:1QAZ8h1l94YaZnveYnwUAq"
+    },
+    {
+      "title": "Massive Bereavement",
+      "artist": "Oceansize",
+      "year": 2003,
+      "uri": "spotify:track:6gpDBfPcfgnXVrTZVcDP6W"
+    },
+    {
+      "title": "Leaving Eden",
+      "artist": "Antimatter",
+      "year": 2007,
+      "uri": "spotify:track:3Vdi1nIBdsaZ58g9hFlLEX"
+    },
+    {
+      "title": "Satya",
+      "artist": "Aghora",
+      "year": 2000,
+      "uri": "spotify:track:1VLR9q3QCca5OuYpSocZt7"
+    },
+    {
+      "title": "Veil of Maya",
+      "artist": "Cynic",
+      "year": 1993,
+      "uri": "spotify:track:3SZn66k8OQsUk9tCby1OaN"
+    },
+    {
+      "title": "Universal Mind",
+      "artist": "Liquid Tension Experiment",
+      "year": 1998,
+      "uri": "spotify:track:5zNFTtuzuYNsGSfF3s1x7f"
+    },
+    {
+      "title": "The New Math (What He Said)",
+      "artist": "OSI",
+      "year": 2003,
+      "uri": "spotify:track:5O4EitLoDkOJ1qcbc58075"
+    },
+    {
+      "title": "Remember Us",
+      "artist": "Pineapple Thief",
+      "year": 2018,
+      "uri": "spotify:track:0Gm2d3XrsiwIVudkQuwigc"
+    },
+    {
+      "title": "Arriving Somewhere But Not Here",
+      "artist": "Porcupine Tree",
+      "year": 2005,
+      "uri": "spotify:track:6HODkZg8Jm7kG8sk8zXyfn"
+    },
+    {
+      "title": "Conceiving You",
+      "artist": "Riverside",
+      "year": 2007,
+      "uri": "spotify:track:37ErTUm3x69ZSCE485rRd9"
+    },
+    {
+      "title": "Strange Machines",
+      "artist": "The Gathering",
+      "year": 1995,
+      "uri": "spotify:track:51m9kUkrbufdmMl4ZBHcgR"
+    },
+    {
+      "title": "Ghost of Perdition",
+      "artist": "Opeth",
+      "year": 2005,
+      "uri": "spotify:track:0ppdt8zRZOHIKh4ZDB0Zp9"
+    },
+    {
+      "title": "Visions",
+      "artist": "Haken",
+      "year": 2011,
+      "uri": "spotify:track:4oBKsjV5vzQ4pIlkp6Jfk4"
+    },
+    {
+      "title": "Forced Entry",
+      "artist": "Leprous",
+      "year": 2011,
+      "uri": "spotify:track:5RNPsRyU1nMaazMv7Ssz0A"
+    },
+    {
+      "title": "White Walls",
+      "artist": "Between the Buried and Me",
+      "year": 2007,
+      "uri": "spotify:track:68ok85RlopZM5l6a3Hth8Z"
+    },
+    {
+      "title": "Kingdom",
+      "artist": "Devin Townsend Project",
+      "year": 2012,
+      "uri": "spotify:track:3wCoJ2MONhPWJZoHzJOZAt"
+    },
+    {
+      "title": "The Theory of Everything",
+      "artist": "Ayreon",
+      "year": 2013,
+      "uri": "spotify:track:7Dn6U8q80MuFwxlhxVWhsT"
+    },
+    {
+      "title": "All of the Above",
+      "artist": "Transatlantic",
+      "year": 2000,
+      "uri": "spotify:track:2HkJ2X58sZuKdM2WdDqzRW"
+    },
+    {
+      "title": "The Door",
+      "artist": "Neal Morse",
+      "year": 2003,
+      "uri": "spotify:track:0313usyx8WoYcNpZ5Jz9JJ"
+    },
+    {
+      "title": "Infinite Fire",
+      "artist": "Flying Colors",
+      "year": 2012,
+      "uri": "spotify:track:6dD6DpP4pWRRRuZKbjqvkY"
+    },
+    {
+      "title": "Black Light Machine",
+      "artist": "Frost*",
+      "year": 2008,
+      "uri": "spotify:track:7uCKD3TucYCe8nAKyU9VQ5"
+    },
+    {
+      "title": "Winter is Never",
+      "artist": "Gazpacho",
+      "year": 2011,
+      "uri": "spotify:track:0ZbyVqPV87R1YI9NxWdpKR"
+    },
+    {
+      "title": "The Silent Wake of Empty誉",
+      "artist": "Kayo Dot",
+      "year": 2006,
+      "uri": null
+    },
+    {
+      "title": "A Pleasant Shade of Gray",
+      "artist": "Fates Warning",
+      "year": 1997,
+      "uri": "spotify:track:1DqLFiJU5zREJ6SvUmiq70"
+    },
+    {
+      "title": "Deconstruction",
+      "artist": "Devin Townsend",
+      "year": 2011,
+      "uri": "spotify:track:1QApjIsQj4GEzqnLKkNrw6"
+    },
+    {
+      "title": "Hand Cannot Erase",
+      "artist": "Steven Wilson",
+      "year": 2015,
+      "uri": "spotify:track:3L6iaRFenZmnkepJ4Ey9Cm"
+    },
+    {
+      "title": "Coma Ecliptic",
+      "artist": "Between the Buried and Me",
+      "year": 2015,
+      "uri": "spotify:track:5EM6ySpK1SYeof4jm72psM"
+    },
+    {
+      "title": "Affinity",
+      "artist": "Haken",
+      "year": 2016,
+      "uri": "spotify:track:7vKf2wVRcpRmitN4rp3R0C"
+    },
+    {
+      "title": "Pitfalls",
+      "artist": "Leprous",
+      "year": 2019,
+      "uri": null
+    },
+    {
+      "title": "In Cauda Venenum",
+      "artist": "Opeth",
+      "year": 2019,
+      "uri": "spotify:track:2r04qeVqHrvZn3ZcC2egkm"
+    },
+    {
+      "title": "Vector",
+      "artist": "Haken",
+      "year": 2018,
+      "uri": null
+    },
+    {
+      "title": "Aphelion",
+      "artist": "Leprous",
+      "year": 2021,
+      "uri": null
+    },
+    {
+      "title": "Colors II",
+      "artist": "Between the Buried and Me",
+      "year": 2021,
+      "uri": null
+    },
+    {
+      "title": "The Mountain",
+      "artist": "Haken",
+      "year": 2013,
+      "uri": "spotify:track:37zlkTmMfbwX9Wlno3KhS1"
+    },
+    {
+      "title": "Coal",
+      "artist": "Leprous",
+      "year": 2013,
+      "uri": "spotify:track:5OkLfBehmMPQXnCK9tNRd8"
+    },
+    {
+      "title": "Damnation",
+      "artist": "Opeth",
+      "year": 2003,
+      "uri": null
+    },
+    {
+      "title": "Heritage",
+      "artist": "Opeth",
+      "year": 2011,
+      "uri": "spotify:track:26DLya8CVvUBWRFI6zggsA"
+    },
+    {
+      "title": "Pale Communion",
+      "artist": "Opeth",
+      "year": 2014,
+      "uri": null
+    },
+    {
+      "title": "Sorceress",
+      "artist": "Opeth",
+      "year": 2016,
+      "uri": "spotify:track:4dBdgZ6dgWQ7lOzVS8b7q1"
+    },
+    {
+      "title": "Distant Satellites",
+      "artist": "Anathema",
+      "year": 2014,
+      "uri": "spotify:track:0C5xxAPxK2Me07CZIRIJQr"
+    },
+    {
+      "title": "Weather Systems",
+      "artist": "Anathema",
+      "year": 2012,
+      "uri": null
+    },
+    {
+      "title": "We're Here Because We're Here",
+      "artist": "Anathema",
+      "year": 2010,
+      "uri": null
+    },
+    {
+      "title": "Hymns for the Broken",
+      "artist": "Anathema",
+      "year": 2003,
+      "uri": null
+    },
+    {
+      "title": "A Fine Day to Exit",
+      "artist": "Anathema",
+      "year": 2001,
+      "uri": "spotify:track:68gTM9Rhl15nYrzCwHstEL"
+    },
+    {
+      "title": "Judgement",
+      "artist": "Anathema",
+      "year": 1999,
+      "uri": "spotify:track:77CzCoPXY11BZ5Qvpc0oIj"
+    },
+    {
+      "title": "Eternity",
+      "artist": "Anathema",
+      "year": 1996,
+      "uri": "spotify:track:3hFL047MhmkBNu9pngmCf5"
+    },
+    {
+      "title": "The Silent Enigma",
+      "artist": "Anathema",
+      "year": 1995,
+      "uri": "spotify:track:3d091sCtaT8dJHVSWb3AOR"
+    },
+    {
+      "title": "The Dividing Line",
+      "artist": "Airbag",
+      "year": 2016,
+      "uri": null
+    },
+    {
+      "title": "Disconnected",
+      "artist": "Airbag",
+      "year": 2009,
+      "uri": "spotify:track:3kA41xSvsssfxJjyi1wXCS"
+    },
+    {
+      "title": "Identity",
+      "artist": "Airbag",
+      "year": 2024,
+      "uri": null
+    },
+    {
+      "title": "Killer",
+      "artist": "Van der Graaf Generator",
+      "year": 1976,
+      "uri": "spotify:track:0TMKja08JBRFwkdpl9IpI3"
+    },
+    {
+      "title": "Still Life",
+      "artist": "Van der Graaf Generator",
+      "year": 1976,
+      "uri": "spotify:track:793XnzccZTWuwv8W2uu2JA"
+    },
+    {
+      "title": "Pawn Hearts",
+      "artist": "Van der Graaf Generator",
+      "year": 1971,
+      "uri": null
+    },
+    {
+      "title": "Godbluff",
+      "artist": "Van der Graaf Generator",
+      "year": 1975,
+      "uri": null
+    },
+    {
+      "title": "H to He, Who Am the Only One",
+      "artist": "Van der Graaf Generator",
+      "year": 1970,
+      "uri": "spotify:track:2sfYPaNXqBH5wmz1d1uVVg"
+    },
+    {
+      "title": "The Least We Can Do Is Wave to Each Other",
+      "artist": "Van der Graaf Generator",
+      "year": 1970,
+      "uri": "spotify:track:0I7DVTsXCnD9xzURFIUVE2"
+    },
+    {
+      "title": "Aeroplane",
+      "artist": "Magenta",
+      "year": 2004,
+      "uri": null
+    },
+    {
+      "title": "The White Witch",
+      "artist": "Magenta",
+      "year": 2004,
+      "uri": null
+    },
+    {
+      "title": "I'm Alive",
+      "artist": "Magenta",
+      "year": 2004,
+      "uri": "spotify:track:2dI8SlLzaXwopTJhGMaBvi"
+    },
+    {
+      "title": "Anger",
+      "artist": "Karmakanic",
+      "year": 2008,
+      "uri": null
+    },
+    {
+      "title": "The Tool",
+      "artist": "Karmakanic",
+      "year": 2008,
+      "uri": null
+    },
+    {
+      "title": "God the universe and everything else no one cares about",
+      "artist": "Karmakanic",
+      "year": 2008,
+      "uri": "spotify:track:68q82ttqTAz08NNbyumy98"
+    },
+    {
+      "title": "Isildurs Bane",
+      "artist": "Cheval Volo",
+      "year": 2019,
+      "uri": null
+    },
+    {
+      "title": "Mind Vol. 1",
+      "artist": "Isildurs Bane",
+      "year": 2022,
+      "uri": null
+    },
+    {
+      "title": "Off the Radar",
+      "artist": "Isildurs Bane",
+      "year": 2019,
+      "uri": "spotify:track:5V9ghgkc4oOZFwsdDNI3F6"
+    }
+  ]
+}
