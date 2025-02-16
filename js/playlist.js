@@ -85,6 +85,7 @@ export function initializePlaylistNavigation() {
     const prevButton = document.querySelector('.prev-button');
     const nextButton = document.querySelector('.next-button');
     ELEMENTS.volumeButton = document.querySelector('.volume-button');
+    let isPlaying = false; // Nouvel état pour suivre la lecture
 
     if (!prevButton || !nextButton || !ELEMENTS.volumeButton) {
         console.error('Éléments de navigation non trouvés');
@@ -96,6 +97,7 @@ export function initializePlaylistNavigation() {
             if (window.player) {
                 // Arrêter la lecture en cours
                 await window.player.pause();
+                isPlaying = false; // Réinitialiser l'état de lecture
                 
                 // Réinitialiser l'état du player
                 window.player.getCurrentState().then(state => {
@@ -119,16 +121,6 @@ export function initializePlaylistNavigation() {
         }
     }
 
-    prevButton.addEventListener('click', () => {
-        const newIndex = (currentPlaylistIndex - 1 + playlists.length) % playlists.length;
-        handleNavigation(newIndex);
-    });
-
-    nextButton.addEventListener('click', () => {
-        const newIndex = (currentPlaylistIndex + 1) % playlists.length;
-        handleNavigation(newIndex);
-    });
-
     ELEMENTS.volumeButton.addEventListener('click', async () => {
         if (!window.player) {
             console.error('Player Spotify non initialisé');
@@ -138,32 +130,42 @@ export function initializePlaylistNavigation() {
         try {
             const state = await window.player.getCurrentState();
             
-            if (!state || !state.track_window?.current_track || state.paused) {
-                // Si pas de lecture en cours ou en pause, lancer une nouvelle chanson
+            if (!state || !state.track_window?.current_track || !isPlaying) {
+                // Si pas de lecture en cours, lancer une nouvelle chanson
                 await playRandomSong();
+                isPlaying = true;
                 ELEMENTS.volumeButton.textContent = VOLUME.ICONS.UNMUTED;
             } else {
-                // Sinon gérer le volume
-                try {
-                    const volume = await window.player.getVolume();
-                    const newVolume = volume === VOLUME.MUTED ? VOLUME.DEFAULT : VOLUME.MUTED;
-                    await window.player.setVolume(newVolume);
-                    ELEMENTS.volumeButton.textContent = newVolume === VOLUME.MUTED ? 
-                        VOLUME.ICONS.MUTED : VOLUME.ICONS.UNMUTED;
-                } catch (volumeError) {
-                    console.error('Erreur lors du changement de volume:', volumeError);
+                // Si une lecture est en cours, gérer le volume
+                const volume = await window.player.getVolume();
+                if (volume === VOLUME.MUTED) {
+                    // Remettre le son
+                    await window.player.setVolume(VOLUME.DEFAULT);
+                    await window.player.resume();
+                    ELEMENTS.volumeButton.textContent = VOLUME.ICONS.UNMUTED;
+                } else {
+                    // Couper le son
+                    await window.player.setVolume(VOLUME.MUTED);
+                    await window.player.pause();
+                    ELEMENTS.volumeButton.textContent = VOLUME.ICONS.MUTED;
                 }
             }
         } catch (error) {
             console.error('Erreur lors de la gestion du volume:', error);
-            // En cas d'erreur, tenter de lancer une nouvelle chanson
-            try {
-                await playRandomSong();
-                ELEMENTS.volumeButton.textContent = VOLUME.ICONS.UNMUTED;
-            } catch (playError) {
-                console.error('Erreur lors de la tentative de lecture:', playError);
-            }
+            // En cas d'erreur, réinitialiser l'état
+            isPlaying = false;
+            ELEMENTS.volumeButton.textContent = VOLUME.ICONS.UNMUTED;
         }
+    });
+
+    prevButton.addEventListener('click', () => {
+        const newIndex = (currentPlaylistIndex - 1 + playlists.length) % playlists.length;
+        handleNavigation(newIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+        const newIndex = (currentPlaylistIndex + 1) % playlists.length;
+        handleNavigation(newIndex);
     });
 }
 
