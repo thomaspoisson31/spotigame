@@ -134,4 +134,7 @@ export const connectPlayer = async () => {
             setTimeout(connectPlayer, retryDelay);
         } else {
             console.error('Nombre maximum de tentatives atteint');
-            window.location.
+            window.location.href = 'auth.html';
+        }
+    }
+};
