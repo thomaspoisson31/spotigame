@@ -1,65 +1,111 @@
+import { checkAndRefreshToken } from './auth.js';
+
 export let playlists = [];
 let currentPlaylistIndex = 0;
 
-// Fonction pour vérifier le token
-async function checkToken() {
-    const token = localStorage.getItem('spotify_token');
-    if (!token) {
-        console.log('Token absent');
-        return false;
+// Configuration
+const CONFIG = {
+    CONFIG_FILE: 'playlist_config.json',
+    DEFAULT_VOLUME: 0.5,
+    VOLUME_ICONS: {
+        MUTED: '🔈',
+        UNMUTED: '🔊'
+    }
+};
+
+// Gestionnaire de playlists
+class PlaylistManager {
+    static async loadPlaylistConfig() {
+        try {
+            const response = await fetch(CONFIG.CONFIG_FILE);
+            if (!response.ok) {
+                throw new Error(`Erreur chargement configuration (${response.status})`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Erreur chargement configuration:', error);
+            throw error;
+        }
     }
 
-    try {
-        const response = await fetch('https://api.spotify.com/v1/me', {
-            headers: {
-                'Authorization': `Bearer ${token}`
+    static async loadPlaylistFile(file) {
+        try {
+            const response = await fetch(file);
+            if (!response.ok) {
+                throw new Error(`Erreur chargement playlist ${file}`);
             }
-        });
-        return response.ok;
-    } catch (error) {
-        console.error('Erreur vérification token:', error);
-        return false;
+            const data = await response.json();
+            return {
+                name: data.playlist_name,
+                songs: data.songs
+            };
+        } catch (error) {
+            console.error(`Erreur chargement ${file}:`, error);
+            return null;
+        }
+    }
+
+    static validatePlaylist(playlist) {
+        return playlist && 
+               playlist.name && 
+               Array.isArray(playlist.songs) && 
+               playlist.songs.length > 0;
     }
 }
 
+// Interface utilisateur
+class PlaylistUI {
+    static getElements() {
+        return {
+            container: document.getElementById('playlist-buttons'),
+            playlistName: document.querySelector('.playlist-name'),
+            prevButton: document.querySelector('.prev-button'),
+            nextButton: document.querySelector('.next-button'),
+            volumeButton: document.querySelector('.volume-button')
+        };
+    }
+
+    static createNavigationHTML() {
+        return `
+            <div class="playlist-navigation">
+                <button class="nav-button prev-button">&#9664;</button>
+                <div id="current-playlist" class="current-playlist">
+                    <span class="playlist-name"></span>
+                    <button class="volume-button">${CONFIG.VOLUME_ICONS.UNMUTED}</button>
+                </div>
+                <button class="nav-button next-button">&#9654;</button>
+            </div>
+        `;
+    }
+
+    static updatePlaylistDisplay(playlist) {
+        const { playlistName } = this.getElements();
+        if (playlistName && playlist) {
+            playlistName.textContent = playlist.name;
+        }
+    }
+}
+
+// Fonctions exportées
 export async function loadPlaylists() {
     try {
-        console.log('Début du chargement des playlists...');
-        
-        // Charger la configuration locale d'abord
-        const configResponse = await fetch('playlist_config.json');
-        if (!configResponse.ok) {
-            throw new Error('Impossible de charger le fichier de configuration');
+        if (!await checkAndRefreshToken()) {
+            throw new Error('Token invalide');
         }
-        
-        const config = await configResponse.json();
-        const files = config.playlist_files;
 
+        const config = await PlaylistManager.loadPlaylistConfig();
         const loadedPlaylists = await Promise.all(
-            files.map(async (file) => {
-                try {
-                    const fileResponse = await fetch(file);
-                    if (!fileResponse.ok) {
-                        return null;
-                    }
-                    const data = await fileResponse.json();
-                    return {
-                        name: data.playlist_name,
-                        songs: data.songs
-                    };
-                } catch (error) {
-                    console.error(`Erreur pour ${file}:`, error);
-                    return null;
-                }
-            })
+            config.playlist_files.map(PlaylistManager.loadPlaylistFile)
         );
 
-        const validPlaylists = loadedPlaylists.filter(playlist => playlist !== null);
+        const validPlaylists = loadedPlaylists
+            .filter(playlist => PlaylistManager.validatePlaylist(playlist));
+
         if (validPlaylists.length === 0) {
             throw new Error('Aucune playlist valide chargée');
         }
 
-        console.log('Playlists valides chargées:', validPlaylists.length);
+        console.log(`${validPlaylists.length} playlists chargées avec succès`);
         return validPlaylists;
 
     } catch (error) {
@@ -68,91 +114,81 @@ export async function loadPlaylists() {
     }
 }
 
-export function initializePlaylistNavigation() {
-    const prevButton = document.querySelector('.prev-button');
-    const nextButton = document.querySelector('.next-button');
-    const volumeButton = document.querySelector('.volume-button');
-
-    if (!prevButton || !nextButton || !volumeButton) {
-        console.error('Éléments de navigation non trouvés');
+export function updateCurrentPlaylist(index) {
+    if (!playlists[index]) {
+        console.error('Index de playlist invalide:', index);
         return;
     }
 
-    prevButton.addEventListener('click', () => {
+    PlaylistUI.updatePlaylistDisplay(playlists[index]);
+    
+    if (typeof window.loadRandomSong === 'function') {
+        window.loadRandomSong(index);
+    }
+}
+
+export function initializePlaylistNavigation() {
+    const elements = PlaylistUI.getElements();
+    
+    if (!elements.prevButton || !elements.nextButton || !elements.volumeButton) {
+        console.error('Éléments de navigation manquants');
+        return;
+    }
+
+    // Navigation
+    elements.prevButton.addEventListener('click', () => {
         currentPlaylistIndex = (currentPlaylistIndex - 1 + playlists.length) % playlists.length;
         updateCurrentPlaylist(currentPlaylistIndex);
     });
 
-    nextButton.addEventListener('click', () => {
+    elements.nextButton.addEventListener('click', () => {
         currentPlaylistIndex = (currentPlaylistIndex + 1) % playlists.length;
         updateCurrentPlaylist(currentPlaylistIndex);
     });
 
-    volumeButton.addEventListener('click', () => {
-        if (window.player) {
-            window.player.getVolume().then(volume => {
-                const newVolume = volume === 0 ? 0.5 : 0;
-                window.player.setVolume(newVolume);
-                volumeButton.textContent = newVolume === 0 ? '🔈' : '🔊';
-            });
+    // Contrôle du volume
+    elements.volumeButton.addEventListener('click', async () => {
+        if (!window.player) return;
+
+        try {
+            const volume = await window.player.getVolume();
+            const newVolume = volume === 0 ? CONFIG.DEFAULT_VOLUME : 0;
+            await window.player.setVolume(newVolume);
+            elements.volumeButton.textContent = newVolume === 0 ? 
+                CONFIG.VOLUME_ICONS.MUTED : CONFIG.VOLUME_ICONS.UNMUTED;
+        } catch (error) {
+            console.error('Erreur contrôle volume:', error);
         }
     });
 }
 
-export function updateCurrentPlaylist(index) {
-    if (playlists[index]) {
-        const playlistNameElement = document.querySelector('.playlist-name');
-        if (playlistNameElement) {
-            playlistNameElement.textContent = playlists[index].name;
-        }
-        
-        if (typeof window.loadRandomSong === 'function') {
-            window.loadRandomSong(index);
-        }
-    }
-}
-
 export async function createPlaylistNavigation() {
     try {
-        // Vérifier le token d'abord
-        const isTokenValid = await checkToken();
-        if (!isTokenValid) {
-            console.log('Token invalide lors de la création de la navigation');
-            return;
+        if (!await checkAndRefreshToken()) {
+            throw new Error('Token invalide');
         }
 
         const loadedPlaylists = await loadPlaylists();
         if (!loadedPlaylists) {
-            console.error('Échec du chargement des playlists');
-            return;
+            throw new Error('Échec chargement playlists');
         }
 
         playlists = loadedPlaylists;
         
-        const container = document.getElementById('playlist-buttons');
+        const { container } = PlaylistUI.getElements();
         if (!container) {
-            console.error('Container playlist-buttons non trouvé');
-            return;
+            throw new Error('Container non trouvé');
         }
 
-        container.innerHTML = `
-            <div class="playlist-navigation">
-                <button class="nav-button prev-button">&#9664;</button>
-                <div id="current-playlist" class="current-playlist">
-                    <span class="playlist-name"></span>
-                    <button class="volume-button">🔊</button>
-                </div>
-                <button class="nav-button next-button">&#9654;</button>
-            </div>
-        `;
-
+        container.innerHTML = PlaylistUI.createNavigationHTML();
         initializePlaylistNavigation();
-        
+
         if (playlists.length > 0) {
             updateCurrentPlaylist(0);
         }
 
     } catch (error) {
-        console.error('Erreur lors de la création de la navigation:', error);
+        console.error('Erreur création navigation:', error);
+        throw error;
     }
 }

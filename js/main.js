@@ -1,133 +1,154 @@
 import { player, deviceId, fetchAlbumArtwork, initializePlayer } from './spotifyApi.js';
-import { playlists, loadPlaylists } from './playlist.js';
-import { checkAndRefreshToken } from './auth.js';
-import { createPlaylistNavigation } from './playlist.js';
-
+import { playlists, loadPlaylists, createPlaylistNavigation } from './playlist.js';
+import { checkAndRefreshToken, getCurrentToken } from './auth.js';
 
 let currentSong = null;
 let imageRevealed = false;
 
-export function resetSongInfo() {
-    const songInfo = document.getElementById('song-info');
-    const card = document.querySelector('#songCard .card');
-    
-    if (card) {
-        card.classList.remove('revealed');
-    }
-    
-    const titleElement = document.querySelector('.song-title');
-    const artistElement = document.querySelector('.song-artist');
-    const yearElement = document.querySelector('.song-year');
-    
-    if (titleElement) titleElement.textContent = '';
-    if (artistElement) artistElement.textContent = '';
-    if (yearElement) yearElement.textContent = '';
-}
+// Gestion de l'interface utilisateur
+const UI = {
+    resetSongInfo() {
+        const elements = {
+            card: document.querySelector('#songCard .card'),
+            title: document.querySelector('.song-title'),
+            artist: document.querySelector('.song-artist'),
+            year: document.querySelector('.song-year')
+        };
 
-export async function createPlaylistButtons() {
-    try {
-        console.log('Début création des boutons...');
-        await loadPlaylists();
-        const container = document.getElementById('playlist-buttons');
-        
-        if (!container) {
-            console.error('Container playlist-buttons non trouvé dans le DOM');
-            return;
+        if (elements.card) {
+            elements.card.classList.remove('revealed');
         }
-        
-        console.log('Création des boutons pour', playlists.length, 'playlists');
-        playlists.forEach((playlist, index) => {
-            const button = document.createElement('button');
-            button.className = 'playlist-button';
-            button.textContent = playlist.name;
-            
-            button.addEventListener('click', () => {
-                const buttons = document.querySelectorAll('.playlist-button');
-                buttons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                loadRandomSong(index);
-            });
-            
-            container.appendChild(button);
-            console.log('Bouton créé pour:', playlist.name);
-        });
-    } catch (error) {
-        console.error('Erreur lors de la création des boutons:', error);
-    }
-}
 
-export function resetImage() {
-    const albumArt = document.getElementById('album-art');
-    const albumImage = document.getElementById('album-image');
-    albumImage.style.filter = 'blur(20px)';
-    imageRevealed = false;
-    albumArt.style.display = 'none';
-}
-
-export function toggleImage() {
-    const albumImage = document.getElementById('album-image');
-    const songInfo = document.getElementById('song-info');
-    const card = document.querySelector('#songCard .card');
-    
-    if (!imageRevealed) {
-        albumImage.style.filter = 'none';
-        imageRevealed = true;
-        songInfo.style.display = 'flex';
-        
-        document.querySelector('.song-title').textContent = currentSong.title;
-        document.querySelector('.song-artist').textContent = currentSong.artist;
-        document.querySelector('.song-year').textContent = `(${currentSong.year})`;
-        
-        card.classList.add('revealed');
-    }
-}
-
-// Initialisation
-document.addEventListener('DOMContentLoaded', () => {
-    const token = localStorage.getItem('spotify_token');
-    if (!token) {
-        window.location.href = 'auth.html';
-        return;
-    }
-
-    const songCard = document.getElementById('songCard');
-    if (songCard) {
-        songCard.addEventListener('click', toggleImage);
-    }
-
-    const debugButton = document.querySelector('.collapsible-debug');
-    if (debugButton) {
-        debugButton.addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
+        Object.entries(elements).forEach(([key, element]) => {
+            if (element && key !== 'card') {
+                element.textContent = '';
             }
         });
+    },
+
+    async createPlaylistButtons() {
+        try {
+            console.log('Début création des boutons...');
+            await loadPlaylists();
+            
+            const container = document.getElementById('playlist-buttons');
+            if (!container) {
+                throw new Error('Container playlist-buttons non trouvé');
+            }
+
+            console.log(`Création des boutons pour ${playlists.length} playlists`);
+            
+            playlists.forEach((playlist, index) => {
+                const button = document.createElement('button');
+                button.className = 'playlist-button';
+                button.textContent = playlist.name;
+                
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.playlist-button')
+                        .forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    this.loadRandomSong(index);
+                });
+                
+                container.appendChild(button);
+                console.log('Bouton créé pour:', playlist.name);
+            });
+        } catch (error) {
+            console.error('Erreur lors de la création des boutons:', error);
+            this.handleError(error);
+        }
+    },
+
+    resetImage() {
+        const albumArt = document.getElementById('album-art');
+        const albumImage = document.getElementById('album-image');
+        
+        if (albumImage && albumArt) {
+            albumImage.style.filter = 'blur(20px)';
+            imageRevealed = false;
+            albumArt.style.display = 'none';
+        }
+    },
+
+    toggleImage() {
+        if (imageRevealed || !currentSong) return;
+
+        const elements = {
+            albumImage: document.getElementById('album-image'),
+            songInfo: document.getElementById('song-info'),
+            card: document.querySelector('#songCard .card'),
+            title: document.querySelector('.song-title'),
+            artist: document.querySelector('.song-artist'),
+            year: document.querySelector('.song-year')
+        };
+
+        if (Object.values(elements).some(el => !el)) {
+            console.error('Éléments manquants dans le DOM');
+            return;
+        }
+
+        elements.albumImage.style.filter = 'none';
+        elements.songInfo.style.display = 'flex';
+        elements.title.textContent = currentSong.title;
+        elements.artist.textContent = currentSong.artist;
+        elements.year.textContent = `(${currentSong.year})`;
+        elements.card.classList.add('revealed');
+        
+        imageRevealed = true;
+    },
+
+    handleError(error) {
+        console.error('Erreur:', error);
+        // Implémenter une UI pour afficher les erreurs à l'utilisateur
     }
+};
 
-    document.getElementById('togglePlay')?.addEventListener('click', () => {
-        player.togglePlay();
-    });
-});
-
-
-window.onSpotifyWebPlaybackSDKReady = async () => {
-    console.log('SDK Spotify prêt');
-    const token = localStorage.getItem('spotify_token');
-    
+// Initialisation de l'application
+async function initializeApp() {
+    const token = getCurrentToken();
     if (!token) {
-        console.log('Aucun token trouvé');
         window.location.href = 'auth.html';
         return;
     }
 
     try {
-        await initializePlayer();
-        await createPlaylistNavigation();
+        await initializePlayer(token);
+        await UI.createPlaylistButtons();
+        
+        // Event Listeners
+        document.getElementById('songCard')?.addEventListener('click', UI.toggleImage);
+        
+        const debugButton = document.querySelector('.collapsible-debug');
+        if (debugButton) {
+            debugButton.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                content.style.maxHeight = content.style.maxHeight ? null : `${content.scrollHeight}px`;
+            });
+        }
+
+        document.getElementById('togglePlay')?.addEventListener('click', () => {
+            if (player) player.togglePlay();
+        });
+
     } catch (error) {
-        console.error('Erreur lors de l\'initialisation:', error);
+        UI.handleError(error);
+    }
+}
+
+// Initialisation du SDK Spotify
+window.onSpotifyWebPlaybackSDKReady = async () => {
+    console.log('SDK Spotify prêt');
+    
+    if (await checkAndRefreshToken()) {
+        await initializeApp();
+    } else {
+        window.location.href = 'auth.html';
     }
 };
+
+// Initialisation au chargement du DOM
+document.addEventListener('DOMContentLoaded', initializeApp);
+
+// Export des fonctions nécessaires
+export { UI as default };
