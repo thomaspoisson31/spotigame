@@ -68,33 +68,56 @@ function initializePlayer(token) {
     window.player = player;
 }
 
-// Gestion de l'affichage des informations de la chanson
-export function updateCurrentSong(songInfo) {
-    currentSong = songInfo;
-    resetSongInfo();
+// Fonctions de gestion des informations de chanson
+function updateSongElements() {
+    console.log('Mise à jour des éléments avec currentSong:', currentSong);
     
-    // S'assurer que tous les éléments existent avant de mettre à jour
-    const titleElement = document.querySelector('#songCard .song-title');
-    const artistElement = document.querySelector('#songCard .song-artist');
-    const yearElement = document.querySelector('#songCard .song-year');
+    const titleElement = document.querySelector('.song-title');
+    const artistElement = document.querySelector('.song-artist');
+    const yearElement = document.querySelector('.song-year');
     
-    if (titleElement && artistElement && yearElement) {
-        titleElement.textContent = songInfo.title;
-        artistElement.textContent = songInfo.artist;
-        yearElement.textContent = `(${songInfo.year})`;
+    if (titleElement && artistElement && yearElement && currentSong) {
+        titleElement.textContent = currentSong.title || '';
+        artistElement.textContent = currentSong.artist || '';
+        yearElement.textContent = currentSong.year ? `(${currentSong.year})` : '';
+        console.log('Éléments mis à jour avec succès');
     } else {
-        console.error('Éléments de la carte non trouvés');
+        console.error('Éléments manquants:', {
+            titleElement,
+            artistElement,
+            yearElement,
+            currentSong
+        });
     }
+}
+
+export function updateCurrentSong(songInfo) {
+    console.log('Nouvelle chanson reçue:', songInfo);
+    
+    if (!songInfo || !songInfo.title) {
+        console.error('Informations de chanson invalides');
+        return;
+    }
+
+    currentSong = {
+        title: songInfo.title,
+        artist: songInfo.artist,
+        year: songInfo.year
+    };
+
+    resetSongInfo();
+    updateSongElements();
 }
 
 function resetSongInfo() {
     const albumImage = document.getElementById('album-image');
     const songInfo = document.getElementById('song-info');
-    const card = document.querySelector('#songCard .card');
+    const card = document.querySelector('.card');
     
     if (songInfo && card) {
         imageRevealed = false;
         songInfo.style.display = 'none';
+        
         if (card.classList.contains('revealed')) {
             card.classList.remove('revealed');
         }
@@ -106,42 +129,45 @@ function resetSongInfo() {
 }
 
 export function toggleImage() {
+    console.log('Toggle image appelé, état actuel:', { imageRevealed, currentSong });
+    
     const albumImage = document.getElementById('album-image');
     const songInfo = document.getElementById('song-info');
-    const card = document.querySelector('#songCard .card');
+    const card = document.querySelector('.card');
     
-    if (!currentSong) {
+    if (!albumImage || !songInfo || !card) {
+        console.error('Éléments requis non trouvés');
+        return;
+    }
+
+    if (!currentSong.title) {
         console.error('Aucune information de chanson disponible');
         return;
     }
 
     if (!imageRevealed) {
-        // Révéler l'image et les informations
+        // Révéler
         albumImage.style.filter = 'none';
-        imageRevealed = true;
         songInfo.style.display = 'flex';
-        card.classList.add('revealed');
+        updateSongElements();
         
-        // Vérifier que les éléments sont bien mis à jour
-        const titleElement = document.querySelector('#songCard .song-title');
-        const artistElement = document.querySelector('#songCard .song-artist');
-        const yearElement = document.querySelector('#songCard .song-year');
-        
-        if (titleElement && artistElement && yearElement) {
-            titleElement.textContent = currentSong.title;
-            artistElement.textContent = currentSong.artist;
-            yearElement.textContent = `(${currentSong.year})`;
-        }
+        // Permettre au DOM de se mettre à jour avant l'animation
+        requestAnimationFrame(() => {
+            card.classList.add('revealed');
+            imageRevealed = true;
+        });
     } else {
-        // Masquer les informations
+        // Masquer
         albumImage.style.filter = 'blur(20px)';
-        imageRevealed = false;
-        songInfo.style.display = 'none';
         card.classList.remove('revealed');
+        
+        // Attendre la fin de l'animation avant de cacher
+        setTimeout(() => {
+            songInfo.style.display = 'none';
+            imageRevealed = false;
+        }, 300);
     }
 }
-
-
 
 // Initialisation des écouteurs d'événements
 function initializeEventListeners() {
@@ -150,11 +176,10 @@ function initializeEventListeners() {
         albumImage.addEventListener('click', toggleImage);
     }
 
-    // Écouter les changements d'état du player pour détecter les changements de morceau
     if (window.player) {
         window.player.addListener('player_state_changed', state => {
             if (state) {
-                resetSongInfo(); // Réinitialiser l'affichage à chaque changement de morceau
+                resetSongInfo();
             }
         });
     }
@@ -174,7 +199,7 @@ function initializeEventListeners() {
     }
 }
 
-// Fonctions de debug pour le token
+// Fonctions de debug
 window.invalidateToken = function() {
     localStorage.setItem('spotify_token', 'invalid_token');
     console.log('Token invalidé');
@@ -183,7 +208,7 @@ window.invalidateToken = function() {
 window.expireToken = function() {
     const expiredToken = {
         value: localStorage.getItem('spotify_token'),
-        timestamp: Date.now() - 3600001 // Expire le token
+        timestamp: Date.now() - 3600001
     };
     localStorage.setItem('spotify_token_data', JSON.stringify(expiredToken));
     console.log('Token expiré');
@@ -207,5 +232,5 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
     }
 };
 
-// Export des fonctions nécessaires
+// Exports
 export { initializePlayer };
