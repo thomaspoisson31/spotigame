@@ -11,6 +11,16 @@ let currentSong = {
     year: ''
 };
 
+// Fonction pour vérifier la structure DOM
+function checkDOMStructure() {
+    console.log('Vérification de la structure DOM :');
+    console.log('song-info:', document.getElementById('song-info'));
+    console.log('songCard:', document.getElementById('songCard'));
+    console.log('song-title:', document.querySelector('.song-title'));
+    console.log('song-artist:', document.querySelector('.song-artist'));
+    console.log('song-year:', document.querySelector('.song-year'));
+}
+
 // Initialisation du player Spotify
 function initializePlayer(token) {
     player = new Spotify.Player({
@@ -43,6 +53,22 @@ function initializePlayer(token) {
     player.addListener('player_state_changed', state => {
         if (state) {
             console.log('État du player mis à jour:', state);
+            
+            // Extraire les informations de la piste courante
+            if (state.track_window && state.track_window.current_track) {
+                const track = state.track_window.current_track;
+                console.log('Piste courante:', track);
+                
+                // Créer l'objet songInfo
+                const songInfo = {
+                    title: track.name,
+                    artist: track.artists.map(artist => artist.name).join(', '),
+                    year: track.album.release_date ? track.album.release_date.slice(0, 4) : ''
+                };
+                
+                console.log('Informations extraites:', songInfo);
+                updateCurrentSong(songInfo);
+            }
         }
     });
 
@@ -68,31 +94,9 @@ function initializePlayer(token) {
     window.player = player;
 }
 
-// Fonctions de gestion des informations de chanson
-function updateSongElements() {
-    console.log('Mise à jour des éléments avec currentSong:', currentSong);
-    
-    const titleElement = document.querySelector('.song-title');
-    const artistElement = document.querySelector('.song-artist');
-    const yearElement = document.querySelector('.song-year');
-    
-    if (titleElement && artistElement && yearElement && currentSong) {
-        titleElement.textContent = currentSong.title || '';
-        artistElement.textContent = currentSong.artist || '';
-        yearElement.textContent = currentSong.year ? `(${currentSong.year})` : '';
-        console.log('Éléments mis à jour avec succès');
-    } else {
-        console.error('Éléments manquants:', {
-            titleElement,
-            artistElement,
-            yearElement,
-            currentSong
-        });
-    }
-}
-
+// Gestion de l'affichage des informations de la chanson
 export function updateCurrentSong(songInfo) {
-    console.log('Nouvelle chanson reçue:', songInfo);
+    console.log('Mise à jour des informations du morceau:', songInfo);
     
     if (!songInfo || !songInfo.title) {
         console.error('Informations de chanson invalides');
@@ -105,8 +109,29 @@ export function updateCurrentSong(songInfo) {
         year: songInfo.year
     };
 
-    resetSongInfo();
     updateSongElements();
+    resetSongInfo();
+}
+
+function updateSongElements() {
+    console.log('Mise à jour des éléments avec currentSong:', currentSong);
+    
+    const titleElement = document.querySelector('.song-title');
+    const artistElement = document.querySelector('.song-artist');
+    const yearElement = document.querySelector('.song-year');
+    
+    if (titleElement && artistElement && yearElement) {
+        titleElement.textContent = currentSong.title;
+        artistElement.textContent = currentSong.artist;
+        yearElement.textContent = currentSong.year ? `(${currentSong.year})` : '';
+        console.log('Éléments mis à jour avec succès');
+    } else {
+        console.error('Éléments non trouvés dans le DOM:', {
+            titleElement,
+            artistElement,
+            yearElement
+        });
+    }
 }
 
 function resetSongInfo() {
@@ -136,7 +161,7 @@ export function toggleImage() {
     const card = document.querySelector('.card');
     
     if (!albumImage || !songInfo || !card) {
-        console.error('Éléments requis non trouvés');
+        console.error('Éléments requis non trouvés pour toggleImage');
         return;
     }
 
@@ -151,7 +176,6 @@ export function toggleImage() {
         songInfo.style.display = 'flex';
         updateSongElements();
         
-        // Permettre au DOM de se mettre à jour avant l'animation
         requestAnimationFrame(() => {
             card.classList.add('revealed');
             imageRevealed = true;
@@ -161,7 +185,6 @@ export function toggleImage() {
         albumImage.style.filter = 'blur(20px)';
         card.classList.remove('revealed');
         
-        // Attendre la fin de l'animation avant de cacher
         setTimeout(() => {
             songInfo.style.display = 'none';
             imageRevealed = false;
@@ -174,14 +197,6 @@ function initializeEventListeners() {
     const albumImage = document.getElementById('album-image');
     if (albumImage) {
         albumImage.addEventListener('click', toggleImage);
-    }
-
-    if (window.player) {
-        window.player.addListener('player_state_changed', state => {
-            if (state) {
-                resetSongInfo();
-            }
-        });
     }
 
     // Panel de debug
@@ -199,7 +214,7 @@ function initializeEventListeners() {
     }
 }
 
-// Fonctions de debug
+// Fonctions de debug pour le token
 window.invalidateToken = function() {
     localStorage.setItem('spotify_token', 'invalid_token');
     console.log('Token invalidé');
@@ -228,9 +243,10 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
         initializePlayer(localStorage.getItem('spotify_token'));
         await createPlaylistNavigation();
         initializeEventListeners();
+        checkDOMStructure(); // Vérification de la structure DOM
         console.log('Initialisation terminée');
     }
 };
 
-// Exports
+// Export des fonctions nécessaires
 export { initializePlayer };
