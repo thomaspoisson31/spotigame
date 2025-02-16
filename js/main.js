@@ -51,26 +51,32 @@ function initializePlayer(token) {
 
     // État du player
     player.addListener('player_state_changed', state => {
-        if (state) {
-            console.log('État du player mis à jour:', state);
-            
-            // Extraire les informations de la piste courante
-            if (state.track_window && state.track_window.current_track) {
-                const track = state.track_window.current_track;
-                console.log('Piste courante:', track);
+            if (state) {
+                console.log('État du player mis à jour:', state);
                 
-                // Créer l'objet songInfo
-                const songInfo = {
-                    title: track.name,
-                    artist: track.artists.map(artist => artist.name).join(', '),
-                    year: track.album.release_date ? track.album.release_date.slice(0, 4) : ''
-                };
-                
-                console.log('Informations extraites:', songInfo);
-                updateCurrentSong(songInfo);
+                if (state.track_window && state.track_window.current_track) {
+                    const track = state.track_window.current_track;
+                    console.log('Piste courante:', track);
+                    
+                    // Extraire l'année depuis l'album
+                    let year = '';
+                    if (track.album && track.album.release_date) {
+                        // L'API Spotify peut retourner la date dans différents formats
+                        // On prend les 4 premiers caractères pour avoir l'année
+                        year = track.album.release_date.substring(0, 4);
+                    }
+                    
+                    const songInfo = {
+                        title: track.name,
+                        artist: track.artists.map(artist => artist.name).join(', '),
+                        year: year
+                    };
+                    
+                    console.log('Informations extraites:', songInfo);
+                    updateCurrentSong(songInfo);
+                }
             }
-        }
-    });
+        });
 
     // Player prêt
     player.addListener('ready', ({ device_id }) => {
