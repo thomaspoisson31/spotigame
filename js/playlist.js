@@ -85,13 +85,28 @@ export function initializePlaylistNavigation() {
         updateCurrentPlaylist(currentPlaylistIndex);
     });
 
-    volumeButton.addEventListener('click', () => {
-        if (window.player) {
-            window.player.getVolume().then(volume => {
+    // Nouvelle logique pour le bouton volume
+    volumeButton.addEventListener('click', async () => {
+        if (!window.player) {
+            console.error('Player Spotify non initialisé');
+            return;
+        }
+
+        try {
+            const state = await window.player.getCurrentState();
+            if (!state) {
+                // Aucun morceau en cours, sélection et lecture aléatoire
+                await playRandomSong();
+                volumeButton.textContent = '🔊';
+            } else {
+                // Toggle du volume (muet/non-muet)
+                const volume = await window.player.getVolume();
                 const newVolume = volume === 0 ? 0.5 : 0;
-                window.player.setVolume(newVolume);
+                await window.player.setVolume(newVolume);
                 volumeButton.textContent = newVolume === 0 ? '🔈' : '🔊';
-            });
+            }
+        } catch (error) {
+            console.error('Erreur lors de la gestion du volume:', error);
         }
     });
 }
@@ -108,70 +123,56 @@ export function updateCurrentPlaylist(index) {
         } else {
             console.error('Élément playlist-name-display non trouvé');
         }
-        
-        if (typeof window.loadRandomSong === 'function') {
-            window.loadRandomSong(index);
-        }
     } else {
         console.error('Index de playlist invalide:', index);
     }
 }
 
-// Fonction d'ajout des styles CSS
-function addPlaylistStyles() {
-    if (!document.getElementById('playlist-styles')) {
-        const styles = document.createElement('style');
-        styles.id = 'playlist-styles';
-        styles.textContent = `
-            .playlist-navigation {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 1rem;
-                margin: 1rem 0;
-            }
+// Fonction pour jouer un morceau aléatoire
+async function playRandomSong() {
+    if (!playlists || playlists.length === 0) {
+        console.error('Aucune playlist disponible');
+        return;
+    }
+
+    try {
+        // Sélectionner une playlist aléatoire si aucune n'est sélectionnée
+        const playlistIndex = currentPlaylistIndex >= 0 ? 
+            currentPlaylistIndex : 
+            Math.floor(Math.random() * playlists.length);
             
-            .current-playlist {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-                padding: 0.5rem 1rem;
-                background: rgba(0, 0, 0, 0.5);
-                border-radius: 20px;
-                min-width: 200px;
-                justify-content: center;
+        const selectedPlaylist = playlists[playlistIndex];
+        
+        if (!selectedPlaylist || !selectedPlaylist.songs || selectedPlaylist.songs.length === 0) {
+            console.error('Playlist invalide ou vide');
+            return;
+        }
+
+        // Sélectionner un morceau aléatoire
+        const randomSongIndex = Math.floor(Math.random() * selectedPlaylist.songs.length);
+        const selectedSong = selectedPlaylist.songs[randomSongIndex];
+
+        // Afficher la pochette et les informations
+        const albumArt = document.getElementById('album-art');
+        if (albumArt) {
+            albumArt.style.display = 'block';
+        }
+
+        // Lancer la lecture
+        if (window.player) {
+            await window.player.play(selectedSong.uri);
+            // Mettre à jour les informations du morceau courant
+            if (typeof window.updateCurrentSong === 'function') {
+                window.updateCurrentSong({
+                    title: selectedSong.title,
+                    artist: selectedSong.artist,
+                    year: selectedSong.year
+                });
             }
-            
-            .nav-button {
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
-                padding: 0.5rem;
-                transition: transform 0.2s;
-            }
-            
-            .nav-button:hover {
-                transform: scale(1.2);
-            }
-            
-            .playlist-name {
-                color: white;
-                font-size: 1.2rem;
-                margin: 0;
-            }
-            
-            .volume-button {
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.2rem;
-                cursor: pointer;
-                padding: 0.5rem;
-            }
-        `;
-        document.head.appendChild(styles);
+        }
+
+    } catch (error) {
+        console.error('Erreur lors de la lecture aléatoire:', error);
     }
 }
 
@@ -231,5 +232,63 @@ export async function createPlaylistNavigation() {
     } catch (error) {
         console.error('Erreur lors de la création de la navigation:', error);
         return null;
+    }
+}
+
+// Fonction d'ajout des styles CSS
+function addPlaylistStyles() {
+    if (!document.getElementById('playlist-styles')) {
+        const styles = document.createElement('style');
+        styles.id = 'playlist-styles';
+        styles.textContent = `
+            .playlist-navigation {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                margin: 1rem 0;
+            }
+            
+            .current-playlist {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 0.5rem 1rem;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 20px;
+                min-width: 200px;
+                justify-content: center;
+            }
+            
+            .nav-button {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 0.5rem;
+                transition: transform 0.2s;
+            }
+            
+            .nav-button:hover {
+                transform: scale(1.2);
+            }
+            
+            .playlist-name {
+                color: white;
+                font-size: 1.2rem;
+                margin: 0;
+            }
+            
+            .volume-button {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.2rem;
+                cursor: pointer;
+                padding: 0.5rem;
+            }
+        `;
+        document.head.appendChild(styles);
     }
 }
