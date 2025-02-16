@@ -9,49 +9,79 @@ const TOKEN_KEYS = {
 const isValidString = (str) => typeof str === 'string' && str.length > 0;
 
 export async function checkAndRefreshToken() {
-    console.log('Vérification du token...');
+    console.log('=== Début vérification token ===');
     
+    const token = localStorage.getItem('spotify_token');
+    const timestamp = localStorage.getItem('token_timestamp');
+    const expiresIn = localStorage.getItem('token_expires_in');
+    
+    console.log({
+        hasToken: !!token,
+        timestamp: timestamp,
+        expiresIn: expiresIn,
+        currentTime: Date.now()
+    });
+
+    if (!token || !timestamp || !expiresIn) {
+        console.log('❌ Informations de token manquantes');
+        return false;
+    }
+
+    const now = Date.now();
+    const tokenAge = now - parseInt(timestamp);
+    const expirationTime = parseInt(expiresIn) * 1000;
+
+    console.log({
+        tokenAge: tokenAge / 1000 + ' secondes',
+        expirationTime: expirationTime / 1000 + ' secondes',
+        remaining: (expirationTime - tokenAge) / 1000 + ' secondes'
+    });
+
     try {
-        const token = localStorage.getItem(TOKEN_KEYS.TOKEN);
-        const timestamp = localStorage.getItem(TOKEN_KEYS.TIMESTAMP);
-        const expiresIn = localStorage.getItem(TOKEN_KEYS.EXPIRES_IN);
-        
-        if (!isValidString(token) || !isValidString(timestamp) || !isValidString(expiresIn)) {
-            console.log('Informations de token manquantes ou invalides');
-            return false;
-        }
-
-        const now = Date.now();
-        const tokenAge = now - parseInt(timestamp, 10);
-        const expirationTime = parseInt(expiresIn, 10) * 1000;
-        const bufferTime = 300000; // 5 minutes en millisecondes
-        
-        // Vérification de l'expiration avec buffer
-        if (tokenAge >= (expirationTime - bufferTime)) {
-            console.log('Token expiré ou proche de l\'expiration');
-            return false;
-        }
-
-        // Vérification de la validité auprès de l'API
         const response = await fetch('https://api.spotify.com/v1/me', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         });
-
+        
         if (!response.ok) {
-            console.log(`Vérification du token échouée: ${response.status}`);
+            console.log(`❌ Vérification API échouée: ${response.status}`);
             return false;
         }
 
-        console.log('Token valide');
+        console.log('✅ Token valide');
         return true;
-
     } catch (error) {
-        console.error('Erreur lors de la vérification du token:', error);
+        console.error('❌ Erreur vérification token:', error);
         return false;
     }
 }
+
+export function handleAuthResponse() {
+    console.log('=== Traitement réponse auth ===');
+    
+    const urlParams = new URLSearchParams(window.location.hash.substr(1));
+    const token = urlParams.get('access_token');
+    const expiresIn = urlParams.get('expires_in');
+
+    console.log({
+        hasToken: !!token,
+        expiresIn: expiresIn
+    });
+
+    if (token) {
+        localStorage.setItem('spotify_token', token);
+        localStorage.setItem('token_timestamp', Date.now().toString());
+        localStorage.setItem('token_expires_in', expiresIn);
+        localStorage.setItem('just_authenticated', 'true');
+        
+        console.log('✅ Token sauvegardé');
+        window.location.href = 'index.html';
+    } else {
+        console.log('❌ Pas de token dans la réponse');
+    }
+}
+
 
 export function invalidateToken() {
     try {
@@ -85,30 +115,6 @@ export function removeToken() {
         return checkAndRefreshToken();
     } catch (error) {
         console.error('Erreur lors de la suppression du token:', error);
-        return false;
-    }
-}
-
-export function handleAuthResponse() {
-    try {
-        const hashParams = new URLSearchParams(window.location.hash.substr(1));
-        const token = hashParams.get('access_token');
-        const expiresIn = hashParams.get('expires_in');
-
-        if (!isValidString(token) || !isValidString(expiresIn)) {
-            console.error('Réponse d\'authentification invalide');
-            return false;
-        }
-
-        localStorage.setItem(TOKEN_KEYS.TOKEN, token);
-        localStorage.setItem(TOKEN_KEYS.TIMESTAMP, Date.now().toString());
-        localStorage.setItem(TOKEN_KEYS.EXPIRES_IN, expiresIn);
-        localStorage.setItem(TOKEN_KEYS.JUST_AUTHENTICATED, 'true');
-        
-        window.location.href = 'index.html';
-        return true;
-    } catch (error) {
-        console.error('Erreur lors du traitement de la réponse d\'authentification:', error);
         return false;
     }
 }
