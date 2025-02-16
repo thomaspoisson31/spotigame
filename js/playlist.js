@@ -85,7 +85,7 @@ export function initializePlaylistNavigation() {
     const prevButton = document.querySelector('.prev-button');
     const nextButton = document.querySelector('.next-button');
     ELEMENTS.volumeButton = document.querySelector('.volume-button');
-    let isPlaying = false; // Nouvel état pour suivre la lecture
+    let isPlaying = false;
 
     if (!prevButton || !nextButton || !ELEMENTS.volumeButton) {
         console.error('Éléments de navigation non trouvés');
@@ -95,11 +95,9 @@ export function initializePlaylistNavigation() {
     async function handleNavigation(newIndex) {
         try {
             if (window.player) {
-                // Arrêter la lecture en cours
                 await window.player.pause();
-                isPlaying = false; // Réinitialiser l'état de lecture
+                isPlaying = false;
                 
-                // Réinitialiser l'état du player
                 window.player.getCurrentState().then(state => {
                     if (state) {
                         window.player.seek(0);
@@ -121,6 +119,7 @@ export function initializePlaylistNavigation() {
         }
     }
 
+    // Simplifié : le bouton volume lance toujours un nouveau morceau
     ELEMENTS.volumeButton.addEventListener('click', async () => {
         if (!window.player) {
             console.error('Player Spotify non initialisé');
@@ -128,31 +127,12 @@ export function initializePlaylistNavigation() {
         }
 
         try {
-            const state = await window.player.getCurrentState();
-            
-            if (!state || !state.track_window?.current_track || !isPlaying) {
-                // Si pas de lecture en cours, lancer une nouvelle chanson
-                await playRandomSong();
-                isPlaying = true;
-                ELEMENTS.volumeButton.textContent = VOLUME.ICONS.UNMUTED;
-            } else {
-                // Si une lecture est en cours, gérer le volume
-                const volume = await window.player.getVolume();
-                if (volume === VOLUME.MUTED) {
-                    // Remettre le son
-                    await window.player.setVolume(VOLUME.DEFAULT);
-                    await window.player.resume();
-                    ELEMENTS.volumeButton.textContent = VOLUME.ICONS.UNMUTED;
-                } else {
-                    // Couper le son
-                    await window.player.setVolume(VOLUME.MUTED);
-                    await window.player.pause();
-                    ELEMENTS.volumeButton.textContent = VOLUME.ICONS.MUTED;
-                }
-            }
+            // Toujours lancer un nouveau morceau
+            await playRandomSong();
+            isPlaying = true;
+            ELEMENTS.volumeButton.textContent = VOLUME.ICONS.UNMUTED;
         } catch (error) {
-            console.error('Erreur lors de la gestion du volume:', error);
-            // En cas d'erreur, réinitialiser l'état
+            console.error('Erreur lors du changement de morceau:', error);
             isPlaying = false;
             ELEMENTS.volumeButton.textContent = VOLUME.ICONS.UNMUTED;
         }
