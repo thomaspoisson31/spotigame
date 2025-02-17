@@ -37,6 +37,49 @@ body {
     display: block;
 }
 
+
+/* Styles pour les boutons ronds */
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0 20px 0;
+}
+
+.round-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #1DB954;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.round-button:hover {
+    background-color: #1ed760;
+    transform: scale(1.1);
+}
+
+#add-button {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+}
+
+.button-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+
 /* Styles pour la carte d'information */
 .song-info {
     display: none;
