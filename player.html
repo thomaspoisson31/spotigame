@@ -13,12 +13,32 @@
     <div class="header">
         <img src="images/logo.png" alt="Logo SpotiGame">
     </div>
+
+     <!-- Action buttons -->   
     <div class="action-buttons">
         <button class="round-button" id="add-button">+</button>
         <button class="round-button" id="folder-button">
             <img src="images/folder_icon.png" alt="Folder" class="button-icon">
         </button>
     </div>
+
+    <!-- Ajouter après la div action-buttons -->
+    <div id="sessionModal" class="modal">
+        <div class="modal-content">
+            <h2>Nouvelle session</h2>
+            <form id="sessionForm">
+                <div class="form-group">
+                    <label for="sessionName">Nom de la session :</label>
+                    <input type="text" id="sessionName" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" id="cancelSession" class="button-secondary">Annuler</button>
+                    <button type="submit" class="button-primary">Créer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- panel de debug  -->
     <div class="debug-panel">
         <button class="collapsible-debug">Panel de Debug</button>
