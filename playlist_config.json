@@ -2,8 +2,9 @@
     "playlist_files": [
         "classic_rock.json",
         "songs_funk_soul_rap.json",
-        "french_hits.json"
+        "french_hits.json",
+	"hard_rock.json"
     ],
-    "version": "1.3",
+    "version": "1.4",
     "last_updated": "2024-02-17"
 }
