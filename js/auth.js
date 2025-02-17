@@ -63,7 +63,7 @@ function redirectToAuth() {
     localStorage.removeItem('token_expires_in');
     
     // Construire l'URL d'authentification Spotify
-    const clientId = 'VOTRE_CLIENT_ID'; // Remplacez par votre Client ID
+    const clientId = 'eee6491d83cc44ce889bd4f1a6dfb684'; // Remplacez par votre Client ID
     const redirectUri = encodeURIComponent(window.location.origin + '/auth.html');
     const scopes = encodeURIComponent('streaming user-read-email user-read-private user-modify-playback-state');
     
