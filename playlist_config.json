@@ -3,6 +3,7 @@
         "classic_rock.json",
         "songs_funk_soul_rap.json",
         "french_hits.json",
+	"indie_rock.json",
 	"hard_rock.json"
     ],
     "version": "1.4",
