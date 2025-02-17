@@ -10,7 +10,7 @@ body {
 
 .header {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
