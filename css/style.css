@@ -141,6 +141,33 @@ body {
     background-color: #404040;
 }
 
+
+/* Styles pour les informations de session */
+.session-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 20px 0;
+}
+
+.session-item {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    text-align: left;
+    background-color: #404040;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.session-item:hover {
+    background-color: #505050;
+}
+
+
+
 /* Styles pour la carte d'information */
 .song-info {
     display: none;
