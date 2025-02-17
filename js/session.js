@@ -90,14 +90,19 @@ export class SessionManager {
     }
 
 
-    debugSession() {
+debugSession() {
     console.log('=== Contenu de la session ===');
-    console.log('Nom:', this.currentSession?.name);
-    console.log('Date création:', this.currentSession?.createdAt);
-    console.log('Nombre de pistes:', this.currentSession?.tracks?.length);
-    console.log('Pistes:', this.currentSession?.tracks);
-    console.log('========================');
+    if (!this.currentSession) {
+        console.log('Aucune session active');
+        console.log('========================');
+        return;
     }
+    console.log('Nom:', this.currentSession.name);
+    console.log('Date création:', this.currentSession.createdAt);
+    console.log('Nombre de pistes:', this.currentSession.tracks.length);
+    console.log('Pistes:', this.currentSession.tracks);
+    console.log('========================');
+}
 
     // Méthode pour obtenir un résumé de la session
     getSessionSummary() {

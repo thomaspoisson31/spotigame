@@ -216,13 +216,17 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
         // Initialiser le gestionnaire de session
         const sessionManager = new SessionManager();
         window.sessionManager = sessionManager;
-        // Ajouter le raccourci global pour le debug
-        window.showSession = () => sessionManager.debugSession();
+        
+        // Définir showSession comme une fonction simple qui n'appelle debugSession qu'une seule fois
+        window.showSession = function() {
+            sessionManager.debugSession();
+        };
         
         initializeEventListeners();
         console.log('Initialisation terminée');
     }
 };
+
 
 // Fonctions de debug pour le token
 window.invalidateToken = function() {
