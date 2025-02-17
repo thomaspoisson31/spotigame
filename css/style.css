@@ -38,7 +38,7 @@ body {
 }
 
 
-/* Styles pour les boutons ronds */
+/* Styles pour les boutons ronds de gestion de session */
 
 .action-buttons {
     display: flex;
@@ -79,6 +79,12 @@ body {
     object-fit: contain;
 }
 
+
+#current-session {
+    color: white;
+    margin-left: 10px;
+    font-size: 0.9em;
+}
 
 /* Styles pour la fenêtre modale de création de session */
 

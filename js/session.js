@@ -1,5 +1,7 @@
 export class SessionManager {
     constructor() {
+        this.currentSession = null;
+        this.loadCurrentSession();
         this.initializeEventListeners();
     }
 
@@ -11,12 +13,13 @@ export class SessionManager {
         const sessionForm = document.getElementById('sessionForm');
         const sessionNameInput = document.getElementById('sessionName');
 
+        // Gestionnaire pour le bouton "+"
         addButton.addEventListener('click', () => {
             sessionNameInput.value = this.getDefaultSessionName();
             modal.style.display = 'block';
         });
 
-        // Fermer la modale
+        // Fermeture de la modale
         cancelButton.addEventListener('click', () => {
             modal.style.display = 'none';
         });
@@ -29,12 +32,12 @@ export class SessionManager {
         });
 
         // Soumission du formulaire
-        sessionForm.addEventListener('submit', async (e) => {
+        sessionForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const sessionName = sessionNameInput.value.trim();
             
             if (sessionName) {
-                await this.createNewSession(sessionName);
+                this.createNewSession(sessionName);
                 modal.style.display = 'none';
             }
         });
@@ -48,33 +51,40 @@ export class SessionManager {
         return `Session ${day}-${month}-${year}`;
     }
 
-    async createNewSession(sessionName) {
-        try {
-            const filename = `Morceaux ${sessionName}.json`;
-            const sessionData = {
-                name: sessionName,
-                createdAt: new Date().toISOString(),
-                tracks: []
-            };
+    createNewSession(sessionName) {
+        const sessionData = {
+            name: sessionName,
+            createdAt: new Date().toISOString(),
+            tracks: []
+        };
 
-            // Sauvegarder le fichier
-            const blob = new Blob([JSON.stringify(sessionData, null, 2)], 
-                                { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            
-            // Créer un lien de téléchargement
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+        // Sauvegarder dans localStorage
+        localStorage.setItem('currentSession', JSON.stringify(sessionData));
+        this.currentSession = sessionData;
+        this.updateSessionDisplay();
+        console.log(`Session "${sessionName}" créée avec succès`);
+    }
 
-            console.log(`Session "${sessionName}" créée avec succès`);
-        } catch (error) {
-            console.error('Erreur lors de la création de la session:', error);
-            alert('Erreur lors de la création de la session');
+    loadCurrentSession() {
+        const savedSession = localStorage.getItem('currentSession');
+        if (savedSession) {
+            this.currentSession = JSON.parse(savedSession);
+            this.updateSessionDisplay();
         }
+    }
+
+    updateSessionDisplay() {
+        const sessionDisplay = document.getElementById('current-session');
+        if (sessionDisplay && this.currentSession) {
+            sessionDisplay.textContent = this.currentSession.name;
+        }
+    }
+
+    // Méthode pour ajouter une piste à la session courante
+    addTrackToSession(track) {
+        if (!this.currentSession) return;
+
+        this.currentSession.tracks.push(track);
+        localStorage.setItem('currentSession', JSON.stringify(this.currentSession));
     }
 }
