@@ -327,7 +327,7 @@ button:hover {
 
 /* Panel de debug */
 .debug-panel {
-    display: none;
+    /* display: none; */
     margin-top: 20px;
     border-radius: 5px;
 }

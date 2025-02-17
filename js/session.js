@@ -3,6 +3,7 @@ export class SessionManager {
         this.currentSession = null;
         this.loadCurrentSession();
         this.initializeEventListeners();
+        this.initializeDebugButton();  
     }
 
     initializeEventListeners() {
@@ -87,4 +88,44 @@ export class SessionManager {
         this.currentSession.tracks.push(track);
         localStorage.setItem('currentSession', JSON.stringify(this.currentSession));
     }
+
+
+    debugSession() {
+    console.log('=== Contenu de la session ===');
+    console.log('Nom:', this.currentSession?.name);
+    console.log('Date création:', this.currentSession?.createdAt);
+    console.log('Nombre de pistes:', this.currentSession?.tracks?.length);
+    console.log('Pistes:', this.currentSession?.tracks);
+    console.log('========================');
+    }
+
+    // Méthode pour obtenir un résumé de la session
+    getSessionSummary() {
+        if (!this.currentSession) {
+            return 'Aucune session active';
+        }
+        return {
+            name: this.currentSession.name,
+            createdAt: new Date(this.currentSession.createdAt).toLocaleString(),
+            trackCount: this.currentSession.tracks.length,
+            tracks: this.currentSession.tracks
+        };
+    }
+
+    initializeDebugButton() {
+        const debugButton = document.querySelector('.collapsible-debug');
+        if (debugButton) {
+            const debugContent = debugButton.nextElementSibling;
+            const sessionDebugButton = document.createElement('button');
+            sessionDebugButton.textContent = 'Afficher Session';
+            sessionDebugButton.onclick = () => {
+                this.debugSession(); // Maintenant 'this' référence correctement l'instance
+            };
+            debugContent.appendChild(sessionDebugButton);
+        }
+    }
+
+
 }
+
+

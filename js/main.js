@@ -213,9 +213,11 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
         initializePlayer(localStorage.getItem('spotify_token'));
         await createPlaylistNavigation();
         
-        // Initialiser le gestionnaire de session ici
+        // Initialiser le gestionnaire de session
         const sessionManager = new SessionManager();
         window.sessionManager = sessionManager;
+        // Ajouter le raccourci global pour le debug
+        window.showSession = () => sessionManager.debugSession();
         
         initializeEventListeners();
         console.log('Initialisation terminée');
