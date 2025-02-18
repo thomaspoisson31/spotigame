@@ -66,7 +66,7 @@ body {
 }
 
 .round-button:hover {
-    background-color: #1ed760;
+    background-color: #86b742;
     transform: scale(1.1);
 }
 
@@ -257,7 +257,7 @@ body {
 .playlist-button:hover {
     transform: scale(1.05);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    background-color: #1ED760;
+    background-color: #86b742;
 }
 
 .playlist-button.active {
@@ -330,7 +330,7 @@ button {
 }
 
 button:hover {
-    background-color: #1ed760;
+    background-color: #86b742;
 }
 
 /* Styles pour le lecteur */
