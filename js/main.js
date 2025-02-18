@@ -309,7 +309,6 @@ function initializeEventListeners() {
     const songInfoContainer = document.getElementById('song-info');
     if (songInfoContainer) {
         songInfoContainer.addEventListener('click', toggleSongInfo);
-    generateAndDisplayRandomYear();
     }
 
 
