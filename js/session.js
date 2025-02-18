@@ -3,7 +3,7 @@ export class SessionManager {
         this.currentSession = null;
         this.loadCurrentSession();
         this.initializeEventListeners();
-        this.initializeDebugButton();  
+        this.initializeDebugButton();
     }
 
     initializeEventListeners() {
@@ -14,16 +14,18 @@ export class SessionManager {
         const sessionForm = document.getElementById('sessionForm');
         const sessionNameInput = document.getElementById('sessionName');
 
-        // Gestionnaire pour le bouton "+"
-        addButton.addEventListener('click', () => {
-            sessionNameInput.value = this.getDefaultSessionName();
-            modal.style.display = 'block';
-        });
+        if (addButton) {
+            addButton.addEventListener('click', () => {
+                sessionNameInput.value = this.getDefaultSessionName();
+                modal.style.display = 'block';
+            });
+        }
 
-        // Fermeture de la modale
-        cancelButton.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
+        if (cancelButton) {
+            cancelButton.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+        }
 
         // Clic en dehors de la modale
         window.addEventListener('click', (event) => {
@@ -32,16 +34,17 @@ export class SessionManager {
             }
         });
 
-        // Soumission du formulaire
-        sessionForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const sessionName = sessionNameInput.value.trim();
-            
-            if (sessionName) {
-                this.createNewSession(sessionName);
-                modal.style.display = 'none';
-            }
-        });
+        if (sessionForm) {
+            sessionForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const sessionName = sessionNameInput.value.trim();
+                
+                if (sessionName) {
+                    this.createNewSession(sessionName);
+                    modal.style.display = 'none';
+                }
+            });
+        }
     }
 
     getDefaultSessionName() {
@@ -58,8 +61,6 @@ export class SessionManager {
             createdAt: new Date().toISOString(),
             tracks: []
         };
-
-        // Sauvegarder dans localStorage
         localStorage.setItem('currentSession', JSON.stringify(sessionData));
         this.currentSession = sessionData;
         this.updateSessionDisplay();
@@ -81,30 +82,42 @@ export class SessionManager {
         }
     }
 
-    // Méthode pour ajouter une piste à la session courante
     addTrackToSession(track) {
         if (!this.currentSession) return;
-
         this.currentSession.tracks.push(track);
         localStorage.setItem('currentSession', JSON.stringify(this.currentSession));
     }
 
-
-debugSession() {
-    console.log('=== Contenu de la session ===');
-    if (!this.currentSession) {
-        console.log('Aucune session active');
-        console.log('========================');
-        return;
+    // Nouvelle méthode fusionnée pour ajouter une URI
+    addTrackUriToSession(uri) {
+        if (!this.currentSession) {
+            console.warn("Aucune session active. Impossible d'ajouter l'URI.");
+            return;
+        }
+        
+        if (!this.currentSession.tracks.includes(uri)) {
+            this.currentSession.tracks.push(uri);
+            localStorage.setItem('currentSession', JSON.stringify(this.currentSession));
+            console.log(`URI ajoutée : ${uri}`);
+        } else {
+            console.log(`L'URI est déjà présente dans la session : ${uri}`);
+        }
     }
-    console.log('Nom:', this.currentSession.name);
-    console.log('Date création:', this.currentSession.createdAt);
-    console.log('Nombre de pistes:', this.currentSession.tracks.length);
-    console.log('Pistes:', this.currentSession.tracks);
-    console.log('========================');
-}
 
-    // Méthode pour obtenir un résumé de la session
+    debugSession() {
+        console.log('=== Contenu de la session ===');
+        if (!this.currentSession) {
+            console.log('Aucune session active');
+            console.log('========================');
+            return;
+        }
+        console.log('Nom:', this.currentSession.name);
+        console.log('Date création:', this.currentSession.createdAt);
+        console.log('Nombre de pistes:', this.currentSession.tracks.length);
+        console.log('Pistes:', this.currentSession.tracks);
+        console.log('========================');
+    }
+
     getSessionSummary() {
         if (!this.currentSession) {
             return 'Aucune session active';
@@ -124,35 +137,9 @@ debugSession() {
             const sessionDebugButton = document.createElement('button');
             sessionDebugButton.textContent = 'Afficher Session';
             sessionDebugButton.onclick = () => {
-                this.debugSession(); // Maintenant 'this' référence correctement l'instance
+                this.debugSession();
             };
             debugContent.appendChild(sessionDebugButton);
-        }
-    }
-
-
-}
-
-export class SessionManager {
-    constructor() {
-        this.currentSession = null;
-        this.loadCurrentSession();
-        this.initializeEventListeners();
-    }
-
-    // Méthode pour ajouter une piste à la session courante
-    addTrackUriToSession(uri) {
-        if (!this.currentSession) {
-            console.warn("Aucune session active. Impossible d'ajouter l'URI.");
-            return;
-        }
-        // Ajouter l'URI à la liste des pistes si elle n'existe pas déjà
-        if (!this.currentSession.tracks.includes(uri)) {
-            this.currentSession.tracks.push(uri);
-            localStorage.setItem('currentSession', JSON.stringify(this.currentSession));
-            console.log(`URI ajoutée : ${uri}`);
-        } else {
-            console.log(`L'URI est déjà présente dans la session : ${uri}`);
         }
     }
 }

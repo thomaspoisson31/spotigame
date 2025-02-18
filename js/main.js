@@ -51,10 +51,10 @@ function initializePlayer(token) {
             console.log('Piste courante:', track);
 
             // Ajout de l'URI dans la session active
-            if (window.sessionManager) {
+            if (window.sessionManager && window.sessionManager.currentSession) {
                 window.sessionManager.addTrackUriToSession(track.uri);
             } else {
-                console.error('SessionManager non initialisé');
+                console.error('Aucune session active ou SessionManager non disponible.');
             }
 
             try {
