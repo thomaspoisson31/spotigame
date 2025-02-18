@@ -251,33 +251,34 @@ export function toggleImage() {
         const showSessionBtn = document.getElementById('showSessionBtn');
 
         if (invalidateTokenBtn) {
-            invalidateTokenBtn.addEventListener('click', () => {
+            invalidateTokenBtn.addEventListener('click', async () => {
                 console.log('Invalidation du token...');
                 localStorage.setItem('spotify_token', 'invalid_token');
-                alert('Token invalidé');
+                window.location.href = 'auth.html';
             });
         }
 
         if (expireTokenBtn) {
-            expireTokenBtn.addEventListener('click', () => {
+            expireTokenBtn.addEventListener('click', async () => {
                 console.log('Expiration du token...');
                 const expiredToken = {
                     value: localStorage.getItem('spotify_token'),
                     timestamp: Date.now() - 3600001
                 };
                 localStorage.setItem('spotify_token_data', JSON.stringify(expiredToken));
-                alert('Token expiré');
+                window.location.href = 'auth.html';
             });
         }
 
         if (removeTokenBtn) {
-            removeTokenBtn.addEventListener('click', () => {
+            removeTokenBtn.addEventListener('click', async () => {
                 console.log('Suppression du token...');
                 localStorage.removeItem('spotify_token');
                 localStorage.removeItem('spotify_token_data');
-                alert('Token supprimé');
+                window.location.href = 'auth.html';
             });
         }
+
 
         if (showSessionBtn) {
             showSessionBtn.addEventListener('click', () => {

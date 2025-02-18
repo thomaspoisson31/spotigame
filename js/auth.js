@@ -3,55 +3,29 @@ export async function checkAndRefreshToken() {
     console.log('=== Début vérification token ===');
     
     const token = localStorage.getItem('spotify_token');
-    const timestamp = localStorage.getItem('token_timestamp');
-    const expiresIn = localStorage.getItem('token_expires_in');
-    const currentTime = Date.now();
-
-    console.log({
-        hasToken: !!token,
-        timestamp: timestamp ? new Date(parseInt(timestamp)) : null,
-        expiresIn: expiresIn,
-        currentTime: currentTime
-    });
-
-    // Si pas de token, rediriger vers l'authentification
     if (!token) {
-        console.log('❌ Token manquant');
+        console.log('Token manquant - redirection vers auth');
         window.location.href = 'auth.html';
         return false;
     }
 
-    // Vérifier si le token est expiré
-    if (timestamp && expiresIn) {
-        const expirationTime = parseInt(timestamp) + (parseInt(expiresIn) * 1000);
-        if (currentTime > expirationTime) {
-            console.log('❌ Token expiré');
-            redirectToAuth();
-            return false;
-        }
-    }
-
     try {
-        // Vérification du token avec l'API Spotify
         const response = await fetch('https://api.spotify.com/v1/me', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         });
-        
+
         if (!response.ok) {
-            console.log(`❌ Vérification API échouée: ${response.status}`);
-            if (response.status === 401) {
-                redirectToAuth();
-            }
+            console.log('Token invalide - redirection vers auth');
+            window.location.href = 'auth.html';
             return false;
         }
 
-        console.log('✅ Token valide');
         return true;
     } catch (error) {
-        console.error('❌ Erreur vérification token:', error);
-        redirectToAuth();
+        console.error('Erreur lors de la vérification du token:', error);
+        window.location.href = 'auth.html';
         return false;
     }
 }
