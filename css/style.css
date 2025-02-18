@@ -42,14 +42,15 @@ body {
 
 .action-buttons {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start; /* Aligner à gauche */
     gap: 10px;
-    margin: 10px 0 20px 0;
+    margin: 10px 0 20px 20px; /* Ajout de marge à gauche */
 }
 
 .round-button {
-    width: 40px;
-    height: 40px;
+    width: 32px; /* Légèrement plus petits */
+    height: 32px;
     border-radius: 50%;
     background-color: #1DB954;
     border: none;
@@ -67,24 +68,27 @@ body {
 }
 
 #add-button {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: white;
     line-height: 1;
 }
 
 .button-icon {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     object-fit: contain;
 }
 
 
 #current-session {
     color: white;
-    margin-left: 10px;
-    font-size: 0.9em;
+    margin-left: 15px;
+    font-size: 0.85em; /* Texte plus petit */
+    font-style: italic;
+    opacity: 0.8; /* Légèrement plus discret */
 }
+
 
 /* Styles pour la fenêtre modale de création de session */
 
@@ -248,6 +252,7 @@ body {
     border-radius: 20px;
     min-width: 200px;
     justify-content: center;
+    border: 1px solid white; /* Ajout de la bordure blanche */
 }
 
 .nav-button {
