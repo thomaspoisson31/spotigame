@@ -1,7 +1,3 @@
-// Constants
-const DEFAULT_MIN_YEAR = 1900;
-const DEFAULT_MAX_YEAR = 3000;
-
 export class GameManager {
     constructor() {
         this.currentSongYear = null;
@@ -9,33 +5,83 @@ export class GameManager {
     }
 
     initializeGameListeners() {
-        const helpIcons = document.querySelectorAll('.help-icon');
-        helpIcons.forEach((icon, index) => {
-            icon.addEventListener('click', () => {
-                this.handleHelpIconClick(index === 0 ? 'left' : 'right');
-            });
-            // Ajouter un style de curseur pointer pour indiquer que c'est cliquable
-            icon.style.cursor = 'pointer';
+        this.addHelpIconListener('.help-icon');
+    }
+
+    addHelpIconListener(selector) {
+        const helpIcons = document.querySelectorAll(selector);
+        helpIcons.forEach((icon) => {
+            if (!icon.hasListener) {  // Éviter les doublons d'événements
+                icon.addEventListener('click', (e) => {
+                    const position = this.getIconPosition(e.target);
+                    this.handleHelpIconClick(position, e.target);
+                });
+                icon.hasListener = true;
+                icon.style.cursor = 'pointer';
+            }
         });
+    }
+
+    getIconPosition(icon) {
+        const yearSelector = document.querySelector('.year-selector');
+        const icons = Array.from(yearSelector.querySelectorAll('.help-icon'));
+        return icons.indexOf(icon);
     }
 
     setCurrentSongYear(year) {
         this.currentSongYear = year;
     }
 
-    handleHelpIconClick(position) {
+    createYearElement(year) {
+        const yearDiv = document.createElement('div');
+        yearDiv.className = 'target-year';
+        yearDiv.textContent = year;
+        return yearDiv;
+    }
+
+    createHelpIcon() {
+        const helpIcon = document.createElement('div');
+        helpIcon.className = 'help-icon';
+        helpIcon.textContent = '?';
+        return helpIcon;
+    }
+
+    handleHelpIconClick(position, clickedIcon) {
         if (!this.currentSongYear) {
             console.warn("Aucun morceau n'est en cours de lecture");
             return;
         }
 
-        const targetYearElement = document.querySelector('.target-year');
-        const targetYear = parseInt(targetYearElement.textContent);
+        const yearSelector = document.querySelector('.year-selector');
+        const years = Array.from(yearSelector.querySelectorAll('.target-year'))
+            .map(el => parseInt(el.textContent));
 
-        if (position === 'left') {
-            this.evaluatePosition(DEFAULT_MIN_YEAR, targetYear, this.currentSongYear);
-        } else {
-            this.evaluatePosition(targetYear, DEFAULT_MAX_YEAR, this.currentSongYear);
+        let minYear, maxYear;
+        if (position === 0) { // Click gauche
+            minYear = DEFAULT_MIN_YEAR;
+            maxYear = years[0];
+        } else { // Click droite
+            minYear = years[years.length - 1];
+            maxYear = DEFAULT_MAX_YEAR;
+        }
+
+        const isWithinRange = this.evaluatePosition(minYear, maxYear, this.currentSongYear);
+        
+        if (isWithinRange) {
+            // Créer les nouveaux éléments
+            const newYearElement = this.createYearElement(this.currentSongYear);
+            const newHelpIcon = this.createHelpIcon();
+
+            if (position === 0) { // Insertion à gauche
+                clickedIcon.before(newHelpIcon);
+                clickedIcon.before(newYearElement);
+            } else { // Insertion à droite
+                clickedIcon.after(newYearElement);
+                newYearElement.after(newHelpIcon);
+            }
+
+            // Ajouter les listeners aux nouveaux éléments
+            this.addHelpIconListener('.help-icon');
         }
     }
 
@@ -47,5 +93,10 @@ export class GameManager {
         } else {
             console.log(`Perdu ! ${minYear} !<= ${songYear} !<= ${maxYear}`);
         }
+
+        return isWithinRange;
     }
 }
+
+const DEFAULT_MIN_YEAR = 1900;
+const DEFAULT_MAX_YEAR = 3000;
