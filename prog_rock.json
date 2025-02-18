@@ -1,5 +1,5 @@
 {
-  "playlist_name": "Best of Progressive Rock",
+  "playlist_name": "Prog Rock",
   "songs": [
     {
       "artist": "Camel",
@@ -18,13 +18,7 @@
       "title": "The Court Of The Crimson King",
       "year": 1969,
       "uri": "spotify:track:1OFjv0Cq2JeK3FPvPG98rJ"
-    },
-    {
-      "artist": "Pink Floyd",
-      "title": "Echoes - 2011 Remastered Version",
-      "year": 1971,
-      "uri": "spotify:track:1Mzm1CNqVxtwbCYhOo843s"
-    },
+    },,
     {
       "artist": "The Beatles",
       "title": "Because - Remastered 2009",
