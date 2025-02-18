@@ -7,6 +7,19 @@ export class SessionManager {
         this.targetYear = generateAndDisplayRandomYear();
     }
 
+
+// Génération d'une année aléatoire
+    function generateAndDisplayRandomYear() {
+        const currentYear = new Date().getFullYear();
+        const randomYear = Math.floor(Math.random() * (currentYear - 1950 + 1)) + 1950;
+        
+        const targetYearElement = document.querySelector('.target-year');
+        if (targetYearElement) {
+            targetYearElement.textContent = randomYear;
+        }
+        return randomYear;
+    }
+
     initializeEventListeners() {
         // Bouton pour ouvrir la modale
         const addButton = document.getElementById('add-button');
