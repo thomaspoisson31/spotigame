@@ -11,21 +11,14 @@ export class GameManager {
     addHelpIconListener(selector) {
         const helpIcons = document.querySelectorAll(selector);
         helpIcons.forEach((icon) => {
-            if (!icon.hasListener) {  // Éviter les doublons d'événements
+            if (!icon.hasListener) {
                 icon.addEventListener('click', (e) => {
-                    const position = this.getIconPosition(e.target);
-                    this.handleHelpIconClick(position, e.target);
+                    this.handleHelpIconClick(e.target);
                 });
                 icon.hasListener = true;
                 icon.style.cursor = 'pointer';
             }
         });
-    }
-
-    getIconPosition(icon) {
-        const yearSelector = document.querySelector('.year-selector');
-        const icons = Array.from(yearSelector.querySelectorAll('.help-icon'));
-        return icons.indexOf(icon);
     }
 
     setCurrentSongYear(year) {
@@ -46,39 +39,49 @@ export class GameManager {
         return helpIcon;
     }
 
-    handleHelpIconClick(position, clickedIcon) {
+    getAdjacentYears(clickedIcon) {
+        const yearSelector = document.querySelector('.year-selector');
+        const elements = Array.from(yearSelector.children);
+        const iconIndex = elements.indexOf(clickedIcon);
+        
+        // Trouver l'année à gauche
+        let leftYear = 1900; // Valeur par défaut
+        for (let i = iconIndex - 1; i >= 0; i--) {
+            if (elements[i].classList.contains('target-year')) {
+                leftYear = parseInt(elements[i].textContent);
+                break;
+            }
+        }
+
+        // Trouver l'année à droite
+        let rightYear = 3000; // Valeur par défaut
+        for (let i = iconIndex + 1; i < elements.length; i++) {
+            if (elements[i].classList.contains('target-year')) {
+                rightYear = parseInt(elements[i].textContent);
+                break;
+            }
+        }
+
+        return { leftYear, rightYear };
+    }
+
+    handleHelpIconClick(clickedIcon) {
         if (!this.currentSongYear) {
             console.warn("Aucun morceau n'est en cours de lecture");
             return;
         }
 
-        const yearSelector = document.querySelector('.year-selector');
-        const years = Array.from(yearSelector.querySelectorAll('.target-year'))
-            .map(el => parseInt(el.textContent));
-
-        let minYear, maxYear;
-        if (position === 0) { // Click gauche
-            minYear = DEFAULT_MIN_YEAR;
-            maxYear = years[0];
-        } else { // Click droite
-            minYear = years[years.length - 1];
-            maxYear = DEFAULT_MAX_YEAR;
-        }
-
-        const isWithinRange = this.evaluatePosition(minYear, maxYear, this.currentSongYear);
+        const { leftYear, rightYear } = this.getAdjacentYears(clickedIcon);
+        const isWithinRange = this.evaluatePosition(leftYear, rightYear, this.currentSongYear);
         
         if (isWithinRange) {
             // Créer les nouveaux éléments
             const newYearElement = this.createYearElement(this.currentSongYear);
             const newHelpIcon = this.createHelpIcon();
 
-            if (position === 0) { // Insertion à gauche
-                clickedIcon.before(newHelpIcon);
-                clickedIcon.before(newYearElement);
-            } else { // Insertion à droite
-                clickedIcon.after(newYearElement);
-                newYearElement.after(newHelpIcon);
-            }
+            // Insérer les éléments
+            clickedIcon.after(newYearElement);
+            newYearElement.after(newHelpIcon);
 
             // Ajouter les listeners aux nouveaux éléments
             this.addHelpIconListener('.help-icon');
@@ -86,7 +89,7 @@ export class GameManager {
     }
 
     evaluatePosition(minYear, maxYear, songYear) {
-        const isWithinRange = songYear >= minYear && songYear <= maxYear;
+        const isWithinRange = songYear > minYear && songYear < maxYear;
         
         if (isWithinRange) {
             console.log(`Gagné : ${minYear} <= ${songYear} <= ${maxYear}`);
@@ -97,6 +100,3 @@ export class GameManager {
         return isWithinRange;
     }
 }
-
-const DEFAULT_MIN_YEAR = 1900;
-const DEFAULT_MAX_YEAR = 3000;
