@@ -4,12 +4,12 @@ export class SessionManager {
         this.loadCurrentSession();
         this.initializeEventListeners();
         this.initializeDebugButton();
-        this.targetYear = generateAndDisplayRandomYear();
+        this.targetYear = this.generateAndDisplayRandomYear(); // N'oubliez pas le this.
     }
 
 
 // Génération d'une année aléatoire
-    function generateAndDisplayRandomYear() {
+    generateAndDisplayRandomYear() {
         const currentYear = new Date().getFullYear();
         const randomYear = Math.floor(Math.random() * (currentYear - 1950 + 1)) + 1950;
         
