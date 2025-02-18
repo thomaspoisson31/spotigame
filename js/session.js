@@ -133,4 +133,26 @@ debugSession() {
 
 }
 
+export class SessionManager {
+    constructor() {
+        this.currentSession = null;
+        this.loadCurrentSession();
+        this.initializeEventListeners();
+    }
 
+    // Méthode pour ajouter une piste à la session courante
+    addTrackUriToSession(uri) {
+        if (!this.currentSession) {
+            console.warn("Aucune session active. Impossible d'ajouter l'URI.");
+            return;
+        }
+        // Ajouter l'URI à la liste des pistes si elle n'existe pas déjà
+        if (!this.currentSession.tracks.includes(uri)) {
+            this.currentSession.tracks.push(uri);
+            localStorage.setItem('currentSession', JSON.stringify(this.currentSession));
+            console.log(`URI ajoutée : ${uri}`);
+        } else {
+            console.log(`L'URI est déjà présente dans la session : ${uri}`);
+        }
+    }
+}

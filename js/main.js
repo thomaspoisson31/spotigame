@@ -27,10 +27,10 @@ function initializePlayer(token) {
 
     player.addListener('authentication_error', async ({ message }) => {
         console.error('Erreur authentification:', message);
-        if (await checkAndRefreshToken()) {
-            console.log('Token rafraîchi avec succès');
-        }
+        // Redirection immédiate vers la page d'authentification
+        window.location.href = 'auth.html';
     });
+
 
     player.addListener('account_error', ({ message }) => {
         console.error('Erreur compte:', message);
@@ -42,63 +42,79 @@ function initializePlayer(token) {
 
     // État du player
 
-    player.addListener('player_state_changed', async state => {
+    player.addListener('player_state_changed', async (state) => {
     if (state) {
         console.log('État du player mis à jour:', state);
-        
+
         if (state.track_window && state.track_window.current_track) {
             const track = state.track_window.current_track;
             console.log('Piste courante:', track);
-            
+
+            // Ajout de l'URI dans la session active
+            if (window.sessionManager) {
+                window.sessionManager.addTrackUriToSession(track.uri);
+            } else {
+                console.error('SessionManager non initialisé');
+            }
+
             try {
                 // Récupérer les détails de la piste via l'API
                 const trackId = track.uri.split(':')[2];
-                const response = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('spotify_token')}`
+                const response = await fetch(
+                    `https://api.spotify.com/v1/tracks/${trackId}`,
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('spotify_token')}`,
+                        },
                     }
-                });
-                
+                );
+
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                
+
                 const trackData = await response.json();
-                
+
                 // Récupérer les détails de l'album
                 const albumResponse = await fetch(trackData.album.href, {
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('spotify_token')}`
-                    }
+                        'Authorization': `Bearer ${localStorage.getItem('spotify_token')}`,
+                    },
                 });
-                
+
                 if (!albumResponse.ok) {
                     throw new Error(`HTTP error! status: ${albumResponse.status}`);
                 }
-                
+
                 const albumData = await albumResponse.json();
-                
+
                 const songInfo = {
                     title: track.name,
-                    artist: track.artists.map(artist => artist.name).join(', '),
-                    year: albumData.release_date ? albumData.release_date.substring(0, 4) : ''
+                    artist: track.artists.map((artist) => artist.name).join(', '),
+                    year: albumData.release_date
+                        ? albumData.release_date.substring(0, 4)
+                        : '',
                 };
-                
+
                 console.log('Informations extraites:', songInfo);
                 updateCurrentSong(songInfo);
-                
             } catch (error) {
                 console.error('Erreur lors de la récupération des détails:', error);
+
                 // Fallback sur les informations de base
                 const songInfo = {
                     title: track.name,
-                    artist: track.artists.map(artist => artist.name).join(', '),
-                    year: track.album.release_date ? track.album.release_date.substring(0, 4) : ''
+                    artist: track.artists.map((artist) => artist.name).join(', '),
+                    year: track.album.release_date
+                        ? track.album.release_date.substring(0, 4)
+                        : '',
                 };
                 updateCurrentSong(songInfo);
             }
         }
     }
+});
+
 });
 
 
