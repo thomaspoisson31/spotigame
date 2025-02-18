@@ -220,6 +220,7 @@ function updateCurrentSong(songInfo) {
     const artistElement = document.querySelector('.song-artist');
     const yearElement = document.querySelector('.song-year');
     const artworkThumbnail = document.getElementById('artwork-thumbnail');
+    const card = document.querySelector('.card');
 
     if (!songInfo || !songInfo.title) {
         console.error('Informations de chanson invalides');
@@ -241,17 +242,16 @@ function updateCurrentSong(songInfo) {
     // Gérer l'affichage initial
     if (songInfoContainer) {
         songInfoContainer.style.display = 'block';
-        defaultText.style.display = 'flex';
-        songDetails.style.display = 'none';
         
-        // Si la carte était déjà révélée, on maintient cet état
-        const card = document.querySelector('.card');
-        if (card && card.classList.contains('revealed')) {
-            defaultText.style.display = 'none';
-            songDetails.style.display = 'grid';
+        // Réinitialiser l'état de la carte pour chaque nouveau morceau
+        if (card) {
+            card.classList.remove('revealed');
+            defaultText.style.display = 'flex';
+            songDetails.style.display = 'none';
         }
     }
 }
+
 
 function toggleSongInfo() {
     const defaultText = document.querySelector('.default-text');
