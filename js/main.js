@@ -223,30 +223,75 @@ export function toggleImage() {
 }
 
 // Initialisation des écouteurs d'événements
-function initializeEventListeners() {
-    const albumImage = document.getElementById('album-image');
-    if (albumImage) {
-        albumImage.addEventListener('click', toggleImage);
+    function initializeEventListeners() {
+        const albumImage = document.getElementById('album-image');
+        if (albumImage) {
+            albumImage.addEventListener('click', toggleImage);
+        }
+
+        // Panel de debug
+        const collapsible = document.querySelector('.collapsible-debug');
+        const debugContent = document.querySelector('.debug-content');
+        
+        if (collapsible && debugContent) {
+            collapsible.addEventListener('click', function() {
+                this.classList.toggle('active');
+                if (debugContent.style.display === 'block') {
+                    debugContent.style.display = 'none';
+                } else {
+                    debugContent.style.display = 'block';
+                }
+            });
+        }
+
+        // Boutons de debug
+        const invalidateTokenBtn = document.getElementById('invalidateTokenBtn');
+        const expireTokenBtn = document.getElementById('expireTokenBtn');
+        const removeTokenBtn = document.getElementById('removeTokenBtn');
+        const showSessionBtn = document.getElementById('showSessionBtn');
+
+        if (invalidateTokenBtn) {
+            invalidateTokenBtn.addEventListener('click', () => {
+                console.log('Invalidation du token...');
+                localStorage.setItem('spotify_token', 'invalid_token');
+                alert('Token invalidé');
+            });
+        }
+
+        if (expireTokenBtn) {
+            expireTokenBtn.addEventListener('click', () => {
+                console.log('Expiration du token...');
+                const expiredToken = {
+                    value: localStorage.getItem('spotify_token'),
+                    timestamp: Date.now() - 3600001
+                };
+                localStorage.setItem('spotify_token_data', JSON.stringify(expiredToken));
+                alert('Token expiré');
+            });
+        }
+
+        if (removeTokenBtn) {
+            removeTokenBtn.addEventListener('click', () => {
+                console.log('Suppression du token...');
+                localStorage.removeItem('spotify_token');
+                localStorage.removeItem('spotify_token_data');
+                alert('Token supprimé');
+            });
+        }
+
+        if (showSessionBtn) {
+            showSessionBtn.addEventListener('click', () => {
+                console.log('Affichage de la session...');
+                if (window.sessionManager) {
+                    window.sessionManager.debugSession();
+                } else {
+                    console.error('Session manager non disponible');
+                    alert('Session manager non disponible');
+                }
+            });
+        }
     }
 
-    // Panel de debug
-    const collapsible = document.querySelector('.collapsible-debug');
-    const debugContent = document.querySelector('.debug-content');
-    
-    if (collapsible && debugContent) {
-        collapsible.addEventListener('click', function() {
-            this.classList.toggle('active');
-            
-            if (debugContent.style.display === 'block') {
-                debugContent.style.display = 'none';
-            } else {
-                debugContent.style.display = 'block';
-            }
-            
-            console.log('Debug panel toggled'); // Pour débugger
-        });
-    }
-}
 
 
 // Initialisation au chargement de la page
