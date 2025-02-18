@@ -1,6 +1,7 @@
 import { checkAndRefreshToken } from './auth.js';
 import { createPlaylistNavigation } from './playlist.js';
 import { SessionManager } from './session.js';
+import { GameManager } from './game.js';
 
 // Variables globales
 let player;
@@ -231,7 +232,9 @@ function updateCurrentSong(songInfo) {
         targetYearElement.textContent = window.sessionManager.targetYear;
     }
     
-
+    if (window.gameManager) {
+        window.gameManager.setCurrentSongYear(parseInt(songInfo.year));
+    }
 
     if (!songInfo || !songInfo.title) {
         console.error('Informations de chanson invalides');
@@ -341,11 +344,12 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
         
         // Initialiser le gestionnaire de session
         window.sessionManager = new SessionManager();
-        
+        window.gameManager = new GameManager();        
         initializeEventListeners();
         console.log('Initialisation terminée');
     }
 };
+
 
 // Export des fonctions nécessaires
 export { initializePlayer, currentPlaylist };
