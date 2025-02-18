@@ -90,10 +90,9 @@ body {
     font-size: 0.85em;
     font-style: italic;
     opacity: 0.8;
-    white-space: nowrap; /* Empêche le retour à la ligne du texte */
-    flex-shrink: 1; /* Permet au texte de se rétrécir si nécessaire */
+    display: inline-flex; /* Assure un meilleur alignement */
+    align-items: center; /* Centre le texte verticalement */
 }
-
 
 /* Styles pour la fenêtre modale de création de session */
 
@@ -159,7 +158,7 @@ body {
 .buttons-group {
     display: flex;
     gap: 10px;
-    flex-shrink: 0; /* Empêche les boutons de se rétrécir */
+    align-items: center; /* Centre verticalement les éléments */
 }
 
 /* Styles pour la carte d'information */
