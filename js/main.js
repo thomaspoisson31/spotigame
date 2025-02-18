@@ -5,11 +5,11 @@ import { SessionManager } from './session.js';
 // Variables globales
 let player;
 let deviceId;
-let imageRevealed = false;
 let currentSong = {
     title: '',
     artist: '',
-    year: ''
+    year: '',
+    albumUrl: ''
 };
 let currentPlaylist = null;
 
@@ -31,7 +31,7 @@ async function selectRandomTrack(playlist) {
 
     const tracks = playlist.tracks.items;
     let attempts = 0;
-    const maxAttempts = tracks.length; // Évite une boucle infinie
+    const maxAttempts = tracks.length;
     
     while (attempts < maxAttempts) {
         const randomIndex = Math.floor(Math.random() * tracks.length);
@@ -78,80 +78,7 @@ function initializePlayer(token) {
         console.error('Erreur lecture:', message);
     });
 
-   player.addListener('player_state_changed', async (state) => {
-    if (state) {
-        console.log('État du player mis à jour:', state);
-        
-        if (state.track_window && state.track_window.current_track) {
-            const track = state.track_window.current_track;
-            console.log('Piste courante:', track);
-            
-            try {
-                // Récupérer les détails de la piste via l'API
-                const trackId = track.uri.split(':')[2];
-                const response = await fetch(
-                    `https://api.spotify.com/v1/tracks/${trackId}`,
-                    {
-                        headers: {
-                            'Authorization': `Bearer ${localStorage.getItem('spotify_token')}`,
-                        },
-                    }
-                );
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const trackData = await response.json();
-                
-                // Récupérer les détails de l'album
-                const albumResponse = await fetch(trackData.album.href, {
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('spotify_token')}`,
-                    },
-                });
-
-                if (!albumResponse.ok) {
-                    throw new Error(`HTTP error! status: ${albumResponse.status}`);
-                }
-
-                const albumData = await albumResponse.json();
-                
-                const songInfo = {
-                    title: track.name,
-                    artist: track.artists.map((artist) => artist.name).join(', '),
-                    year: albumData.release_date
-                        ? albumData.release_date.substring(0, 4)
-                        : '',
-                    albumUrl: trackData.album.images[0].url // Ajout de l'URL de l'artwork
-                };
-
-                console.log('Informations extraites:', songInfo);
-                updateCurrentSong(songInfo);
-
-                // Ajouter l'URI à la session active
-                if (window.sessionManager) {
-                    window.sessionManager.addTrackUriToSession(track.uri);
-                }
-
-            } catch (error) {
-                console.error('Erreur lors de la récupération des détails:', error);
-                // Fallback sur les informations de base
-                const songInfo = {
-                    title: track.name,
-                    artist: track.artists.map((artist) => artist.name).join(', '),
-                    year: track.album.release_date
-                        ? track.album.release_date.substring(0, 4)
-                        : '',
-                    albumUrl: track.album.images[0].url // Fallback pour l'artwork
-                };
-                updateCurrentSong(songInfo);
-            }
-        }
-    }
-});
-
- // État du player
+    // État du player
     player.addListener('player_state_changed', async (state) => {
         if (state) {
             console.log('État du player mis à jour:', state);
@@ -177,6 +104,7 @@ function initializePlayer(token) {
                     }
 
                     const trackData = await response.json();
+                    
                     // Récupérer les détails de l'album
                     const albumResponse = await fetch(trackData.album.href, {
                         headers: {
@@ -189,12 +117,14 @@ function initializePlayer(token) {
                     }
 
                     const albumData = await albumResponse.json();
+                    
                     const songInfo = {
                         title: track.name,
                         artist: track.artists.map((artist) => artist.name).join(', '),
                         year: albumData.release_date
                             ? albumData.release_date.substring(0, 4)
                             : '',
+                        albumUrl: trackData.album.images[0].url
                     };
 
                     console.log('Informations extraites:', songInfo);
@@ -206,13 +136,13 @@ function initializePlayer(token) {
                     }
                 } catch (error) {
                     console.error('Erreur lors de la récupération des détails:', error);
-                    // Fallback sur les informations de base
                     const songInfo = {
                         title: track.name,
                         artist: track.artists.map((artist) => artist.name).join(', '),
                         year: track.album.release_date
                             ? track.album.release_date.substring(0, 4)
                             : '',
+                        albumUrl: track.album.images[0].url
                     };
                     updateCurrentSong(songInfo);
                 }
@@ -234,7 +164,6 @@ function initializePlayer(token) {
                     console.error('Aucune playlist sélectionnée');
                     return;
                 }
-
                 const track = await selectRandomTrack(currentPlaylist);
                 
                 if (track) {
@@ -254,7 +183,6 @@ function initializePlayer(token) {
                             console.error('Erreur lors de la lecture :', error);
                         }
                     };
-
                     await play({
                         playerInstance: player,
                         spotify_uri: track.uri
@@ -285,119 +213,91 @@ function initializePlayer(token) {
 function updateCurrentSong(songInfo) {
     console.log('Mise à jour des informations du morceau:', songInfo);
     
+    const songInfoContainer = document.getElementById('song-info');
+    const defaultText = document.querySelector('.default-text');
+    const songDetails = document.querySelector('.song-details');
+    const titleElement = document.querySelector('.song-title');
+    const artistElement = document.querySelector('.song-artist');
+    const yearElement = document.querySelector('.song-year');
+    const artworkThumbnail = document.getElementById('artwork-thumbnail');
+
     if (!songInfo || !songInfo.title) {
         console.error('Informations de chanson invalides');
         return;
     }
 
-    currentSong = {
-        title: songInfo.title,
-        artist: songInfo.artist,
-        year: songInfo.year
-    };
-
-    updateSongElements();
-    resetSongInfo();
-}
-
-function updateSongElements() {
-    const titleElement = document.querySelector('.song-title');
-    const artistElement = document.querySelector('.song-artist');
-    const yearElement = document.querySelector('.song-year');
-    const artworkThumbnail = document.getElementById('artwork-thumbnail');
+    // Mettre à jour les informations
+    currentSong = songInfo;
     
-    if (titleElement && artistElement && yearElement) {
-        titleElement.textContent = currentSong.title;
-        artistElement.textContent = currentSong.artist;
-        yearElement.textContent = currentSong.year ? ` (${currentSong.year})` : '';
+    // Mettre à jour les éléments DOM
+    titleElement.textContent = songInfo.title;
+    artistElement.textContent = songInfo.artist;
+    yearElement.textContent = songInfo.year ? ` (${songInfo.year})` : '';
+    
+    if (artworkThumbnail && songInfo.albumUrl) {
+        artworkThumbnail.src = songInfo.albumUrl;
+    }
+
+    // Gérer l'affichage initial
+    if (songInfoContainer) {
+        songInfoContainer.style.display = 'block';
+        defaultText.style.display = 'flex';
+        songDetails.style.display = 'none';
         
-        // Mettre à jour la miniature
-        if (artworkThumbnail && currentSong.albumUrl) {
-            artworkThumbnail.src = currentSong.albumUrl;
+        // Si la carte était déjà révélée, on maintient cet état
+        const card = document.querySelector('.card');
+        if (card && card.classList.contains('revealed')) {
+            defaultText.style.display = 'none';
+            songDetails.style.display = 'grid';
         }
     }
 }
 
 function toggleSongInfo() {
-    const songInfo = document.getElementById('song-info');
+    const defaultText = document.querySelector('.default-text');
+    const songDetails = document.querySelector('.song-details');
     const card = document.querySelector('.card');
-    
-    if (!currentSong.title) {
-        console.error('Aucune information de chanson disponible');
+
+    if (!card) {
+        console.error('Carte non trouvée.');
         return;
     }
 
     if (!card.classList.contains('revealed')) {
+        // Révéler les informations
         card.classList.add('revealed');
+        defaultText.style.display = 'none';
+        songDetails.style.display = 'grid';
     } else {
+        // Masquer les informations
         card.classList.remove('revealed');
+        songDetails.style.display = 'none';
+        defaultText.style.display = 'flex';
     }
 }
-
 
 function resetSongInfo() {
-    const albumImage = document.getElementById('album-image');
     const songInfo = document.getElementById('song-info');
     const card = document.querySelector('.card');
+    const defaultText = document.querySelector('.default-text');
+    const songDetails = document.querySelector('.song-details');
     
     if (songInfo && card) {
-        imageRevealed = false;
+        // Masquer le conteneur principal
         songInfo.style.display = 'none';
         
-        if (card.classList.contains('revealed')) {
-            card.classList.remove('revealed');
-        }
-        
-        if (albumImage) {
-            albumImage.style.filter = 'blur(20px)';
-        }
-    }
-}
-
-export function toggleImage() {
-    console.log('Toggle image appelé, état actuel:', { imageRevealed, currentSong });
-    
-    const albumImage = document.getElementById('album-image');
-    const songInfo = document.getElementById('song-info');
-    const card = document.querySelector('.card');
-    
-    if (!albumImage || !songInfo || !card) {
-        console.error('Éléments requis non trouvés pour toggleImage');
-        return;
-    }
-
-    if (!currentSong.title) {
-        console.error('Aucune information de chanson disponible');
-        return;
-    }
-
-    if (!imageRevealed) {
-        // Révéler
-        albumImage.style.filter = 'none';
-        songInfo.style.display = 'flex';
-        updateSongElements();
-        
-        requestAnimationFrame(() => {
-            card.classList.add('revealed');
-            imageRevealed = true;
-        });
-    } else {
-        // Masquer
-        albumImage.style.filter = 'blur(20px)';
+        // Réinitialiser l'état
         card.classList.remove('revealed');
-        
-        setTimeout(() => {
-            songInfo.style.display = 'none';
-            imageRevealed = false;
-        }, 300);
+        defaultText.style.display = 'flex';
+        songDetails.style.display = 'none';
     }
 }
 
 // Initialisation des écouteurs d'événements
 function initializeEventListeners() {
-    const songInfo = document.getElementById('song-info');
-    if (songInfo) {
-        songInfo.addEventListener('click', toggleSongInfo);
+    const songInfoContainer = document.getElementById('song-info');
+    if (songInfoContainer) {
+        songInfoContainer.addEventListener('click', toggleSongInfo);
     }
 
     // Panel de debug

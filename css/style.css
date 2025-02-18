@@ -163,6 +163,7 @@ body {
 
 /* Styles pour la carte d'information */
 .song-info {
+    display: none; /* Caché par défaut */
     width: 300px;
     margin: 20px auto;
     cursor: pointer;
@@ -181,21 +182,28 @@ body {
     width: 100%;
 }
 
+/* Zones par défaut du conteneur */
 .default-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 10px;
 }
 
 .song-details {
-    display: none; /* Caché par défaut */
+    display: none; /* Masqué par défaut */
     grid-template-columns: auto 1fr;
     gap: 15px;
     align-items: center;
 }
 
-.artwork-mini {
+/* Artwork miniature */
+.artwork-mini img {
     width: 60px;
     height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
 .artwork-mini img {
