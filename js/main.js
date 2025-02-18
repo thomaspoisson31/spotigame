@@ -113,7 +113,6 @@ function initializePlayer(token) {
             }
         }
     }
-});
 
 });
 
