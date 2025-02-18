@@ -4,6 +4,7 @@ export class SessionManager {
         this.loadCurrentSession();
         this.initializeEventListeners();
         this.initializeDebugButton();
+        this.targetYear = generateRandomYear();
     }
 
     initializeEventListeners() {
@@ -142,4 +143,12 @@ export class SessionManager {
             debugContent.appendChild(sessionDebugButton);
         }
     }
+
+    hasTrackUri(uri) {
+    if (!this.currentSession || !this.currentSession.tracks) {
+        return false;
+    }
+    return this.currentSession.tracks.includes(uri);
+    }
+
 }

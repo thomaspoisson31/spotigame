@@ -50,6 +50,12 @@ async function selectRandomTrack(playlist) {
     return null;
 }
 
+// Génération d'une année aléatoire
+function generateRandomYear() {
+    const currentYear = new Date().getFullYear();
+    return Math.floor(Math.random() * (currentYear - 1950 + 1)) + 1950;
+}
+
 // Initialisation du player Spotify
 function initializePlayer(token) {
     player = new Spotify.Player({
@@ -221,6 +227,12 @@ function updateCurrentSong(songInfo) {
     const yearElement = document.querySelector('.song-year');
     const artworkThumbnail = document.getElementById('artwork-thumbnail');
     const card = document.querySelector('.card');
+    const targetYearElement = document.querySelector('.target-year');
+    if (targetYearElement) {
+        targetYearElement.textContent = window.sessionManager.targetYear;
+    }
+    
+
 
     if (!songInfo || !songInfo.title) {
         console.error('Informations de chanson invalides');
