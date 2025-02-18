@@ -4,7 +4,7 @@ export class SessionManager {
         this.loadCurrentSession();
         this.initializeEventListeners();
         this.initializeDebugButton();
-        this.targetYear = generateRandomYear();
+        this.targetYear = generateAndDisplayRandomYear();
     }
 
     initializeEventListeners() {
