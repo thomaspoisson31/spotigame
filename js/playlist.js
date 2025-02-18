@@ -21,6 +21,7 @@ const VOLUME = {
 };
 
 // Fonction de chargement des playlists
+// Fonction de chargement des playlists
 export async function loadPlaylists() {
     try {
         console.log('Début du chargement des playlists...');
@@ -39,19 +40,23 @@ export async function loadPlaylists() {
             throw new Error('Token invalide');
         }
 
-        const configResponse = await fetch('playlist_config.json');
+        // Utiliser un chemin relatif sans le slash initial
+        const configResponse = await fetch('playlists/playlist_config.json');
         if (!configResponse.ok) {
             throw new Error('Impossible de charger le fichier de configuration');
         }
         
         const config = await configResponse.json();
-        const files = config.playlist_files;
+        // Ajouter le préfixe playlists/ aux chemins des fichiers
+        const files = config.playlist_files.map(file => `playlists/${file}`);
 
         const loadedPlaylists = await Promise.all(
             files.map(async (file) => {
                 try {
+                    console.log('Chargement de la playlist:', file);
                     const fileResponse = await fetch(file);
                     if (!fileResponse.ok) {
+                        console.error(`Erreur chargement ${file}: ${fileResponse.status}`);
                         return null;
                     }
                     const data = await fileResponse.json();
@@ -70,14 +75,16 @@ export async function loadPlaylists() {
         if (validPlaylists.length === 0) {
             throw new Error('Aucune playlist valide chargée');
         }
+
         console.log('Playlists valides chargées:', validPlaylists.length);
         return validPlaylists;
-
     } catch (error) {
         console.error('Erreur chargement playlists:', error);
         return null;
     }
 }
+
+
 
 // Fonction d'initialisation de la navigation
 // Fonction d'initialisation de la navigation
