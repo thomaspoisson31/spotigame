@@ -227,10 +227,11 @@ function updateCurrentSong(songInfo) {
     const yearElement = document.querySelector('.song-year');
     const artworkThumbnail = document.getElementById('artwork-thumbnail');
     const card = document.querySelector('.card');
-    const targetYearElement = document.querySelector('.target-year');
+    const targetYearElement = document.querySelector('.target-year:not(.placed-year)');
     if (targetYearElement) {
         targetYearElement.textContent = window.sessionManager.targetYear;
     }
+    
     
     if (window.gameManager) {
         window.gameManager.setCurrentSongYear(parseInt(songInfo.year));

@@ -27,11 +27,11 @@ export class GameManager {
 
     createYearElement(year) {
         const yearDiv = document.createElement('div');
-        yearDiv.className = 'target-year';
+        yearDiv.className = 'target-year placed-year'; // Ajout d'une classe supplémentaire
         yearDiv.textContent = year;
         return yearDiv;
     }
-
+    
     createHelpIcon() {
         const helpIcon = document.createElement('div');
         helpIcon.className = 'help-icon';
