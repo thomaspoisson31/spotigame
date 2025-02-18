@@ -163,54 +163,76 @@ body {
 
 /* Styles pour la carte d'information */
 .song-info {
-    display: none;
-    width: 100%;
-    max-width: 300px;
+    width: 300px;
     margin: 20px auto;
+    cursor: pointer;
 }
 
 .hidden-info {
-    background-color: #7342b7;
+    background: #9C27B0;
     padding: 20px;
     border-radius: 10px;
+    color: white;
     width: 100%;
     box-sizing: border-box;
-    min-height: 120px;
 }
 
 .card {
     width: 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
-.card.revealed {
-    opacity: 1;
+.default-text {
+    text-align: center;
+    padding: 10px;
 }
 
 .song-details {
+    display: none; /* Caché par défaut */
+    grid-template-columns: auto 1fr;
+    gap: 15px;
+    align-items: center;
+}
+
+.artwork-mini {
+    width: 60px;
+    height: 60px;
+}
+
+.artwork-mini img {
     width: 100%;
-    text-align: center;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.track-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title-year {
+    margin-bottom: 5px;
 }
 
 .song-title {
     font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    word-wrap: break-word;
-    color: white;
-}
-
-.song-artist {
-    font-style: italic;
-    margin-bottom: 5px;
-    word-wrap: break-word;
-    color: white;
+    margin-right: 5px;
 }
 
 .song-year {
     color: rgba(255, 255, 255, 0.8);
 }
+
+/* État révélé */
+.card.revealed .default-text {
+    display: none;
+}
+
+.card.revealed .song-details {
+    display: grid;
+}
+
 
 /* Styles pour les boutons de playlist */
 .playlist-buttons {

@@ -78,7 +78,80 @@ function initializePlayer(token) {
         console.error('Erreur lecture:', message);
     });
 
-    // État du player
+   player.addListener('player_state_changed', async (state) => {
+    if (state) {
+        console.log('État du player mis à jour:', state);
+        
+        if (state.track_window && state.track_window.current_track) {
+            const track = state.track_window.current_track;
+            console.log('Piste courante:', track);
+            
+            try {
+                // Récupérer les détails de la piste via l'API
+                const trackId = track.uri.split(':')[2];
+                const response = await fetch(
+                    `https://api.spotify.com/v1/tracks/${trackId}`,
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('spotify_token')}`,
+                        },
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const trackData = await response.json();
+                
+                // Récupérer les détails de l'album
+                const albumResponse = await fetch(trackData.album.href, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('spotify_token')}`,
+                    },
+                });
+
+                if (!albumResponse.ok) {
+                    throw new Error(`HTTP error! status: ${albumResponse.status}`);
+                }
+
+                const albumData = await albumResponse.json();
+                
+                const songInfo = {
+                    title: track.name,
+                    artist: track.artists.map((artist) => artist.name).join(', '),
+                    year: albumData.release_date
+                        ? albumData.release_date.substring(0, 4)
+                        : '',
+                    albumUrl: trackData.album.images[0].url // Ajout de l'URL de l'artwork
+                };
+
+                console.log('Informations extraites:', songInfo);
+                updateCurrentSong(songInfo);
+
+                // Ajouter l'URI à la session active
+                if (window.sessionManager) {
+                    window.sessionManager.addTrackUriToSession(track.uri);
+                }
+
+            } catch (error) {
+                console.error('Erreur lors de la récupération des détails:', error);
+                // Fallback sur les informations de base
+                const songInfo = {
+                    title: track.name,
+                    artist: track.artists.map((artist) => artist.name).join(', '),
+                    year: track.album.release_date
+                        ? track.album.release_date.substring(0, 4)
+                        : '',
+                    albumUrl: track.album.images[0].url // Fallback pour l'artwork
+                };
+                updateCurrentSong(songInfo);
+            }
+        }
+    }
+});
+
+ // État du player
     player.addListener('player_state_changed', async (state) => {
         if (state) {
             console.log('État du player mis à jour:', state);
@@ -228,25 +301,39 @@ function updateCurrentSong(songInfo) {
 }
 
 function updateSongElements() {
-    console.log('Mise à jour des éléments avec currentSong:', currentSong);
-    
     const titleElement = document.querySelector('.song-title');
     const artistElement = document.querySelector('.song-artist');
     const yearElement = document.querySelector('.song-year');
+    const artworkThumbnail = document.getElementById('artwork-thumbnail');
     
     if (titleElement && artistElement && yearElement) {
         titleElement.textContent = currentSong.title;
         artistElement.textContent = currentSong.artist;
-        yearElement.textContent = currentSong.year ? `(${currentSong.year})` : '';
-        console.log('Éléments mis à jour avec succès');
-    } else {
-        console.error('Éléments non trouvés dans le DOM:', {
-            titleElement,
-            artistElement,
-            yearElement
-        });
+        yearElement.textContent = currentSong.year ? ` (${currentSong.year})` : '';
+        
+        // Mettre à jour la miniature
+        if (artworkThumbnail && currentSong.albumUrl) {
+            artworkThumbnail.src = currentSong.albumUrl;
+        }
     }
 }
+
+function toggleSongInfo() {
+    const songInfo = document.getElementById('song-info');
+    const card = document.querySelector('.card');
+    
+    if (!currentSong.title) {
+        console.error('Aucune information de chanson disponible');
+        return;
+    }
+
+    if (!card.classList.contains('revealed')) {
+        card.classList.add('revealed');
+    } else {
+        card.classList.remove('revealed');
+    }
+}
+
 
 function resetSongInfo() {
     const albumImage = document.getElementById('album-image');
@@ -308,9 +395,9 @@ export function toggleImage() {
 
 // Initialisation des écouteurs d'événements
 function initializeEventListeners() {
-    const albumImage = document.getElementById('album-image');
-    if (albumImage) {
-        albumImage.addEventListener('click', toggleImage);
+    const songInfo = document.getElementById('song-info');
+    if (songInfo) {
+        songInfo.addEventListener('click', toggleSongInfo);
     }
 
     // Panel de debug
