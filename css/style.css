@@ -43,9 +43,9 @@ body {
 .action-buttons {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Aligner à gauche */
+    justify-content: flex-start;
     gap: 10px;
-    margin: 10px 0 20px 20px; /* Ajout de marge à gauche */
+    margin: 10px 0 20px 20px;
 }
 
 .round-button {
@@ -84,9 +84,9 @@ body {
 #current-session {
     color: white;
     margin-left: 15px;
-    font-size: 0.85em; /* Texte plus petit */
+    font-size: 0.85em;
     font-style: italic;
-    opacity: 0.8; /* Légèrement plus discret */
+    opacity: 0.8;
 }
 
 
@@ -149,6 +149,11 @@ body {
 
 .button-secondary {
     background-color: #404040;
+}
+
+.buttons-group {
+    display: flex;
+    gap: 10px;
 }
 
 /* Styles pour la carte d'information */
@@ -331,10 +336,10 @@ button:hover {
 }
 
 /* Panel de debug */
-/* Panel de debug */
 .debug-panel {
     margin-top: 20px;
     border-radius: 5px;
+    display: none; /*commenter pour afficher le panel*/
 }
 
 .collapsible-debug {
