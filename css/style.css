@@ -42,11 +42,14 @@ body {
 
 .action-buttons {
     display: flex;
+    flex-direction: row; /* Force l'alignement horizontal */
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
     margin: 10px 0 20px 20px;
+    width: auto; /* Empêche le conteneur de prendre toute la largeur */
 }
+
 
 .round-button {
     width: 32px; /* Légèrement plus petits */
@@ -87,6 +90,8 @@ body {
     font-size: 0.85em;
     font-style: italic;
     opacity: 0.8;
+    white-space: nowrap; /* Empêche le retour à la ligne du texte */
+    flex-shrink: 1; /* Permet au texte de se rétrécir si nécessaire */
 }
 
 
@@ -154,6 +159,7 @@ body {
 .buttons-group {
     display: flex;
     gap: 10px;
+    flex-shrink: 0; /* Empêche les boutons de se rétrécir */
 }
 
 /* Styles pour la carte d'information */
