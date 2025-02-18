@@ -231,18 +231,23 @@ function initializeEventListeners() {
 
     // Panel de debug
     const collapsible = document.querySelector('.collapsible-debug');
-    if (collapsible) {
+    const debugContent = document.querySelector('.debug-content');
+    
+    if (collapsible && debugContent) {
         collapsible.addEventListener('click', function() {
             this.classList.toggle('active');
-            const content = this.nextElementSibling;
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
+            
+            if (debugContent.style.display === 'block') {
+                debugContent.style.display = 'none';
             } else {
-                content.style.display = 'block';
+                debugContent.style.display = 'block';
             }
+            
+            console.log('Debug panel toggled'); // Pour débugger
         });
     }
 }
+
 
 // Initialisation au chargement de la page
 window.onSpotifyWebPlaybackSDKReady = async () => {
