@@ -1,3 +1,6 @@
+const DEFAULT_MIN_YEAR = 1900;
+const DEFAULT_MAX_YEAR = 3000;
+
 export class GameManager {
     constructor() {
         this.currentSongYear = null;
