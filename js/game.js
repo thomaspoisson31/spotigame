@@ -2,6 +2,7 @@ export class GameManager {
     constructor() {
         this.currentSongYear = null;
         this.initializeGameListeners();
+        this.restorePlacedYears();
     }
 
     initializeGameListeners() {
@@ -27,11 +28,11 @@ export class GameManager {
 
     createYearElement(year) {
         const yearDiv = document.createElement('div');
-        yearDiv.className = 'target-year placed-year'; // Ajout d'une classe supplémentaire
+        yearDiv.className = 'target-year placed-year';
         yearDiv.textContent = year;
         return yearDiv;
     }
-    
+
     createHelpIcon() {
         const helpIcon = document.createElement('div');
         helpIcon.className = 'help-icon';
@@ -44,8 +45,7 @@ export class GameManager {
         const elements = Array.from(yearSelector.children);
         const iconIndex = elements.indexOf(clickedIcon);
         
-        // Trouver l'année à gauche
-        let leftYear = 1900; // Valeur par défaut
+        let leftYear = 1900;
         for (let i = iconIndex - 1; i >= 0; i--) {
             if (elements[i].classList.contains('target-year')) {
                 leftYear = parseInt(elements[i].textContent);
@@ -53,8 +53,7 @@ export class GameManager {
             }
         }
 
-        // Trouver l'année à droite
-        let rightYear = 3000; // Valeur par défaut
+        let rightYear = 3000;
         for (let i = iconIndex + 1; i < elements.length; i++) {
             if (elements[i].classList.contains('target-year')) {
                 rightYear = parseInt(elements[i].textContent);
@@ -75,15 +74,18 @@ export class GameManager {
         const isWithinRange = this.evaluatePosition(leftYear, rightYear, this.currentSongYear);
         
         if (isWithinRange) {
-            // Créer les nouveaux éléments
             const newYearElement = this.createYearElement(this.currentSongYear);
             const newHelpIcon = this.createHelpIcon();
 
-            // Insérer les éléments
             clickedIcon.after(newYearElement);
             newYearElement.after(newHelpIcon);
 
-            // Ajouter les listeners aux nouveaux éléments
+            // Sauvegarder l'année dans la session
+            if (window.sessionManager) {
+                window.sessionManager.addPlacedYear(this.currentSongYear, 
+                    Array.from(document.querySelectorAll('.target-year')).length);
+            }
+
             this.addHelpIconListener('.help-icon');
         }
     }
@@ -98,5 +100,31 @@ export class GameManager {
         }
 
         return isWithinRange;
+    }
+
+    restorePlacedYears() {
+        const session = JSON.parse(localStorage.getItem('currentSession'));
+        if (session?.placedYears) {
+            const sortedYears = session.placedYears.sort((a, b) => 
+                new Date(a.timestamp) - new Date(b.timestamp)
+            );
+            
+            sortedYears.forEach(yearData => {
+                this.createYearWithIcon(yearData.year);
+            });
+        }
+    }
+
+    createYearWithIcon(year) {
+        const yearElement = this.createYearElement(year);
+        const helpIcon = this.createHelpIcon();
+        
+        const yearSelector = document.querySelector('.year-selector');
+        const lastHelpIcon = Array.from(yearSelector.querySelectorAll('.help-icon')).pop();
+        
+        if (lastHelpIcon) {
+            lastHelpIcon.after(yearElement);
+            yearElement.after(helpIcon);
+        }
     }
 }

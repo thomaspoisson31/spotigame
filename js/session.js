@@ -4,8 +4,9 @@ export class SessionManager {
         this.loadCurrentSession();
         this.initializeEventListeners();
         this.initializeDebugButton();
-        this.targetYear = this.generateAndDisplayRandomYear(); // N'oubliez pas le this.
+        this.targetYear = this.generateAndDisplayRandomYear();
     }
+
 
 
 // Génération d'une année aléatoire
@@ -73,11 +74,18 @@ export class SessionManager {
         const sessionData = {
             name: sessionName,
             createdAt: new Date().toISOString(),
-            tracks: []
+            tracks: [],
+            placedYears: [], // Nouveau tableau pour stocker les années placées
+            targetYear: this.generateAndDisplayRandomYear() // Nouvelle année aléatoire
         };
+
         localStorage.setItem('currentSession', JSON.stringify(sessionData));
         this.currentSession = sessionData;
         this.updateSessionDisplay();
+        
+        // Nettoyer l'affichage des années précédentes
+        this.clearPlacedYears();
+        
         console.log(`Session "${sessionName}" créée avec succès`);
     }
 
@@ -162,6 +170,32 @@ export class SessionManager {
         return false;
     }
     return this.currentSession.tracks.includes(uri);
+    }
+
+    // Nouvelle méthode pour nettoyer les années placées
+    clearPlacedYears() {
+        const yearSelector = document.querySelector('.year-selector');
+        const placedYears = yearSelector.querySelectorAll('.placed-year');
+        placedYears.forEach(year => {
+            // Supprimer aussi l'icône "?" associée
+            if (year.nextElementSibling?.classList.contains('help-icon')) {
+                year.nextElementSibling.remove();
+            }
+            year.remove();
+        });
+    }
+
+    // Nouvelle méthode pour sauvegarder une année placée
+    addPlacedYear(year, position) {
+        if (!this.currentSession) return;
+        
+        this.currentSession.placedYears.push({
+            year: year,
+            position: position,
+            timestamp: new Date().toISOString()
+        });
+        
+        localStorage.setItem('currentSession', JSON.stringify(this.currentSession));
     }
 
 }
