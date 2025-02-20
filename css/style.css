@@ -399,7 +399,7 @@ button:hover {
 .debug-panel {
     margin-top: 20px;
     border-radius: 5px;
-    display: none; /* commenter pour afficher le panel*/
+    /* display: none; commenter pour afficher le panel*/
 }
 
 .collapsible-debug {
