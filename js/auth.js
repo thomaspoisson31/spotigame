@@ -69,3 +69,25 @@ export function handleAuthResponse() {
 export function getCurrentToken() {
     return localStorage.getItem('spotify_token');
 }
+
+// Fonctions de gestion du token
+function invalidateToken() {
+    localStorage.setItem('spotify_token', 'invalid_token');
+    console.log('Token invalidé');
+    checkAndRefreshToken();
+}
+
+function expireToken() {
+    localStorage.setItem('token_timestamp', '0');
+    localStorage.setItem('token_expires_in', '0');
+    console.log('Token expiré');
+    checkAndRefreshToken();
+}
+
+function removeToken() {
+    localStorage.removeItem('spotify_token');
+    localStorage.removeItem('token_timestamp');
+    localStorage.removeItem('token_expires_in');
+    console.log('Token supprimé');
+    checkAndRefreshToken();
+}
